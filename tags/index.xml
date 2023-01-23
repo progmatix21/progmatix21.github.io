@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Progmatix 21</title>
+    <link>https://progmatix21.github.io/tags/</link>
+    <description>Recent content in Tags on Progmatix 21</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Jan 2023 17:26:05 +0530</lastBuildDate>
+    
+	<atom:link href="https://progmatix21.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>howto</title>
+      <link>https://progmatix21.github.io/tags/howto/</link>
+      <pubDate>Fri, 20 Jan 2023 17:26:05 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/howto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>eda</title>
+      <link>https://progmatix21.github.io/tags/eda/</link>
+      <pubDate>Mon, 16 Jan 2023 11:37:32 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/eda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>plotting</title>
+      <link>https://progmatix21.github.io/tags/plotting/</link>
+      <pubDate>Mon, 16 Jan 2023 11:37:32 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/plotting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ANOVA</title>
+      <link>https://progmatix21.github.io/tags/anova/</link>
+      <pubDate>Wed, 14 Sep 2022 10:00:34 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/anova/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NLP</title>
+      <link>https://progmatix21.github.io/tags/nlp/</link>
+      <pubDate>Mon, 12 Sep 2022 17:41:37 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

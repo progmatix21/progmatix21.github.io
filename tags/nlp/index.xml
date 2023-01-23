@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NLP on Progmatix 21</title>
+    <link>https://progmatix21.github.io/tags/nlp/</link>
+    <description>Recent content in NLP on Progmatix 21</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 12 Sep 2022 17:41:37 +0530</lastBuildDate>
+    
+	<atom:link href="https://progmatix21.github.io/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Neat Wordcount Histograms</title>
+      <link>https://progmatix21.github.io/posts/neat-wordcount-histograms/</link>
+      <pubDate>Mon, 12 Sep 2022 17:41:37 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/neat-wordcount-histograms/</guid>
+      <description>&lt;p&gt;Most NLP projects require us to look at word counts in documents. The
+traditional way is to draw histograms with vertical bars. But, are they
+convenient?&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

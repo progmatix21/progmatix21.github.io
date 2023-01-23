@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>howto on Progmatix 21</title>
+    <link>https://progmatix21.github.io/tags/howto/</link>
+    <description>Recent content in howto on Progmatix 21</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Jan 2023 17:26:05 +0530</lastBuildDate>
+    
+	<atom:link href="https://progmatix21.github.io/tags/howto/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Create a dataframe: three ways</title>
+      <link>https://progmatix21.github.io/posts/create-dataframe-three-ways/</link>
+      <pubDate>Fri, 20 Jan 2023 17:26:05 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/create-dataframe-three-ways/</guid>
+      <description>At times it is necessary to create dataframes within a program. Learn three ways to create them.</description>
+    </item>
+    
+    <item>
+      <title>Choosing Right Colormap for Heatmap</title>
+      <link>https://progmatix21.github.io/posts/choosing-right-colormap-for-heatmap/</link>
+      <pubDate>Mon, 16 Jan 2023 11:37:32 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/choosing-right-colormap-for-heatmap/</guid>
+      <description>&lt;p&gt;Heatmaps are used to visually represent correlation between various continuous features in a dataset. You can construct heatmaps and give them different colours for different values. This gives good visual appeal and makes it easier to understand.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Non-parametric One-way ANOVA</title>
+      <link>https://progmatix21.github.io/posts/one_way_anova/</link>
+      <pubDate>Wed, 14 Sep 2022 10:00:34 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/one_way_anova/</guid>
+      <description>&lt;p&gt;Regression datasets often have a mix of categorical and continuous predictor
+variables. When the number of categorical variables is large, how do you pick
+the ones that are relevant to the regression(i.e. correlated to the response
+variable)?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Neat Wordcount Histograms</title>
+      <link>https://progmatix21.github.io/posts/neat-wordcount-histograms/</link>
+      <pubDate>Mon, 12 Sep 2022 17:41:37 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/neat-wordcount-histograms/</guid>
+      <description>&lt;p&gt;Most NLP projects require us to look at word counts in documents. The
+traditional way is to draw histograms with vertical bars. But, are they
+convenient?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Missing Value Analysis</title>
+      <link>https://progmatix21.github.io/posts/missing-value-analysis/</link>
+      <pubDate>Fri, 24 Jun 2022 22:12:49 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/missing-value-analysis/</guid>
+      <description>A succinct approach to MVA.</description>
+    </item>
+    
+  </channel>
+</rss>
