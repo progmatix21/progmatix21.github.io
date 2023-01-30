@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Binary Search Cutaway</title>
+      <link>https://progmatix21.github.io/posts/binary-search-cutaway/</link>
+      <pubDate>Thu, 26 Jan 2023 13:07:23 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/binary-search-cutaway/</guid>
+      <description>What is binary search? Binary search is an algorithm for searching elements from a sorted array. It far outweighs in benefits compared to a linear search method.</description>
+    </item>
+    
+    <item>
       <title>Create a dataframe: three ways</title>
       <link>https://progmatix21.github.io/posts/create-dataframe-three-ways/</link>
       <pubDate>Fri, 20 Jan 2023 17:26:05 +0530</pubDate>
