@@ -6,10 +6,19 @@
     <description>Recent content in algorithms on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Jan 2023 13:07:23 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 31 Jan 2023 10:38:21 +0530</lastBuildDate>
     
 	<atom:link href="https://progmatix21.github.io/categories/algorithms/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bubble Sort Cutaway</title>
+      <link>https://progmatix21.github.io/posts/bubble-sort-cutaway/</link>
+      <pubDate>Tue, 31 Jan 2023 10:38:21 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/bubble-sort-cutaway/</guid>
+      <description>What is bubble sort? Bubble sort is a relatively easy to understand and easy to implement algorithm. It was one of the earliest ones to be discovered.</description>
+    </item>
     
     <item>
       <title>Binary Search Cutaway</title>
