@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Comb Sort Cutaway</title>
+      <link>https://progmatix21.github.io/posts/comb-sort-cutaway/</link>
+      <pubDate>Wed, 15 Feb 2023 10:28:29 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/comb-sort-cutaway/</guid>
+      <description>What is comb-sort? Comb-sort is a newer and modified form of bubble-sort. It seeks to improve the time-complexity of the traditional bubble-sort.</description>
+    </item>
+    
+    <item>
       <title>Bubble Sort Cutaway</title>
       <link>https://progmatix21.github.io/posts/bubble-sort-cutaway/</link>
       <pubDate>Tue, 31 Jan 2023 10:38:21 +0530</pubDate>
