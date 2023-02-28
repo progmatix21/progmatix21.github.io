@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>discretization on Progmatix 21</title>
+    <link>https://progmatix21.github.io/tags/discretization/</link>
+    <description>Recent content in discretization on Progmatix 21</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 23 Feb 2023 21:29:43 +0530</lastBuildDate>
+    
+	<atom:link href="https://progmatix21.github.io/tags/discretization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Naive Bayes With Quantile Discretization</title>
+      <link>https://progmatix21.github.io/posts/naive-bayes-with-quantile-discretization/</link>
+      <pubDate>Thu, 23 Feb 2023 21:29:43 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/naive-bayes-with-quantile-discretization/</guid>
+      <description>Often, classification datasets have a mix of continuous and categorical data. The continuous data typically have problems such as outliers, noise and lack of a defined distribution.</description>
+    </item>
+    
+  </channel>
+</rss>

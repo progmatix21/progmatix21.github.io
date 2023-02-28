@@ -3,12 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://progmatix21.github.io/categories/algorithms/</loc>
-    <lastmod>2023-02-15T10:28:29+05:30</lastmod>
+    <loc>https://progmatix21.github.io/categories/</loc>
+    <lastmod>2023-02-23T21:29:43+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://progmatix21.github.io/categories/</loc>
+    <loc>https://progmatix21.github.io/categories/data-science/</loc>
+    <lastmod>2023-02-23T21:29:43+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/discretization/</loc>
+    <lastmod>2023-02-23T21:29:43+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/eda/</loc>
+    <lastmod>2023-02-23T21:29:43+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/naive-bayes-with-quantile-discretization/</loc>
+    <lastmod>2023-02-23T21:29:43+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/</loc>
+    <lastmod>2023-02-23T21:29:43+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/</loc>
+    <lastmod>2023-02-23T21:29:43+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/categories/algorithms/</loc>
     <lastmod>2023-02-15T10:28:29+05:30</lastmod>
   </url>
   
@@ -19,16 +49,6 @@
   
   <url>
     <loc>https://progmatix21.github.io/posts/comb-sort-cutaway/</loc>
-    <lastmod>2023-02-15T10:28:29+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/posts/</loc>
-    <lastmod>2023-02-15T10:28:29+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/</loc>
     <lastmod>2023-02-15T10:28:29+05:30</lastmod>
   </url>
   
@@ -58,22 +78,12 @@
   </url>
   
   <url>
-    <loc>https://progmatix21.github.io/categories/data-science/</loc>
-    <lastmod>2023-01-20T17:26:05+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://progmatix21.github.io/tags/howto/</loc>
     <lastmod>2023-01-20T17:26:05+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://progmatix21.github.io/posts/choosing-right-colormap-for-heatmap/</loc>
-    <lastmod>2023-01-16T11:37:32+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/eda/</loc>
     <lastmod>2023-01-16T11:37:32+05:30</lastmod>
   </url>
   
