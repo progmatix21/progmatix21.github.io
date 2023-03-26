@@ -4,7 +4,37 @@
   
   <url>
     <loc>https://progmatix21.github.io/categories/</loc>
-    <lastmod>2023-02-23T21:29:43+05:30</lastmod>
+    <lastmod>2023-03-21T11:24:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/howto/</loc>
+    <lastmod>2023-03-21T11:24:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/categories/machine-learning/</loc>
+    <lastmod>2023-03-21T11:24:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/perceptron/</loc>
+    <lastmod>2023-03-21T11:24:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/perceptron-from-scratch/</loc>
+    <lastmod>2023-03-21T11:24:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/</loc>
+    <lastmod>2023-03-21T11:24:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/</loc>
+    <lastmod>2023-03-21T11:24:17+05:30</lastmod>
   </url>
   
   <url>
@@ -24,16 +54,6 @@
   
   <url>
     <loc>https://progmatix21.github.io/posts/naive-bayes-with-quantile-discretization/</loc>
-    <lastmod>2023-02-23T21:29:43+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/posts/</loc>
-    <lastmod>2023-02-23T21:29:43+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/</loc>
     <lastmod>2023-02-23T21:29:43+05:30</lastmod>
   </url>
   
@@ -78,7 +98,7 @@
   </url>
   
   <url>
-    <loc>https://progmatix21.github.io/tags/howto/</loc>
+    <loc>https://progmatix21.github.io/posts/perceptron-cutaway/</loc>
     <lastmod>2023-01-20T17:26:05+05:30</lastmod>
   </url>
   

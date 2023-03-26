@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>Create a dataframe: three ways</title>
+      <link>https://progmatix21.github.io/posts/perceptron-cutaway/</link>
+      <pubDate>Fri, 20 Jan 2023 17:26:05 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/perceptron-cutaway/</guid>
+      <description>At times it is necessary to create dataframes within a program. Learn three ways to create them.</description>
+    </item>
+    
+    <item>
       <title>Choosing Right Colormap for Heatmap</title>
       <link>https://progmatix21.github.io/posts/choosing-right-colormap-for-heatmap/</link>
       <pubDate>Mon, 16 Jan 2023 11:37:32 +0530</pubDate>

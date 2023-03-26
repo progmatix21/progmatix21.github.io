@@ -6,10 +6,19 @@
     <description>Recent content in howto on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Jan 2023 17:26:05 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 21 Mar 2023 11:24:17 +0530</lastBuildDate>
     
 	<atom:link href="https://progmatix21.github.io/tags/howto/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Perceptron From Scratch</title>
+      <link>https://progmatix21.github.io/posts/perceptron-from-scratch/</link>
+      <pubDate>Tue, 21 Mar 2023 11:24:17 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/perceptron-from-scratch/</guid>
+      <description>Neural Networks are very fascinating, but they are very complicated to understand. To simplify our understanding, we start with the simplest unit of the neural network &amp;ndash; the perceptron.</description>
+    </item>
     
     <item>
       <title>Create a dataframe: three ways</title>
@@ -17,6 +26,15 @@
       <pubDate>Fri, 20 Jan 2023 17:26:05 +0530</pubDate>
       
       <guid>https://progmatix21.github.io/posts/create-dataframe-three-ways/</guid>
+      <description>At times it is necessary to create dataframes within a program. Learn three ways to create them.</description>
+    </item>
+    
+    <item>
+      <title>Create a dataframe: three ways</title>
+      <link>https://progmatix21.github.io/posts/perceptron-cutaway/</link>
+      <pubDate>Fri, 20 Jan 2023 17:26:05 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/perceptron-cutaway/</guid>
       <description>At times it is necessary to create dataframes within a program. Learn three ways to create them.</description>
     </item>
     
