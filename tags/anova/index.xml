@@ -1,27 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>ANOVA on Progmatix 21</title>
-    <link>https://progmatix21.github.io/tags/anova/</link>
-    <description>Recent content in ANOVA on Progmatix 21</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 14 Sep 2022 10:00:34 +0530</lastBuildDate>
-    
-	<atom:link href="https://progmatix21.github.io/tags/anova/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Non-parametric One-way ANOVA</title>
-      <link>https://progmatix21.github.io/posts/one_way_anova/</link>
-      <pubDate>Wed, 14 Sep 2022 10:00:34 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/posts/one_way_anova/</guid>
-      <description>&lt;p&gt;Regression datasets often have a mix of categorical and continuous predictor
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ANOVA on Progmatix 21</title><link>https://progmatix21.github.io/tags/anova/</link><description>Recent content in ANOVA on Progmatix 21</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 14 Sep 2022 10:00:34 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/tags/anova/index.xml" rel="self" type="application/rss+xml"/><item><title>Non-parametric One-way ANOVA</title><link>https://progmatix21.github.io/posts/one_way_anova/</link><pubDate>Wed, 14 Sep 2022 10:00:34 +0530</pubDate><guid>https://progmatix21.github.io/posts/one_way_anova/</guid><description>&lt;p>Regression datasets often have a mix of categorical and continuous predictor
 variables. When the number of categorical variables is large, how do you pick
 the ones that are relevant to the regression(i.e. correlated to the response
-variable)?&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+variable)?&lt;/p></description></item></channel></rss>
