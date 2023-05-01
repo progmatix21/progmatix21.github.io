@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Apr 2023 14:33:20 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 28 Apr 2023 10:59:54 +0530</lastBuildDate>
     
 	<atom:link href="https://progmatix21.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dynamic Programming: Knapsack Problem</title>
+      <link>https://progmatix21.github.io/posts/dynamic-programming-knapsack/</link>
+      <pubDate>Fri, 28 Apr 2023 10:59:54 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/dynamic-programming-knapsack/</guid>
+      <description>Dynamic Programming is an algorithmic technique to solve constrained, combinatorial optimization problems. The Knapsack here is a metaphor for the constraint.</description>
+    </item>
     
     <item>
       <title>Categorical vs Categorical Heatmap</title>

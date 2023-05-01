@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Dynamic Programming: Knapsack Problem</title>
+      <link>https://progmatix21.github.io/posts/dynamic-programming-knapsack/</link>
+      <pubDate>Fri, 28 Apr 2023 10:59:54 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/dynamic-programming-knapsack/</guid>
+      <description>Dynamic Programming is an algorithmic technique to solve constrained, combinatorial optimization problems. The Knapsack here is a metaphor for the constraint.</description>
+    </item>
+    
+    <item>
       <title>Categorical vs Categorical Heatmap</title>
       <link>https://progmatix21.github.io/posts/categorical-vs-categorical-heatmap/</link>
       <pubDate>Sun, 02 Apr 2023 14:33:20 +0530</pubDate>
