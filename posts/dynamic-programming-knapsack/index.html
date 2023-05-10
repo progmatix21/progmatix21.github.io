@@ -1,368 +1,250 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Dynamic Programming: Knapsack Problem - Progmatix 21</title>
-	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
-
-	<link rel="stylesheet" href="/css/style.css">
-	
-
-	<link rel="shortcut icon" href="/favicon.ico">
-		
-</head>
-<body class="body">
-	<div class="container container--outer">
-		<header class="header">
-	<div class="container header__container">
-		
-	<div class="logo">
-		<a class="logo__link" href="/" title="Progmatix 21" rel="home">
-			<div class="logo__item logo__text">
-					<div class="logo__title">Progmatix 21</div>
-					<div class="logo__tagline">My learnings: byte by byte</div>
-				</div>
-		</a>
-	</div>
-		<div class="divider"></div>
-	</div>
-</header>
-		<div class="wrapper flex">
-			<div class="primary">
-			
-<main class="main" role="main">
-	<article class="post">
-		<header class="post__header">
-			<h1 class="post__title">Dynamic Programming: Knapsack Problem</h1>
-			<div class="post__meta meta">
-<div class="meta__item-datetime meta__item">
-	<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" class="meta__icon icon icon-calendar" width="18" height="16" 
-	 viewBox="0 0 458 458" style="enable-background:new 0 0 458 458;" xml:space="preserve">
-<g>
-	<path d="M111.938,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
-		C91.938,126.644,100.892,135.598,111.938,135.598z"/>
-	<path d="M346.063,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
-		C326.063,126.644,335.017,135.598,346.063,135.598z"/>
-	<path d="M443,82.403h-46.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
-		c0-12.281,0-20.771,0-33.195H161.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
-		c0-12.281,0-20.771,0-33.195H15c-8.284,0-15,6.716-15,15v89.641h458V97.403C458,89.119,451.284,82.403,443,82.403z"/>
-	<path d="M0,441.403c0,8.284,6.716,15,15,15h428c8.284,0,15-6.716,15-15V227.044H0V441.403z M244.191,313.046
-		c0-6.036,3.59-11.504,9.127-13.907c7.49-3.249,16.316-9.028,21.176-13.393c2.782-2.499,6.38-3.88,10.121-3.88h19.254
-		c4.395,0,7.957,3.563,7.957,7.958v80.903h11.445c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-59.934
-		c-8.275,0-14.984-6.708-14.984-14.984c0-8.275,6.708-14.984,14.984-14.984h14.567V317.66c-2.163,2.886-6.797,6.077-12.243,8.754
-		c-4.618,2.27-10.076,2.008-14.445-0.711c-4.369-2.718-7.025-7.501-7.025-12.647V313.046z M123.295,390.677
-		c2.691-29.175,18.127-37.168,47.125-52.83c4.622-2.493,12.811-7.06,15.92-11.134c3.842-5.044,1.97-18.001-14.359-18.001
-		c-5.549,0-11.094,1.106-17.704,5.967c-6.262,4.605-14.984,3.637-20.067-2.244l-0.594-0.688c-3.026-3.501-4.246-8.216-3.31-12.747
-		s3.925-8.371,8.09-10.387c22.329-10.811,56.654-13.101,73.853,0.952c7.977,6.523,11.966,15.332,11.966,26.43
-		c0,32.434-40.129,38.997-54.315,54.731h41.622c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-79.1
-		c-2.577,0-5.036-1.095-6.772-3C123.914,395.789,123.059,393.243,123.295,390.677z"/>
-</g>
-</svg>
-<time class="meta__text" datetime="2023-04-28T10:59:54&#43;05:30">April 28, 2023</time></div>
-<div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/algorithms/" rel="category">algorithms</a>
-	</span>
-</div><div class="meta__item-categories meta__item">
-	<span class="meta__text">
-		<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>1259 words/6 min read
-	</span>
-</div>
-</div>
-		</header>
-		
-<div class="post__toc toc">
-	<div class="toc__title">Page content</div>
-	<div class="toc__menu">
-		<nav id="TableOfContents">
-  <ul>
-    <li><a href="#what-is-special-about-dynamic-programming-problems">What is special about Dynamic Programming problems?</a></li>
-    <li><a href="#the-two-approaches">The two approaches</a></li>
-    <li><a href="#recurrence-equation-and-notations">Recurrence equation and notations</a></li>
-    <li><a href="#implementation-notes">Implementation notes</a></li>
-  </ul>
-</nav>
-	</div>
-</div><div class="content post__content clearfix">
-			<p>Dynamic Programming is an algorithmic technique to solve constrained,
-combinatorial optimization problems.  The Knapsack here is a metaphor for the
-constraint.  The &lsquo;knapsack&rsquo; might as well be a container ship.  Given a set of
-weights with corresponding values and a knapsack of certain capacity, the
-problem involves packing the most valuable knapsack with the weights that fit
-into the knapsack.</p>
-<h2 id="what-is-special-about-dynamic-programming-problems">What is special about Dynamic Programming problems?</h2>
-<p>Dynamic programming problems can be broken down into subproblems that have
-optimal substructure.  This means solving a subproblem optimally contributes to
-the optimal solution of the bigger problem.  Additionally, the solutions to the
+<!doctype html><html class=no-js lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Dynamic Programming: Knapsack Problem - Progmatix 21</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/css/style.css><link rel="shortcut icon" href=/favicon.ico></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class=logo><a class=logo__link href=/ title="Progmatix 21" rel=home><div class="logo__item logo__text"><div class=logo__title>Progmatix 21</div><div class=logo__tagline>My learnings: byte by byte</div></div></a></div><div class=divider></div></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Dynamic Programming: Knapsack Problem</h1><div class="post__meta meta"><div class="meta__item-datetime meta__item"><!doctype html><svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar" width="18" height="16" viewBox="0 0 458 458" style="enable-background:new 0 0 458 458"><g><path d="M111.938 135.598c11.046.0 20-8.954 20-20V21.597c0-11.046-8.954-20-20-20s-20 8.954-20 20v94.001C91.938 126.644 100.892 135.598 111.938 135.598z"/><path d="M346.063 135.598c11.046.0 20-8.954 20-20V21.597c0-11.046-8.954-20-20-20s-20 8.954-20 20v94.001C326.063 126.644 335.017 135.598 346.063 135.598z"/><path d="M443 82.403h-46.938c0 12.42.0 20.918.0 33.195.0 27.614-22.386 50-50 50s-50-22.386-50-50c0-12.281.0-20.771.0-33.195H161.938c0 12.42.0 20.918.0 33.195.0 27.614-22.386 50-50 50s-50-22.386-50-50c0-12.281.0-20.771.0-33.195H15c-8.284.0-15 6.716-15 15v89.641h458V97.403C458 89.119 451.284 82.403 443 82.403z"/><path d="M0 441.403c0 8.284 6.716 15 15 15h428c8.284.0 15-6.716 15-15V227.044H0V441.403zM244.191 313.046c0-6.036 3.59-11.504 9.127-13.907 7.49-3.249 16.316-9.028 21.176-13.393 2.782-2.499 6.38-3.88 10.121-3.88h19.254c4.395.0 7.957 3.563 7.957 7.958v80.903h11.445c8.275.0 14.984 6.708 14.984 14.984.0 8.275-6.708 14.984-14.984 14.984h-59.934c-8.275.0-14.984-6.708-14.984-14.984.0-8.275 6.708-14.984 14.984-14.984h14.567V317.66c-2.163 2.886-6.797 6.077-12.243 8.754-4.618 2.27-10.076 2.008-14.445-.711-4.369-2.718-7.025-7.501-7.025-12.647V313.046zM123.295 390.677c2.691-29.175 18.127-37.168 47.125-52.83 4.622-2.493 12.811-7.06 15.92-11.134 3.842-5.044 1.97-18.001-14.359-18.001-5.549.0-11.094 1.106-17.704 5.967-6.262 4.605-14.984 3.637-20.067-2.244l-.594-.688c-3.026-3.501-4.246-8.216-3.31-12.747s3.925-8.371 8.09-10.387c22.329-10.811 56.654-13.101 73.853.952 7.977 6.523 11.966 15.332 11.966 26.43.0 32.434-40.129 38.997-54.315 54.731h41.622c8.275.0 14.984 6.708 14.984 14.984.0 8.275-6.708 14.984-14.984 14.984h-79.1c-2.577.0-5.036-1.095-6.772-3C123.914 395.789 123.059 393.243 123.295 390.677z"/></g></svg><time class=meta__text datetime=2023-04-28T10:59:54+05:30>April 28, 2023</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/algorithms/ rel=category>algorithms</a></span></div><div class="meta__item-categories meta__item"><span class=meta__text><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>1335 words/7 min read</span></div></div></header><div class="post__toc toc"><div class=toc__title>Page content</div><div class=toc__menu><details><summary>Click to toggle</summary><nav id=TableOfContents><ul><li><a href=#what-is-special-about-dynamic-programming-problems>What is special about Dynamic Programming problems?</a></li><li><a href=#the-two-approaches>The two approaches</a></li><li><a href=#recurrence-equation-and-notations>Recurrence equation and notations</a></li><li><a href=#implementation-notes>Implementation notes</a></li></ul></nav></details></div></div><div class="content post__content clearfix"><style>#myBtn{display:none;position:fixed;bottom:20px;right:30px;z-index:99;font-size:36px;font-weight:700;border:none;outline:none;background-color:#444;color:#fff;cursor:pointer;padding:15px;border-radius:50%}#myBtn:hover{background-color:teal}</style><button onclick=topFunction() id=myBtn title="Go to top">&#11161;</button>
+<script>let mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){if(document.body.scrollTop>20||document.documentElement.scrollTop>20){mybutton.style.display="block";}else{mybutton.style.display="none";}}
+function topFunction(){document.body.scrollTop=0;document.documentElement.scrollTop=0;}</script><p>Dynamic Programming is an algorithmic technique to solve constrained,
+combinatorial optimization problems. The Knapsack here is a metaphor for the
+constraint. The &lsquo;knapsack&rsquo; might as well be a container ship.</p><p>Given a set of weights with corresponding values and a knapsack of certain
+capacity, the problem involves packing the most valuable knapsack with the
+weights that fit into the knapsack.</p><h2 id=what-is-special-about-dynamic-programming-problems>What is special about Dynamic Programming problems?</h2><p>Dynamic programming problems can be broken down into subproblems that have
+optimal substructure. This means solving a subproblem optimally contributes to
+the optimal solution of the bigger problem. Additionally, the solutions to the
 subproblems are themselves overlapping or common to more than one containing
-problem.</p>
-<h2 id="the-two-approaches">The two approaches</h2>
-<p>The classical approach to dynamic programming is the bottom-up approach where
+problem.</p><h2 id=the-two-approaches>The two approaches</h2><p>The classical approach to dynamic programming is the bottom-up approach where
 we solve the major problem by solving each of the subordinate problems with a
-memory function.</p>
-<p>The second approach is the top-down approach which starts with the major problem
-and recursively solves the subproblems whereby the solution bubbles up.</p>
-<p>The first approach, because of the memory function, avoids solving the same
-subproblems repeatedly.  However, it may end up solving some subproblems that
-do not contribute to the solution.  The second approach solves only the necessary
-subproblems, but might end up solving them repeatedly.</p>
-<p>We can indeed have the best of both worlds by combining top-down with memory
-function.</p>
-<h2 id="recurrence-equation-and-notations">Recurrence equation and notations</h2>
-<p>We have weights \(w_i\) and corresponding values \(v_i\), \(i\) varying
-from \(1\) to \(n\).  \(V_{i,j}\) is the value of the knapsack when
-weights upto \(i\) are available and the knapsack capacity is \(j\).  We
-are seeking  the solution \(V_{n,C}\) where \(C\) is the capacity of the knapsack.</p>
-<p>At the heart of the algorithm are the two recurrence equations:</p>
-<p>$$
-V_{i,j} = V_{i-1,j},\   if\ j &lt; w_i    \tag{1}
-$$</p>
-<p>$$
-V_{i,j} = {max(V_{i-1,j}, v_i + V_{i-1, j-w_i})},\   if\ j &gt;= w_i  \tag{2}
-$$</p>
-<p>$$
-V_{0,j}, V_{i,0} = 0 \ for\ all\ i, j  \tag{3}
-$$</p>
-<p>Equation 1 means if the current available weight \(w_i\) is greater than the current
-available capacity \(j\) of the knapsack, then continue with the previous state.</p>
-<p>Equation 2 means if the current available weight \(w_i\) is less than the current
+memory function.</p><p>The second approach is the top-down approach which starts with the major problem
+and recursively solves the subproblems whereby the solution bubbles up.</p><p>The first approach, because of the memory function, avoids solving the same
+subproblems repeatedly. However, it may end up solving some subproblems that
+do not contribute to the solution. The second approach solves only the necessary
+subproblems, but might end up solving them repeatedly.</p><p>We can indeed have the best of both worlds by combining top-down with memory
+function.</p><h2 id=recurrence-equation-and-notations>Recurrence equation and notations</h2><p>We have weights \(w_i\) and corresponding values \(v_i\), \(i\) varying
+from \(1\) to \(n\). \(V_{i,j}\) is the value of the knapsack when
+weights upto \(i\) are available and the knapsack capacity is \(j\). We
+are seeking the solution \(V_{n,C}\) where \(C\) is the capacity of the knapsack.</p><p>At the heart of the algorithm are the two recurrence equations:</p><p>$$
+V_{i,j} = V_{i-1,j},\ if\ j &lt; w_i \tag{1}
+$$</p><p>$$
+V_{i,j} = {max(V_{i-1,j}, v_i + V_{i-1, j-w_i})},\ if\ j >= w_i \tag{2}
+$$</p><p>$$
+V_{0,j}, V_{i,0} = 0 \ for\ all\ i, j \tag{3}
+$$</p><p>Equation 1 means if the current available weight \(w_i\) is greater than the current
+available capacity \(j\) of the knapsack, then continue with the previous state.</p><p>Equation 2 means if the current available weight \(w_i\) is less than the current
 available capacity \(j\) of the knapsack, then determine whether adding \(w_i\)
-improves the value of the knapsack, over the previous state.</p>
-<p>Equation 3 is meant for the initial condition: the first row and first column
-of solution matrix are 0s.</p>
-<h2 id="implementation-notes">Implementation notes</h2>
-<p>We have implemented a class which supports both top-down and bottom-up approaches
-of the knapsack.  Below, are the Python programs that we have implemented:</p>
-<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
-</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
-</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#408080;font-style:italic">#!/usr/bin/env python3</span>
+improves the value of the knapsack, over the previous state.</p><p>Equation 3 is meant for the initial condition: the first row and first column
+of solution matrix are 0s.</p><h2 id=implementation-notes>Implementation notes</h2><p>We have implemented a class which supports both top-down and bottom-up approaches
+of the knapsack. Below, are the Python programs that we have implemented:</p><div class=highlight><div style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 24
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 25
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 26
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 27
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 28
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 29
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 30
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 31
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 32
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 33
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 34
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 35
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 36
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 37
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 38
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 39
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 40
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 41
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 42
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 43
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 44
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 45
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 46
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 47
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 48
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 49
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 50
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 51
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 52
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 53
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 54
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 55
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 56
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 57
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 58
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 59
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 60
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 61
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 62
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 63
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 64
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 65
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 66
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 67
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 68
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 69
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 70
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 71
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 72
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 73
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 74
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 75
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 76
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 77
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 78
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 79
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 80
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 81
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 82
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 83
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 84
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 85
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 86
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 87
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 88
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 89
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 90
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 91
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 92
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 93
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 94
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 95
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 96
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 97
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 98
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 99
+</span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">100
+</span></span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">101
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">102
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">103
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">104
+</span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">105
+</span></span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">106
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">107
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">108
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#408080;font-style:italic>#!/usr/bin/env python3</span>
 
-<span style="color:#ba2121">&#39;&#39;&#39;
-</span><span style="color:#ba2121">This is implementation of a 0/1 knapsack class with two methods: classical bottom-
-</span><span style="color:#ba2121">up dynamic programming and top-down with memo.
-</span><span style="color:#ba2121">&#39;&#39;&#39;</span>
+<span style=color:#ba2121>&#39;&#39;&#39;
+</span><span style=color:#ba2121>This is implementation of a 0/1 knapsack class with two methods: classical bottom-
+</span><span style=color:#ba2121>up dynamic programming and top-down with memo.
+</span><span style=color:#ba2121>&#39;&#39;&#39;</span>
 
-<span style="color:#008000;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">numpy</span> <span style="color:#008000;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">np</span>
+<span style=color:green;font-weight:700>import</span> <span style=color:#00f;font-weight:700>numpy</span> <span style=color:green;font-weight:700>as</span> <span style=color:#00f;font-weight:700>np</span>
 
-<span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">Knapsack</span>():
-    <span style="color:#ba2121">&#39;&#39;&#39;Class to implement knapsack
-</span><span style="color:#ba2121">       Instantiate with (capacity,weights,values)
-</span><span style="color:#ba2121">       Returns solution matrix, best value, weights picked
-</span><span style="color:#ba2121">    &#39;&#39;&#39;</span>
-    <span style="color:#008000;font-weight:bold">def</span> __init__(self, capacity <span style="color:#666">=</span> <span style="color:#666">0</span>, weights <span style="color:#666">=</span> [], values <span style="color:#666">=</span> []):
-        <span style="color:#408080;font-style:italic"># Initialize capacity weights and values, add a leading 0 for ease of</span>
-        <span style="color:#408080;font-style:italic"># computation.</span>
-        self<span style="color:#666">.</span>_capacity <span style="color:#666">=</span> capacity
-        self<span style="color:#666">.</span>_weights <span style="color:#666">=</span> [<span style="color:#666">0</span>]<span style="color:#666">+</span>weights
-        self<span style="color:#666">.</span>_values <span style="color:#666">=</span> [<span style="color:#666">0</span>]<span style="color:#666">+</span>values
-        <span style="color:#408080;font-style:italic"># Initialize solution matrix</span>
-        self<span style="color:#666">.</span>_V <span style="color:#666">=</span> np<span style="color:#666">.</span>zeros((<span style="color:#008000">len</span>(self<span style="color:#666">.</span>_weights),self<span style="color:#666">.</span>_capacity<span style="color:#666">+</span><span style="color:#666">1</span>), dtype<span style="color:#666">=</span><span style="color:#008000">int</span>)
-        self<span style="color:#666">.</span>_V[<span style="color:#666">1</span>:,<span style="color:#666">1</span>:] <span style="color:#666">=</span> <span style="color:#666">-</span><span style="color:#666">1</span> <span style="color:#408080;font-style:italic"># except first row and col, all values -1</span>
-        <span style="color:#408080;font-style:italic"># They get filled via the algorithm</span>
+<span style=color:green;font-weight:700>class</span> <span style=color:#00f;font-weight:700>Knapsack</span>():
+    <span style=color:#ba2121>&#39;&#39;&#39;Class to implement knapsack
+</span><span style=color:#ba2121>       Instantiate with (capacity,weights,values)
+</span><span style=color:#ba2121>       Returns solution matrix, best value, weights picked
+</span><span style=color:#ba2121>    &#39;&#39;&#39;</span>
+    <span style=color:green;font-weight:700>def</span> __init__(self, capacity <span style=color:#666>=</span> <span style=color:#666>0</span>, weights <span style=color:#666>=</span> [], values <span style=color:#666>=</span> []):
+        <span style=color:#408080;font-style:italic># Initialize capacity weights and values, add a leading 0 for ease of</span>
+        <span style=color:#408080;font-style:italic># computation.</span>
+        self<span style=color:#666>.</span>_capacity <span style=color:#666>=</span> capacity
+        self<span style=color:#666>.</span>_weights <span style=color:#666>=</span> [<span style=color:#666>0</span>]<span style=color:#666>+</span>weights
+        self<span style=color:#666>.</span>_values <span style=color:#666>=</span> [<span style=color:#666>0</span>]<span style=color:#666>+</span>values
+        <span style=color:#408080;font-style:italic># Initialize solution matrix</span>
+        self<span style=color:#666>.</span>_V <span style=color:#666>=</span> np<span style=color:#666>.</span>zeros((<span style=color:green>len</span>(self<span style=color:#666>.</span>_weights),self<span style=color:#666>.</span>_capacity<span style=color:#666>+</span><span style=color:#666>1</span>), dtype<span style=color:#666>=</span><span style=color:green>int</span>)
+        self<span style=color:#666>.</span>_V[<span style=color:#666>1</span>:,<span style=color:#666>1</span>:] <span style=color:#666>=</span> <span style=color:#666>-</span><span style=color:#666>1</span> <span style=color:#408080;font-style:italic># except first row and col, all values -1</span>
+        <span style=color:#408080;font-style:italic># They get filled via the algorithm</span>
         
-    <span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">_pack_bottom_up</span>(self, ):  <span style="color:#408080;font-style:italic"># deemed private function</span>
-        <span style="color:#408080;font-style:italic"># We traverse the V matrix column-wise for a classical bottom-up dynamic</span>
-        <span style="color:#408080;font-style:italic"># programming approach.</span>
+    <span style=color:green;font-weight:700>def</span> <span style=color:#00f>_pack_bottom_up</span>(self, ):  <span style=color:#408080;font-style:italic># deemed private function</span>
+        <span style=color:#408080;font-style:italic># We traverse the V matrix column-wise for a classical bottom-up dynamic</span>
+        <span style=color:#408080;font-style:italic># programming approach.</span>
 
-        <span style="color:#008000;font-weight:bold">for</span> j <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">1</span>,self<span style="color:#666">.</span>_capacity<span style="color:#666">+</span><span style="color:#666">1</span>):
-            <span style="color:#008000;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">1</span>,<span style="color:#008000">len</span>(self<span style="color:#666">.</span>_weights)):
-                <span style="color:#408080;font-style:italic"># Implement the two recurrence equations here</span>
-                <span style="color:#008000;font-weight:bold">if</span>(j<span style="color:#666">-</span>self<span style="color:#666">.</span>_weights[i] <span style="color:#666">&gt;=</span> <span style="color:#666">0</span>):
-                    self<span style="color:#666">.</span>_V[i,j] <span style="color:#666">=</span> <span style="color:#008000">max</span>(self<span style="color:#666">.</span>_V[i<span style="color:#666">-</span><span style="color:#666">1</span>,j], self<span style="color:#666">.</span>_values[i]<span style="color:#666">+</span>self<span style="color:#666">.</span>_V[i<span style="color:#666">-</span><span style="color:#666">1</span>,j<span style="color:#666">-</span>self<span style="color:#666">.</span>_weights[i]])
-                <span style="color:#008000;font-weight:bold">else</span>:
-                    self<span style="color:#666">.</span>_V[i,j] <span style="color:#666">=</span> self<span style="color:#666">.</span>_V[i<span style="color:#666">-</span><span style="color:#666">1</span>,j]
+        <span style=color:green;font-weight:700>for</span> j <span style=color:#a2f;font-weight:700>in</span> <span style=color:green>range</span>(<span style=color:#666>1</span>,self<span style=color:#666>.</span>_capacity<span style=color:#666>+</span><span style=color:#666>1</span>):
+            <span style=color:green;font-weight:700>for</span> i <span style=color:#a2f;font-weight:700>in</span> <span style=color:green>range</span>(<span style=color:#666>1</span>,<span style=color:green>len</span>(self<span style=color:#666>.</span>_weights)):
+                <span style=color:#408080;font-style:italic># Implement the two recurrence equations here</span>
+                <span style=color:green;font-weight:700>if</span>(j<span style=color:#666>-</span>self<span style=color:#666>.</span>_weights[i] <span style=color:#666>&gt;=</span> <span style=color:#666>0</span>):
+                    self<span style=color:#666>.</span>_V[i,j] <span style=color:#666>=</span> <span style=color:green>max</span>(self<span style=color:#666>.</span>_V[i<span style=color:#666>-</span><span style=color:#666>1</span>,j], self<span style=color:#666>.</span>_values[i]<span style=color:#666>+</span>self<span style=color:#666>.</span>_V[i<span style=color:#666>-</span><span style=color:#666>1</span>,j<span style=color:#666>-</span>self<span style=color:#666>.</span>_weights[i]])
+                <span style=color:green;font-weight:700>else</span>:
+                    self<span style=color:#666>.</span>_V[i,j] <span style=color:#666>=</span> self<span style=color:#666>.</span>_V[i<span style=color:#666>-</span><span style=color:#666>1</span>,j]
                   
-        <span style="color:#008000;font-weight:bold">return</span> None
+        <span style=color:green;font-weight:700>return</span> None
         
-    <span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">_pack_top_down</span>(self, i , j):    <span style="color:#408080;font-style:italic"># deemed private function</span>
-        <span style="color:#408080;font-style:italic"># i is index of weight/value j is knapsack capacity</span>
-        <span style="color:#408080;font-style:italic"># go top-down but with memory. Top-down computes only needed sub-problems.</span>
-        <span style="color:#408080;font-style:italic"># memory avoids recomputations.  Best of both worlds.</span>
-        <span style="color:#008000;font-weight:bold">if</span> self<span style="color:#666">.</span>_V[i,j] <span style="color:#666">&lt;</span> <span style="color:#666">0</span>:
-            <span style="color:#008000;font-weight:bold">if</span> j <span style="color:#666">&lt;</span> self<span style="color:#666">.</span>_weights[i]:
-                self<span style="color:#666">.</span>_V[i,j] <span style="color:#666">=</span> self<span style="color:#666">.</span>_pack_top_down(i<span style="color:#666">-</span><span style="color:#666">1</span>,j)
-            <span style="color:#008000;font-weight:bold">else</span>:
-                self<span style="color:#666">.</span>_V[i,j] <span style="color:#666">=</span> <span style="color:#008000">max</span>(self<span style="color:#666">.</span>_pack_top_down(i<span style="color:#666">-</span><span style="color:#666">1</span>,j), self<span style="color:#666">.</span>_values[i]<span style="color:#666">+</span>self<span style="color:#666">.</span>_pack_top_down(i<span style="color:#666">-</span><span style="color:#666">1</span>,j<span style="color:#666">-</span>self<span style="color:#666">.</span>_weights[i]))                
+    <span style=color:green;font-weight:700>def</span> <span style=color:#00f>_pack_top_down</span>(self, i , j):    <span style=color:#408080;font-style:italic># deemed private function</span>
+        <span style=color:#408080;font-style:italic># i is index of weight/value j is knapsack capacity</span>
+        <span style=color:#408080;font-style:italic># go top-down but with memory. Top-down computes only needed sub-problems.</span>
+        <span style=color:#408080;font-style:italic># memory avoids recomputations.  Best of both worlds.</span>
+        <span style=color:green;font-weight:700>if</span> self<span style=color:#666>.</span>_V[i,j] <span style=color:#666>&lt;</span> <span style=color:#666>0</span>:
+            <span style=color:green;font-weight:700>if</span> j <span style=color:#666>&lt;</span> self<span style=color:#666>.</span>_weights[i]:
+                self<span style=color:#666>.</span>_V[i,j] <span style=color:#666>=</span> self<span style=color:#666>.</span>_pack_top_down(i<span style=color:#666>-</span><span style=color:#666>1</span>,j)
+            <span style=color:green;font-weight:700>else</span>:
+                self<span style=color:#666>.</span>_V[i,j] <span style=color:#666>=</span> <span style=color:green>max</span>(self<span style=color:#666>.</span>_pack_top_down(i<span style=color:#666>-</span><span style=color:#666>1</span>,j), self<span style=color:#666>.</span>_values[i]<span style=color:#666>+</span>self<span style=color:#666>.</span>_pack_top_down(i<span style=color:#666>-</span><span style=color:#666>1</span>,j<span style=color:#666>-</span>self<span style=color:#666>.</span>_weights[i]))                
 
-        <span style="color:#008000;font-weight:bold">return</span> self<span style="color:#666">.</span>_V[i,j]
+        <span style=color:green;font-weight:700>return</span> self<span style=color:#666>.</span>_V[i,j]
         
-    <span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">_get_best_weights</span>(self, ):
-        <span style="color:#408080;font-style:italic"># Get the most valuable weights picked.</span>
-        r <span style="color:#666">=</span> <span style="color:#008000">len</span>(self<span style="color:#666">.</span>_weights)<span style="color:#666">-</span><span style="color:#666">1</span>
-        c <span style="color:#666">=</span> self<span style="color:#666">.</span>_capacity
-        included_list <span style="color:#666">=</span> []   <span style="color:#408080;font-style:italic"># Included weight indices</span>
+    <span style=color:green;font-weight:700>def</span> <span style=color:#00f>_get_best_weights</span>(self, ):
+        <span style=color:#408080;font-style:italic># Get the most valuable weights picked.</span>
+        r <span style=color:#666>=</span> <span style=color:green>len</span>(self<span style=color:#666>.</span>_weights)<span style=color:#666>-</span><span style=color:#666>1</span>
+        c <span style=color:#666>=</span> self<span style=color:#666>.</span>_capacity
+        included_list <span style=color:#666>=</span> []   <span style=color:#408080;font-style:italic># Included weight indices</span>
 
-        <span style="color:#008000;font-weight:bold">while</span>(True):
-            <span style="color:#008000;font-weight:bold">while</span> self<span style="color:#666">.</span>_V[r, c] <span style="color:#666">==</span> self<span style="color:#666">.</span>_V[r<span style="color:#666">-</span><span style="color:#666">1</span>, c]:
-                r <span style="color:#666">=</span> r<span style="color:#666">-</span><span style="color:#666">1</span>
-                <span style="color:#008000;font-weight:bold">if</span> r <span style="color:#666">==</span> <span style="color:#666">0</span>:
-                    <span style="color:#008000;font-weight:bold">break</span>
+        <span style=color:green;font-weight:700>while</span>(True):
+            <span style=color:green;font-weight:700>while</span> self<span style=color:#666>.</span>_V[r, c] <span style=color:#666>==</span> self<span style=color:#666>.</span>_V[r<span style=color:#666>-</span><span style=color:#666>1</span>, c]:
+                r <span style=color:#666>=</span> r<span style=color:#666>-</span><span style=color:#666>1</span>
+                <span style=color:green;font-weight:700>if</span> r <span style=color:#666>==</span> <span style=color:#666>0</span>:
+                    <span style=color:green;font-weight:700>break</span>
                     
-            <span style="color:#008000;font-weight:bold">if</span> r <span style="color:#666">&gt;</span> <span style="color:#666">0</span>:            
-                included_list<span style="color:#666">.</span>append(r)            
-                c <span style="color:#666">=</span> c <span style="color:#666">-</span> self<span style="color:#666">.</span>_weights[r]
-                r <span style="color:#666">=</span> r <span style="color:#666">-</span> <span style="color:#666">1</span>
+            <span style=color:green;font-weight:700>if</span> r <span style=color:#666>&gt;</span> <span style=color:#666>0</span>:            
+                included_list<span style=color:#666>.</span>append(r)            
+                c <span style=color:#666>=</span> c <span style=color:#666>-</span> self<span style=color:#666>.</span>_weights[r]
+                r <span style=color:#666>=</span> r <span style=color:#666>-</span> <span style=color:#666>1</span>
 
-            <span style="color:#008000;font-weight:bold">if</span> r <span style="color:#666">==</span> <span style="color:#666">0</span> <span style="color:#a2f;font-weight:bold">or</span> c <span style="color:#666">&lt;=</span> <span style="color:#666">0</span>:
-                <span style="color:#008000;font-weight:bold">break</span>
+            <span style=color:green;font-weight:700>if</span> r <span style=color:#666>==</span> <span style=color:#666>0</span> <span style=color:#a2f;font-weight:700>or</span> c <span style=color:#666>&lt;=</span> <span style=color:#666>0</span>:
+                <span style=color:green;font-weight:700>break</span>
                 
-        <span style="color:#008000;font-weight:bold">return</span> included_list[::<span style="color:#666">-</span><span style="color:#666">1</span>] <span style="color:#408080;font-style:italic"># return indices in ascending order.</span>
+        <span style=color:green;font-weight:700>return</span> included_list[::<span style=color:#666>-</span><span style=color:#666>1</span>] <span style=color:#408080;font-style:italic># return indices in ascending order.</span>
         
-    <span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">pack</span>(self, how <span style="color:#666">=</span> <span style="color:#ba2121">&#39;bottom_up&#39;</span>):
-        <span style="color:#408080;font-style:italic"># Public interface to pack the knapsack. Default is bottom-up</span>
-        <span style="color:#408080;font-style:italic"># Initialise the solution space for each call</span>
-        self<span style="color:#666">.</span>_V <span style="color:#666">=</span> np<span style="color:#666">.</span>zeros((<span style="color:#008000">len</span>(self<span style="color:#666">.</span>_weights),self<span style="color:#666">.</span>_capacity<span style="color:#666">+</span><span style="color:#666">1</span>), dtype<span style="color:#666">=</span><span style="color:#008000">int</span>)
-        self<span style="color:#666">.</span>_V[<span style="color:#666">1</span>:,<span style="color:#666">1</span>:] <span style="color:#666">=</span> <span style="color:#666">-</span><span style="color:#666">1</span> <span style="color:#408080;font-style:italic"># except first row and col, all values -1</span>
-        <span style="color:#408080;font-style:italic"># They get filled via the algorithm        </span>
+    <span style=color:green;font-weight:700>def</span> <span style=color:#00f>pack</span>(self, how <span style=color:#666>=</span> <span style=color:#ba2121>&#39;bottom_up&#39;</span>):
+        <span style=color:#408080;font-style:italic># Public interface to pack the knapsack. Default is bottom-up</span>
+        <span style=color:#408080;font-style:italic># Initialise the solution space for each call</span>
+        self<span style=color:#666>.</span>_V <span style=color:#666>=</span> np<span style=color:#666>.</span>zeros((<span style=color:green>len</span>(self<span style=color:#666>.</span>_weights),self<span style=color:#666>.</span>_capacity<span style=color:#666>+</span><span style=color:#666>1</span>), dtype<span style=color:#666>=</span><span style=color:green>int</span>)
+        self<span style=color:#666>.</span>_V[<span style=color:#666>1</span>:,<span style=color:#666>1</span>:] <span style=color:#666>=</span> <span style=color:#666>-</span><span style=color:#666>1</span> <span style=color:#408080;font-style:italic># except first row and col, all values -1</span>
+        <span style=color:#408080;font-style:italic># They get filled via the algorithm        </span>
         
-        <span style="color:#408080;font-style:italic"># Calling these functions, fills the solution matrix (_V)</span>
-        <span style="color:#008000;font-weight:bold">if</span> how <span style="color:#666">==</span> <span style="color:#ba2121">&#39;bottom_up&#39;</span>:
-            self<span style="color:#666">.</span>_pack_bottom_up()
-        <span style="color:#008000;font-weight:bold">else</span>:
-            self<span style="color:#666">.</span>_pack_top_down(<span style="color:#008000">len</span>(self<span style="color:#666">.</span>_weights)<span style="color:#666">-</span><span style="color:#666">1</span>, self<span style="color:#666">.</span>_capacity)
+        <span style=color:#408080;font-style:italic># Calling these functions, fills the solution matrix (_V)</span>
+        <span style=color:green;font-weight:700>if</span> how <span style=color:#666>==</span> <span style=color:#ba2121>&#39;bottom_up&#39;</span>:
+            self<span style=color:#666>.</span>_pack_bottom_up()
+        <span style=color:green;font-weight:700>else</span>:
+            self<span style=color:#666>.</span>_pack_top_down(<span style=color:green>len</span>(self<span style=color:#666>.</span>_weights)<span style=color:#666>-</span><span style=color:#666>1</span>, self<span style=color:#666>.</span>_capacity)
             
-        <span style="color:#408080;font-style:italic"># We return the state of the knapsack or the solution</span>
-        <span style="color:#008000;font-weight:bold">return</span> self<span style="color:#666">.</span>_V, self<span style="color:#666">.</span>_V[<span style="color:#666">-</span><span style="color:#666">1</span>,<span style="color:#666">-</span><span style="color:#666">1</span>], self<span style="color:#666">.</span>_get_best_weights()
-        <span style="color:#408080;font-style:italic"># (solution matrix, best value, weights selected)</span>
+        <span style=color:#408080;font-style:italic># We return the state of the knapsack or the solution</span>
+        <span style=color:green;font-weight:700>return</span> self<span style=color:#666>.</span>_V, self<span style=color:#666>.</span>_V[<span style=color:#666>-</span><span style=color:#666>1</span>,<span style=color:#666>-</span><span style=color:#666>1</span>], self<span style=color:#666>.</span>_get_best_weights()
+        <span style=color:#408080;font-style:italic># (solution matrix, best value, weights selected)</span>
 
                     
-<span style="color:#008000;font-weight:bold">if</span> __name__ <span style="color:#666">==</span> <span style="color:#ba2121">&#34;__main__&#34;</span>:
+<span style=color:green;font-weight:700>if</span> __name__ <span style=color:#666>==</span> <span style=color:#ba2121>&#34;__main__&#34;</span>:
 
-    <span style="color:#408080;font-style:italic"># Instantiate a knapsack</span>
-    <span style="color:#408080;font-style:italic">#my_knapsack = Knapsack(capacity = 5, weights = [2,1,3,2], values = [12,10,20,15])</span>
+    <span style=color:#408080;font-style:italic># Instantiate a knapsack</span>
+    <span style=color:#408080;font-style:italic>#my_knapsack = Knapsack(capacity = 5, weights = [2,1,3,2], values = [12,10,20,15])</span>
 
-    my_knapsack <span style="color:#666">=</span> Knapsack(capacity <span style="color:#666">=</span> <span style="color:#666">10</span>, weights <span style="color:#666">=</span> [<span style="color:#666">2</span>,<span style="color:#666">1</span>,<span style="color:#666">3</span>,<span style="color:#666">2</span>,<span style="color:#666">5</span>,<span style="color:#666">7</span>,<span style="color:#666">8</span>], values <span style="color:#666">=</span> [<span style="color:#666">12</span>,<span style="color:#666">10</span>,<span style="color:#666">20</span>,<span style="color:#666">15</span>,<span style="color:#666">17</span>,<span style="color:#666">28</span>,<span style="color:#666">24</span>])
-    <span style="color:#008000;font-weight:bold">print</span>(<span style="color:#ba2121">&#34;Capacity:&#34;</span>, my_knapsack<span style="color:#666">.</span>_capacity, <span style="color:#ba2121">&#34;</span><span style="color:#b62;font-weight:bold">\n</span><span style="color:#ba2121">Weights:&#34;</span>, my_knapsack<span style="color:#666">.</span>_weights[<span style="color:#666">1</span>:], <span style="color:#ba2121">&#34;Values:&#34;</span>, my_knapsack<span style="color:#666">.</span>_values[<span style="color:#666">1</span>:])
+    my_knapsack <span style=color:#666>=</span> Knapsack(capacity <span style=color:#666>=</span> <span style=color:#666>10</span>, weights <span style=color:#666>=</span> [<span style=color:#666>2</span>,<span style=color:#666>1</span>,<span style=color:#666>3</span>,<span style=color:#666>2</span>,<span style=color:#666>5</span>,<span style=color:#666>7</span>,<span style=color:#666>8</span>], values <span style=color:#666>=</span> [<span style=color:#666>12</span>,<span style=color:#666>10</span>,<span style=color:#666>20</span>,<span style=color:#666>15</span>,<span style=color:#666>17</span>,<span style=color:#666>28</span>,<span style=color:#666>24</span>])
+    <span style=color:green;font-weight:700>print</span>(<span style=color:#ba2121>&#34;Capacity:&#34;</span>, my_knapsack<span style=color:#666>.</span>_capacity, <span style=color:#ba2121>&#34;</span><span style=color:#b62;font-weight:700>\n</span><span style=color:#ba2121>Weights:&#34;</span>, my_knapsack<span style=color:#666>.</span>_weights[<span style=color:#666>1</span>:], <span style=color:#ba2121>&#34;Values:&#34;</span>, my_knapsack<span style=color:#666>.</span>_values[<span style=color:#666>1</span>:])
         
-<span style="display:block;width:100%;background-color:#e5e5e5">    solution_matrix, best_value, best_weights <span style="color:#666">=</span> my_knapsack<span style="color:#666">.</span>pack(how <span style="color:#666">=</span> <span style="color:#ba2121">&#39;top_down&#39;</span>)
-</span>    <span style="color:#008000;font-weight:bold">print</span>(<span style="color:#ba2121">&#34;Top down solution matrix:</span><span style="color:#b62;font-weight:bold">\n</span><span style="color:#ba2121">&#34;</span>, solution_matrix)
-    <span style="color:#008000;font-weight:bold">print</span>(<span style="color:#ba2121">&#34;Best value:&#34;</span>, best_value)    
-    <span style="color:#008000;font-weight:bold">print</span>(<span style="color:#ba2121">&#34;Best weights:&#34;</span>, best_weights)    <span style="color:#408080;font-style:italic"># Print the weight indices, 1 based indexing</span>
+<span style=display:block;width:100%;background-color:#e5e5e5>    solution_matrix, best_value, best_weights <span style=color:#666>=</span> my_knapsack<span style=color:#666>.</span>pack(how <span style=color:#666>=</span> <span style=color:#ba2121>&#39;top_down&#39;</span>)
+</span>    <span style=color:green;font-weight:700>print</span>(<span style=color:#ba2121>&#34;Top down solution matrix:</span><span style=color:#b62;font-weight:700>\n</span><span style=color:#ba2121>&#34;</span>, solution_matrix)
+    <span style=color:green;font-weight:700>print</span>(<span style=color:#ba2121>&#34;Best value:&#34;</span>, best_value)    
+    <span style=color:green;font-weight:700>print</span>(<span style=color:#ba2121>&#34;Best weights:&#34;</span>, best_weights)    <span style=color:#408080;font-style:italic># Print the weight indices, 1 based indexing</span>
     
-<span style="display:block;width:100%;background-color:#e5e5e5">    solution_matrix, best_value, best_weights <span style="color:#666">=</span> my_knapsack<span style="color:#666">.</span>pack(how <span style="color:#666">=</span> <span style="color:#ba2121">&#39;bottom_up&#39;</span>)
-</span>    <span style="color:#008000;font-weight:bold">print</span>(<span style="color:#ba2121">&#34;Bottom up solution matrix:</span><span style="color:#b62;font-weight:bold">\n</span><span style="color:#ba2121">&#34;</span>, solution_matrix)
-    <span style="color:#008000;font-weight:bold">print</span>(<span style="color:#ba2121">&#34;Best value:&#34;</span>, best_value)    
-    <span style="color:#008000;font-weight:bold">print</span>(<span style="color:#ba2121">&#34;Best weights:&#34;</span>, best_weights)</code></pre></td></tr></table>
-</div>
-</div>
-<p>We get the following output:</p>
-<pre><code>Capacity: 10 
+<span style=display:block;width:100%;background-color:#e5e5e5>    solution_matrix, best_value, best_weights <span style=color:#666>=</span> my_knapsack<span style=color:#666>.</span>pack(how <span style=color:#666>=</span> <span style=color:#ba2121>&#39;bottom_up&#39;</span>)
+</span>    <span style=color:green;font-weight:700>print</span>(<span style=color:#ba2121>&#34;Bottom up solution matrix:</span><span style=color:#b62;font-weight:700>\n</span><span style=color:#ba2121>&#34;</span>, solution_matrix)
+    <span style=color:green;font-weight:700>print</span>(<span style=color:#ba2121>&#34;Best value:&#34;</span>, best_value)    
+    <span style=color:green;font-weight:700>print</span>(<span style=color:#ba2121>&#34;Best weights:&#34;</span>, best_weights)</code></pre></td></tr></table></div></div><p>We get the following output:</p><pre><code>Capacity: 10 
 Weights: [2, 1, 3, 2, 5, 7, 8] Values: [12, 10, 20, 15, 17, 28, 24]
 Top down solution matrix:
  [[ 0  0  0  0  0  0  0  0  0  0  0]
@@ -387,88 +269,6 @@ Bottom up solution matrix:
 Best value: 57
 Best weights: [1, 2, 3, 4]
 </code></pre><p>We observe that the bottom-up approach has solved all the sub-problems whereas
-the top-down approach has solved only the necessary sub-problems.</p>
-<blockquote>
-<p>To get the latest version of the code, refer to this
-<a href="https://github.com/progmatix21/Algorithms_cutaway/blob/main/knapsack.py">github link</a>.</p>
-</blockquote>
-<pre><code></code></pre><!--
-1. What is dynamic programming? What are the necessary pre-conditions for a
-problem to be solvable using dynamic programming?
-
-Dynamic programming solves problems of a repititive nature.  A problem is broken
-down into subproblems.  The solutions of these subproblems are recorded in a
-table.  Future instances of problems are solved referring to past instances and
-not solved all over again, saving time and space.
-
-When using a dynamic programming problem, we need to use either top-down or
-bottom-up, the former solves problems and iterates downwards whereas the latter
-solves problems and iterates upwards.
-
-Dynamic Programming has two aspects: overlapping subproblems and optimal substructure.
-When solving a recurring problem, the same algorithm steps are repeated.  This
-recurrence can be broken down into overlapping subproblems.  The organisation of
-different overlapping subproblems gives rise to an optimal substructure.
-
-Dynamic Programming algorithm can be solved in two techniques: top-down and
-bottom-up.  Bottom-up algorithm has many recurring steps where time and space
-constraints are not strictly followed.  Top-down algorithm has only the needed
-steps and recurring steps are marked as excluded.
-
-
-2. Our choice of problem generating Knapsack problem.
-
-Knapsack problem is a metaphor for a constraint.  You might have a
-bag of fixed capacity which you want to fill with items in such a way that
-it remains in the capacity limit but has maximum value.  
--->
-
-		</div>
-		<footer class="post__footer">
-			
-<div class="post__tags tags clearfix">
-	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-	<ul class="tags__list">
-		<li class="tags__item">
-			<a class="tags__link btn" href="/tags/knapsack/" rel="tag">knapsack</a>
-		</li>
-	</ul>
-</div>
-		</footer>
-	</article>
-</main>
-
-
-<nav class="pager flex">
-	<div class="pager__item pager__item--prev">
-		<a class="pager__link" href="/posts/categorical-vs-categorical-heatmap/" rel="prev">
-			<span class="pager__subtitle">«&thinsp;Previous</span>
-			<p class="pager__title">Categorical vs Categorical Heatmap</p>
-		</a>
-	</div>
-</nav>
-
-
-
-
-			</div>
-			
-		</div>
-		<footer class="footer">
-	<div class="container footer__container flex">
-		
-<div class="footer__links">
-	<a class="footer__link" href="/about/">About</a>
-</div>
-		<div class="footer__copyright">
-			&copy; 2023 Atrij Talgery.
-			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
-		</div>
-	</div>
-</footer>
-	</div>
-<script async defer src="/js/menu.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
-</body>
-</html>
+the top-down approach has solved only the necessary sub-problems.</p><blockquote><p>To get the latest version of the code, refer to this
+<a href=https://github.com/progmatix21/Algorithms_cutaway/blob/main/knapsack.py>github link</a>.</p></blockquote><pre><code></code></pre></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/knapsack/ rel=tag>knapsack</a></li></ul></div></footer></article></main><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/categorical-vs-categorical-heatmap/ rel=prev><span class=pager__subtitle>«&#8201;Previous</span><p class=pager__title>Categorical vs Categorical Heatmap</p></a></div></nav></div></div><footer class=footer><div class="container footer__container flex"><div class=footer__links><a class=footer__link href=/about/>About</a></div><div class=footer__copyright>&copy; 2023 Atrij Talgery.
+<span class=footer__copyright-credits>Generated with <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> and <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> theme.</span></div></div></footer></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script></body></html>

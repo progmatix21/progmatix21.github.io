@@ -1,74 +1,119 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>eda on Progmatix 21</title>
-    <link>https://progmatix21.github.io/tags/eda/</link>
-    <description>Recent content in eda on Progmatix 21</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 02 Apr 2023 14:33:20 +0530</lastBuildDate>
-    
-	<atom:link href="https://progmatix21.github.io/tags/eda/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Categorical vs Categorical Heatmap</title>
-      <link>https://progmatix21.github.io/posts/categorical-vs-categorical-heatmap/</link>
-      <pubDate>Sun, 02 Apr 2023 14:33:20 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/posts/categorical-vs-categorical-heatmap/</guid>
-      <description>Classification datasets often have a number of categorical variables. There is always the need to select the more important categorical variables for modelling, especially in high-dimension datasets.</description>
-    </item>
-    
-    <item>
-      <title>Naive Bayes With Quantile Discretization</title>
-      <link>https://progmatix21.github.io/posts/naive-bayes-with-quantile-discretization/</link>
-      <pubDate>Thu, 23 Feb 2023 21:29:43 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/posts/naive-bayes-with-quantile-discretization/</guid>
-      <description>Often, classification datasets have a mix of continuous and categorical data. The continuous data typically have problems such as outliers, noise and lack of a defined distribution.</description>
-    </item>
-    
-    <item>
-      <title>Choosing Right Colormap for Heatmap</title>
-      <link>https://progmatix21.github.io/posts/choosing-right-colormap-for-heatmap/</link>
-      <pubDate>Mon, 16 Jan 2023 11:37:32 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/posts/choosing-right-colormap-for-heatmap/</guid>
-      <description>&lt;p&gt;Heatmaps are used to visually represent correlation between various continuous features in a dataset. You can construct heatmaps and give them different colours for different values. This gives good visual appeal and makes it easier to understand.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Non-parametric One-way ANOVA</title>
-      <link>https://progmatix21.github.io/posts/one_way_anova/</link>
-      <pubDate>Wed, 14 Sep 2022 10:00:34 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/posts/one_way_anova/</guid>
-      <description>&lt;p&gt;Regression datasets often have a mix of categorical and continuous predictor
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>eda on Progmatix 21</title><link>https://progmatix21.github.io/tags/eda/</link><description>Recent content in eda on Progmatix 21</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 02 Apr 2023 14:33:20 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/tags/eda/index.xml" rel="self" type="application/rss+xml"/><item><title>Categorical vs Categorical Heatmap</title><link>https://progmatix21.github.io/posts/categorical-vs-categorical-heatmap/</link><pubDate>Sun, 02 Apr 2023 14:33:20 +0530</pubDate><guid>https://progmatix21.github.io/posts/categorical-vs-categorical-heatmap/</guid><description>&lt;style>
+#myBtn {
+display: none;
+position: fixed;
+bottom: 20px;
+right: 30px;
+z-index: 99;
+font-size: 36px;
+font-weight: bold;
+border: none;
+outline: none;
+background-color: #444;
+color: white;
+cursor: pointer;
+padding: 15px;
+border-radius: 50%;
+}
+#myBtn:hover {
+background-color: #008080;
+}
+&lt;/style>
+&lt;button onclick="topFunction()" id="myBtn" title="Go to top">&amp;#11161;&lt;/button>
+&lt;script>
+let mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+mybutton.style.display = "block";
+} else {
+mybutton.style.display = "none";
+}
+}
+function topFunction() {
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+}
+&lt;/script>
+&lt;p>Classification datasets often have a number of categorical variables. There is
+always the need to select the more important categorical variables for modelling,
+especially in high-dimension datasets.&lt;/p></description></item><item><title>Naive Bayes With Quantile Discretization</title><link>https://progmatix21.github.io/posts/naive-bayes-with-quantile-discretization/</link><pubDate>Thu, 23 Feb 2023 21:29:43 +0530</pubDate><guid>https://progmatix21.github.io/posts/naive-bayes-with-quantile-discretization/</guid><description>Often, classification datasets have a mix of continuous and categorical data. The continuous data typically have problems such as outliers, noise and lack of a defined distribution.</description></item><item><title>Choosing Right Colormap for Heatmap</title><link>https://progmatix21.github.io/posts/choosing-right-colormap-for-heatmap/</link><pubDate>Mon, 16 Jan 2023 11:37:32 +0530</pubDate><guid>https://progmatix21.github.io/posts/choosing-right-colormap-for-heatmap/</guid><description>&lt;p>Heatmaps are used to visually represent correlation between various continuous features in a dataset. You can construct heatmaps and give them different colours for different values. This gives good visual appeal and makes it easier to understand.&lt;/p></description></item><item><title>Non-parametric One-way ANOVA</title><link>https://progmatix21.github.io/posts/one_way_anova/</link><pubDate>Wed, 14 Sep 2022 10:00:34 +0530</pubDate><guid>https://progmatix21.github.io/posts/one_way_anova/</guid><description>&lt;style>
+#myBtn {
+display: none;
+position: fixed;
+bottom: 20px;
+right: 30px;
+z-index: 99;
+font-size: 36px;
+font-weight: bold;
+border: none;
+outline: none;
+background-color: #444;
+color: white;
+cursor: pointer;
+padding: 15px;
+border-radius: 50%;
+}
+#myBtn:hover {
+background-color: #008080;
+}
+&lt;/style>
+&lt;button onclick="topFunction()" id="myBtn" title="Go to top">&amp;#11161;&lt;/button>
+&lt;script>
+let mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+mybutton.style.display = "block";
+} else {
+mybutton.style.display = "none";
+}
+}
+function topFunction() {
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+}
+&lt;/script>
+&lt;p>Regression datasets often have a mix of categorical and continuous predictor
 variables. When the number of categorical variables is large, how do you pick
 the ones that are relevant to the regression(i.e. correlated to the response
-variable)?&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Neat Wordcount Histograms</title>
-      <link>https://progmatix21.github.io/posts/neat-wordcount-histograms/</link>
-      <pubDate>Mon, 12 Sep 2022 17:41:37 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/posts/neat-wordcount-histograms/</guid>
-      <description>&lt;p&gt;Most NLP projects require us to look at word counts in documents. The
+variable)?&lt;/p></description></item><item><title>Neat Wordcount Histograms</title><link>https://progmatix21.github.io/posts/neat-wordcount-histograms/</link><pubDate>Mon, 12 Sep 2022 17:41:37 +0530</pubDate><guid>https://progmatix21.github.io/posts/neat-wordcount-histograms/</guid><description>&lt;style>
+#myBtn {
+display: none;
+position: fixed;
+bottom: 20px;
+right: 30px;
+z-index: 99;
+font-size: 36px;
+font-weight: bold;
+border: none;
+outline: none;
+background-color: #444;
+color: white;
+cursor: pointer;
+padding: 15px;
+border-radius: 50%;
+}
+#myBtn:hover {
+background-color: #008080;
+}
+&lt;/style>
+&lt;button onclick="topFunction()" id="myBtn" title="Go to top">&amp;#11161;&lt;/button>
+&lt;script>
+let mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+mybutton.style.display = "block";
+} else {
+mybutton.style.display = "none";
+}
+}
+function topFunction() {
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+}
+&lt;/script>
+&lt;p>Most NLP projects require us to look at word counts in documents. The
 traditional way is to draw histograms with vertical bars. But, are they
-convenient?&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Missing Value Analysis</title>
-      <link>https://progmatix21.github.io/posts/missing-value-analysis/</link>
-      <pubDate>Fri, 24 Jun 2022 22:12:49 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/posts/missing-value-analysis/</guid>
-      <description>A succinct approach to MVA.</description>
-    </item>
-    
-  </channel>
-</rss>
+convenient?&lt;/p></description></item><item><title>Missing Value Analysis</title><link>https://progmatix21.github.io/posts/missing-value-analysis/</link><pubDate>Fri, 24 Jun 2022 22:12:49 +0530</pubDate><guid>https://progmatix21.github.io/posts/missing-value-analysis/</guid><description>A succinct approach to MVA.</description></item></channel></rss>

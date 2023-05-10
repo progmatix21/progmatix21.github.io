@@ -1,51 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>algorithms on Progmatix 21</title>
-    <link>https://progmatix21.github.io/categories/algorithms/</link>
-    <description>Recent content in algorithms on Progmatix 21</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 28 Apr 2023 10:59:54 +0530</lastBuildDate>
-    
-	<atom:link href="https://progmatix21.github.io/categories/algorithms/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Dynamic Programming: Knapsack Problem</title>
-      <link>https://progmatix21.github.io/posts/dynamic-programming-knapsack/</link>
-      <pubDate>Fri, 28 Apr 2023 10:59:54 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/posts/dynamic-programming-knapsack/</guid>
-      <description>Dynamic Programming is an algorithmic technique to solve constrained, combinatorial optimization problems. The Knapsack here is a metaphor for the constraint.</description>
-    </item>
-    
-    <item>
-      <title>Comb Sort Cutaway</title>
-      <link>https://progmatix21.github.io/posts/comb-sort-cutaway/</link>
-      <pubDate>Wed, 15 Feb 2023 10:28:29 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/posts/comb-sort-cutaway/</guid>
-      <description>What is comb-sort? Comb-sort is a newer and modified form of bubble-sort. It seeks to improve the time-complexity of the traditional bubble-sort.</description>
-    </item>
-    
-    <item>
-      <title>Bubble Sort Cutaway</title>
-      <link>https://progmatix21.github.io/posts/bubble-sort-cutaway/</link>
-      <pubDate>Tue, 31 Jan 2023 10:38:21 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/posts/bubble-sort-cutaway/</guid>
-      <description>What is bubble sort? Bubble sort is a relatively easy to understand and easy to implement algorithm. It was one of the earliest ones to be discovered.</description>
-    </item>
-    
-    <item>
-      <title>Binary Search Cutaway</title>
-      <link>https://progmatix21.github.io/posts/binary-search-cutaway/</link>
-      <pubDate>Thu, 26 Jan 2023 13:07:23 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/posts/binary-search-cutaway/</guid>
-      <description>What is binary search? Binary search is an algorithm for searching elements from a sorted array. It far outweighs in benefits compared to a linear search method.</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>algorithms on Progmatix 21</title><link>https://progmatix21.github.io/categories/algorithms/</link><description>Recent content in algorithms on Progmatix 21</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 28 Apr 2023 10:59:54 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/categories/algorithms/index.xml" rel="self" type="application/rss+xml"/><item><title>Dynamic Programming: Knapsack Problem</title><link>https://progmatix21.github.io/posts/dynamic-programming-knapsack/</link><pubDate>Fri, 28 Apr 2023 10:59:54 +0530</pubDate><guid>https://progmatix21.github.io/posts/dynamic-programming-knapsack/</guid><description>&lt;style>
+#myBtn {
+display: none;
+position: fixed;
+bottom: 20px;
+right: 30px;
+z-index: 99;
+font-size: 36px;
+font-weight: bold;
+border: none;
+outline: none;
+background-color: #444;
+color: white;
+cursor: pointer;
+padding: 15px;
+border-radius: 50%;
+}
+#myBtn:hover {
+background-color: #008080;
+}
+&lt;/style>
+&lt;button onclick="topFunction()" id="myBtn" title="Go to top">&amp;#11161;&lt;/button>
+&lt;script>
+let mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+mybutton.style.display = "block";
+} else {
+mybutton.style.display = "none";
+}
+}
+function topFunction() {
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+}
+&lt;/script>
+&lt;p>Dynamic Programming is an algorithmic technique to solve constrained,
+combinatorial optimization problems. The Knapsack here is a metaphor for the
+constraint. The &amp;lsquo;knapsack&amp;rsquo; might as well be a container ship.&lt;/p></description></item><item><title>Comb Sort Cutaway</title><link>https://progmatix21.github.io/posts/comb-sort-cutaway/</link><pubDate>Wed, 15 Feb 2023 10:28:29 +0530</pubDate><guid>https://progmatix21.github.io/posts/comb-sort-cutaway/</guid><description>What is comb-sort? Comb-sort is a newer and modified form of bubble-sort. It seeks to improve the time-complexity of the traditional bubble-sort.</description></item><item><title>Bubble Sort Cutaway</title><link>https://progmatix21.github.io/posts/bubble-sort-cutaway/</link><pubDate>Tue, 31 Jan 2023 10:38:21 +0530</pubDate><guid>https://progmatix21.github.io/posts/bubble-sort-cutaway/</guid><description>What is bubble sort? Bubble sort is a relatively easy to understand and easy to implement algorithm. It was one of the earliest ones to be discovered.</description></item><item><title>Binary Search Cutaway</title><link>https://progmatix21.github.io/posts/binary-search-cutaway/</link><pubDate>Thu, 26 Jan 2023 13:07:23 +0530</pubDate><guid>https://progmatix21.github.io/posts/binary-search-cutaway/</guid><description>What is binary search? Binary search is an algorithm for searching elements from a sorted array. It far outweighs in benefits compared to a linear search method.</description></item></channel></rss>
