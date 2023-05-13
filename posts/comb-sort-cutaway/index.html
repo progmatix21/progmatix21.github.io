@@ -1,222 +1,403 @@
-<!doctype html><html class=no-js lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Comb Sort Cutaway - Progmatix 21</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/css/style.css><link rel="shortcut icon" href=/favicon.ico></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class=logo><a class=logo__link href=/ title="Progmatix 21" rel=home><div class="logo__item logo__text"><div class=logo__title>Progmatix 21</div><div class=logo__tagline>My learnings: byte by byte</div></div></a></div><div class=divider></div></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Comb Sort Cutaway</h1><p class=post__lead>Bubble sort with attitude</p><div class="post__meta meta"><div class="meta__item-datetime meta__item"><!doctype html><svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar" width="18" height="16" viewBox="0 0 458 458" style="enable-background:new 0 0 458 458"><g><path d="M111.938 135.598c11.046.0 20-8.954 20-20V21.597c0-11.046-8.954-20-20-20s-20 8.954-20 20v94.001C91.938 126.644 100.892 135.598 111.938 135.598z"/><path d="M346.063 135.598c11.046.0 20-8.954 20-20V21.597c0-11.046-8.954-20-20-20s-20 8.954-20 20v94.001C326.063 126.644 335.017 135.598 346.063 135.598z"/><path d="M443 82.403h-46.938c0 12.42.0 20.918.0 33.195.0 27.614-22.386 50-50 50s-50-22.386-50-50c0-12.281.0-20.771.0-33.195H161.938c0 12.42.0 20.918.0 33.195.0 27.614-22.386 50-50 50s-50-22.386-50-50c0-12.281.0-20.771.0-33.195H15c-8.284.0-15 6.716-15 15v89.641h458V97.403C458 89.119 451.284 82.403 443 82.403z"/><path d="M0 441.403c0 8.284 6.716 15 15 15h428c8.284.0 15-6.716 15-15V227.044H0V441.403zM244.191 313.046c0-6.036 3.59-11.504 9.127-13.907 7.49-3.249 16.316-9.028 21.176-13.393 2.782-2.499 6.38-3.88 10.121-3.88h19.254c4.395.0 7.957 3.563 7.957 7.958v80.903h11.445c8.275.0 14.984 6.708 14.984 14.984.0 8.275-6.708 14.984-14.984 14.984h-59.934c-8.275.0-14.984-6.708-14.984-14.984.0-8.275 6.708-14.984 14.984-14.984h14.567V317.66c-2.163 2.886-6.797 6.077-12.243 8.754-4.618 2.27-10.076 2.008-14.445-.711-4.369-2.718-7.025-7.501-7.025-12.647V313.046zM123.295 390.677c2.691-29.175 18.127-37.168 47.125-52.83 4.622-2.493 12.811-7.06 15.92-11.134 3.842-5.044 1.97-18.001-14.359-18.001-5.549.0-11.094 1.106-17.704 5.967-6.262 4.605-14.984 3.637-20.067-2.244l-.594-.688c-3.026-3.501-4.246-8.216-3.31-12.747s3.925-8.371 8.09-10.387c22.329-10.811 56.654-13.101 73.853.952 7.977 6.523 11.966 15.332 11.966 26.43.0 32.434-40.129 38.997-54.315 54.731h41.622c8.275.0 14.984 6.708 14.984 14.984.0 8.275-6.708 14.984-14.984 14.984h-79.1c-2.577.0-5.036-1.095-6.772-3C123.914 395.789 123.059 393.243 123.295 390.677z"/></g></svg><time class=meta__text datetime=2023-02-15T10:28:29+05:30>February 15, 2023</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/algorithms/ rel=category>algorithms</a></span></div><div class="meta__item-categories meta__item"><span class=meta__text><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>837 words/4 min read</span></div></div></header><div class="post__toc toc"><div class=toc__title>Page content</div><div class=toc__menu><details><summary>Click to toggle</summary><nav id=TableOfContents><ul><li><a href=#what-is-comb-sort>What is comb-sort?</a></li><li><a href=#how-is-it-different-from-bubble-sort>How is it different from bubble-sort?</a><ul><li><a href=#what-is-the-advantage-of-starting-with-a-larger-gap>What is the advantage of starting with a larger gap?</a></li></ul></li><li><a href=#ways-to-experiment-with-this-code>Ways to experiment with this code</a></li></ul></nav></details></div></div><div class="content post__content clearfix"><h2 id=what-is-comb-sort>What is comb-sort?</h2><p>Comb-sort is a newer and modified form of bubble-sort. It seeks to improve the
-time-complexity of the traditional bubble-sort.</p><h2 id=how-is-it-different-from-bubble-sort>How is it different from bubble-sort?</h2><p>Traditional bubble-sort performs comparisons and swaps of adjacent
-elements which are not in the &lsquo;correct&rsquo; order repeatedly until the entire array
-is sorted in-place.</p><p>Comb-sort introduces the concept of a <em>gap</em> and a so-called <em>shrink factor</em>
-\(k\) which makes it faster than bubble-sort.</p><p>Bubble-sort has a gap of 1 because adjacent elements are compared or
-swapped. The gap in comb-sort starts with a value of \(floor(n/k)\) and is
-reduced by \(k\) in successive iterations. Thus it takes values of
-\(floor(n/k)\), \(floor(n/k^2)\), &mldr; until it reaches 1 &ndash; which is when
-it reduces to a bubble-sort.</p><p>The value of 1.3 has been arrived at as an optimum value for \(k\) after a
-lot of experimentation.</p><h3 id=what-is-the-advantage-of-starting-with-a-larger-gap>What is the advantage of starting with a larger gap?</h3><p>The larger gap has the effect of throwing the larger elements(&ldquo;the bunnies&rdquo;) to
-the end of the array in minimum number of operations. This would have taken
-far longer had we to move each element with a gap of 1.</p><p>Eventually as the gap shrinks to 1, we have a traditional bubble-sort in the
-last iterations. However, this bubble-sort has to work a lot less because much
-of the larger elements are already close to their correct locations.</p><p><strong>How does it work in practice? There is only one way to find out.</strong></p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  7
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  8
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  9
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 10
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 11
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 12
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 13
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 14
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 15
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 16
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 17
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 18
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 19
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 20
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 21
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 22
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 23
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 24
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 25
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 26
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 27
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 28
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 29
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 30
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 31
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 32
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 33
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 34
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 35
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 36
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 37
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 38
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 39
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 40
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 41
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 42
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 43
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 44
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 45
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 46
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 47
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 48
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 49
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 50
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 51
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 52
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 53
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 54
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 55
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 56
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 57
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 58
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 59
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 60
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 61
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 62
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 63
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 64
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 65
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 66
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 67
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 68
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 69
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 70
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 71
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 72
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 73
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 74
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 75
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 76
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 77
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 78
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 79
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 80
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 81
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 82
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 83
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 84
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 85
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 86
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 87
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 88
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 89
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 90
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 91
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 92
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 93
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 94
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 95
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 96
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 97
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 98
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 99
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">100
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">101
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">102
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">103
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#a90d91>from</span> <span style=color:#000>time</span> <span style=color:#a90d91>import</span> <span style=color:#000>sleep</span>
-<span style=color:#a90d91>import</span> <span style=color:#000>math</span>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Comb Sort Cutaway - Progmatix 21</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 
-<span style=color:#c41a16>&#39;&#39;&#39;
-</span><span style=color:#c41a16>A function to help animate bubble sort.  Composes a pre-formatted string
-</span><span style=color:#c41a16>highlighting the two array elements to be swapped (or not). Printing
-</span><span style=color:#c41a16>the embellished string in place, &#39;animates&#39; it.
-</span><span style=color:#c41a16>&#39;&#39;&#39;</span>
-<span style=color:#a90d91>class</span> <span style=color:#3f6e75>style</span>:
-   <span style=color:#000>PURPLE</span> <span style=color:#000>=</span> <span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\033</span><span style=color:#c41a16>[95m&#39;</span>
-   <span style=color:#000>CYAN</span> <span style=color:#000>=</span> <span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\033</span><span style=color:#c41a16>[96m&#39;</span>
-   <span style=color:#000>DARKCYAN</span> <span style=color:#000>=</span> <span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\033</span><span style=color:#c41a16>[36m&#39;</span>
-   <span style=color:#000>BLUE</span> <span style=color:#000>=</span> <span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\033</span><span style=color:#c41a16>[94m&#39;</span>
-   <span style=color:#000>GREEN</span> <span style=color:#000>=</span> <span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\033</span><span style=color:#c41a16>[92m&#39;</span>
-   <span style=color:#000>YELLOW</span> <span style=color:#000>=</span> <span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\033</span><span style=color:#c41a16>[93m&#39;</span>
-   <span style=color:#000>RED</span> <span style=color:#000>=</span> <span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\033</span><span style=color:#c41a16>[91m&#39;</span>
-   <span style=color:#000>BOLD</span> <span style=color:#000>=</span> <span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\033</span><span style=color:#c41a16>[1m&#39;</span>
-   <span style=color:#000>UNDERLINE</span> <span style=color:#000>=</span> <span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\033</span><span style=color:#c41a16>[4m&#39;</span>
-   <span style=color:#000>END</span> <span style=color:#000>=</span> <span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\033</span><span style=color:#c41a16>[0m&#39;</span>
-   
-<span style=color:#a90d91>def</span> <span style=color:#000>decorate_array</span>(<span style=color:#000>arr</span>, <span style=color:#000>idx1</span>, <span style=color:#000>idx2</span>, <span style=color:#000>plain_mark</span><span style=color:#000>=</span>(<span style=color:#000>style</span><span style=color:#000>.</span><span style=color:#000>CYAN</span>,<span style=color:#000>style</span><span style=color:#000>.</span><span style=color:#000>END</span>), 
-                        <span style=color:#000>emph_mark</span><span style=color:#000>=</span>(<span style=color:#000>style</span><span style=color:#000>.</span><span style=color:#000>YELLOW</span>,<span style=color:#000>style</span><span style=color:#000>.</span><span style=color:#000>END</span>),<span style=color:#000>emph</span><span style=color:#000>=</span><span style=color:#5b269a>False</span>):
-	<span style=color:#c41a16>&#39;&#39;&#39;
-</span><span style=color:#c41a16>	Returns a decorated string from array arr. The decoration goes
-</span><span style=color:#c41a16>	around the elements with indices idx1 and idx2. The plain deco
-</span><span style=color:#c41a16>	is used when deco is False and the emph deco is used when
-</span><span style=color:#c41a16>	deco is True. deco is True when elements have to swapped in the sort.	
-</span><span style=color:#c41a16>	&#39;&#39;&#39;</span>
-	<span style=color:#000>deco_str</span> <span style=color:#000>=</span> <span style=color:#c41a16>&#39;&#39;</span>
-	<span style=color:#a90d91>for</span> <span style=color:#000>idx</span>,<span style=color:#000>elem</span> <span style=color:#000>in</span> <span style=color:#a90d91>enumerate</span>(<span style=color:#000>arr</span>):
-		<span style=color:#a90d91>if</span> <span style=color:#000>idx</span> <span style=color:#000>in</span> [<span style=color:#000>idx1</span>,<span style=color:#000>idx2</span>]:
-			<span style=color:#000>mark</span> <span style=color:#000>=</span> [<span style=color:#000>plain_mark</span>,<span style=color:#000>emph_mark</span>][<span style=color:#000>emph</span>] <span style=color:#177500># assigns plain or emph mark based on emph flag</span>
-		<span style=color:#a90d91>else</span>:
-			<span style=color:#000>mark</span> <span style=color:#000>=</span> (<span style=color:#c41a16>&#39;&#39;</span>,<span style=color:#c41a16>&#39;&#39;</span>)
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
 		
-		<span style=color:#000>deco_elem</span> <span style=color:#000>=</span> <span style=color:#000>f</span><span style=color:#c41a16>&#39;{mark[0]}&#39;</span><span style=color:#000>+</span><span style=color:#000>f</span><span style=color:#c41a16>&#39;{elem:^4}&#39;</span><span style=color:#000>+</span><span style=color:#000>f</span><span style=color:#c41a16>&#39;{mark[1]}&#39;</span> <span style=color:#177500># control deco position</span>
-		<span style=color:#000>deco_str</span> <span style=color:#000>+=</span> <span style=color:#000>f</span><span style=color:#c41a16>&#39;{deco_elem:^6}&#39;</span> <span style=color:#177500># print centered</span>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Progmatix 21" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Progmatix 21</div>
+					<div class="logo__tagline">My learnings: byte by byte</div>
+				</div>
+		</a>
+	</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
 			
-	<span style=color:#a90d91>return</span> <span style=color:#000>deco_str</span>
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Comb Sort Cutaway</h1>
+			<p class="post__lead">Bubble sort with attitude</p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" class="meta__icon icon icon-calendar" width="18" height="16" 
+	 viewBox="0 0 458 458" style="enable-background:new 0 0 458 458;" xml:space="preserve">
+<g>
+	<path d="M111.938,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
+		C91.938,126.644,100.892,135.598,111.938,135.598z"/>
+	<path d="M346.063,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
+		C326.063,126.644,335.017,135.598,346.063,135.598z"/>
+	<path d="M443,82.403h-46.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
+		c0-12.281,0-20.771,0-33.195H161.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
+		c0-12.281,0-20.771,0-33.195H15c-8.284,0-15,6.716-15,15v89.641h458V97.403C458,89.119,451.284,82.403,443,82.403z"/>
+	<path d="M0,441.403c0,8.284,6.716,15,15,15h428c8.284,0,15-6.716,15-15V227.044H0V441.403z M244.191,313.046
+		c0-6.036,3.59-11.504,9.127-13.907c7.49-3.249,16.316-9.028,21.176-13.393c2.782-2.499,6.38-3.88,10.121-3.88h19.254
+		c4.395,0,7.957,3.563,7.957,7.958v80.903h11.445c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-59.934
+		c-8.275,0-14.984-6.708-14.984-14.984c0-8.275,6.708-14.984,14.984-14.984h14.567V317.66c-2.163,2.886-6.797,6.077-12.243,8.754
+		c-4.618,2.27-10.076,2.008-14.445-0.711c-4.369-2.718-7.025-7.501-7.025-12.647V313.046z M123.295,390.677
+		c2.691-29.175,18.127-37.168,47.125-52.83c4.622-2.493,12.811-7.06,15.92-11.134c3.842-5.044,1.97-18.001-14.359-18.001
+		c-5.549,0-11.094,1.106-17.704,5.967c-6.262,4.605-14.984,3.637-20.067-2.244l-0.594-0.688c-3.026-3.501-4.246-8.216-3.31-12.747
+		s3.925-8.371,8.09-10.387c22.329-10.811,56.654-13.101,73.853,0.952c7.977,6.523,11.966,15.332,11.966,26.43
+		c0,32.434-40.129,38.997-54.315,54.731h41.622c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-79.1
+		c-2.577,0-5.036-1.095-6.772-3C123.914,395.789,123.059,393.243,123.295,390.677z"/>
+</g>
+</svg>
+<time class="meta__text" datetime="2023-02-15T10:28:29&#43;05:30">February 15, 2023</time></div>
+<div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/algorithms/" rel="category">algorithms</a>
+	</span>
+</div><div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>837 words/4 min read
+	</span>
+</div>
+</div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+	    <details>
+	        <summary>Click to toggle</summary>
+		        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-comb-sort">What is comb-sort?</a></li>
+    <li><a href="#how-is-it-different-from-bubble-sort">How is it different from bubble-sort?</a>
+      <ul>
+        <li><a href="#what-is-the-advantage-of-starting-with-a-larger-gap">What is the advantage of starting with a larger gap?</a></li>
+      </ul>
+    </li>
+    <li><a href="#ways-to-experiment-with-this-code">Ways to experiment with this code</a></li>
+  </ul>
+</nav>
+		    </details>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<h2 id="what-is-comb-sort">What is comb-sort?</h2>
+<p>Comb-sort is a newer and modified form of bubble-sort.  It seeks to improve the
+time-complexity of the traditional bubble-sort.</p>
+<h2 id="how-is-it-different-from-bubble-sort">How is it different from bubble-sort?</h2>
+<p>Traditional bubble-sort performs comparisons and swaps of adjacent
+elements which are not in the &lsquo;correct&rsquo; order repeatedly until the entire array
+is sorted in-place.</p>
+<p>Comb-sort introduces the concept of a <em>gap</em> and a so-called <em>shrink factor</em>
+\(k\) which makes it faster than bubble-sort.</p>
+<p>Bubble-sort has a gap of 1 because adjacent elements are compared or
+swapped.  The gap in comb-sort starts with a value of \(floor(n/k)\) and is
+reduced by \(k\) in successive iterations.  Thus it takes values of
+\(floor(n/k)\), \(floor(n/k^2)\), &hellip; until it reaches 1 &ndash; which is when
+it reduces to a bubble-sort.</p>
+<p>The value of 1.3 has been arrived at as an optimum value for \(k\) after a
+lot of experimentation.</p>
+<h3 id="what-is-the-advantage-of-starting-with-a-larger-gap">What is the advantage of starting with a larger gap?</h3>
+<p>The larger gap has the effect of throwing the larger elements(&ldquo;the bunnies&rdquo;) to
+the end of the array in minimum number of operations.  This would have taken
+far longer had we to move each element with a gap of 1.</p>
+<p>Eventually as the gap shrinks to 1, we have a traditional bubble-sort in the
+last iterations.  However, this bubble-sort has to work a lot less because much
+of the larger elements are already close to their correct locations.</p>
+<p><strong>How does it work in practice?  There is only one way to find out.</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a90d91">from</span> <span style="color:#000">time</span> <span style="color:#a90d91">import</span> <span style="color:#000">sleep</span>
+<span style="color:#a90d91">import</span> <span style="color:#000">math</span>
+
+<span style="color:#c41a16">&#39;&#39;&#39;
+</span><span style="color:#c41a16">A function to help animate bubble sort.  Composes a pre-formatted string
+</span><span style="color:#c41a16">highlighting the two array elements to be swapped (or not). Printing
+</span><span style="color:#c41a16">the embellished string in place, &#39;animates&#39; it.
+</span><span style="color:#c41a16">&#39;&#39;&#39;</span>
+<span style="color:#a90d91">class</span> <span style="color:#3f6e75">style</span>:
+   <span style="color:#000">PURPLE</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\033</span><span style="color:#c41a16">[95m&#39;</span>
+   <span style="color:#000">CYAN</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\033</span><span style="color:#c41a16">[96m&#39;</span>
+   <span style="color:#000">DARKCYAN</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\033</span><span style="color:#c41a16">[36m&#39;</span>
+   <span style="color:#000">BLUE</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\033</span><span style="color:#c41a16">[94m&#39;</span>
+   <span style="color:#000">GREEN</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\033</span><span style="color:#c41a16">[92m&#39;</span>
+   <span style="color:#000">YELLOW</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\033</span><span style="color:#c41a16">[93m&#39;</span>
+   <span style="color:#000">RED</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\033</span><span style="color:#c41a16">[91m&#39;</span>
+   <span style="color:#000">BOLD</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\033</span><span style="color:#c41a16">[1m&#39;</span>
+   <span style="color:#000">UNDERLINE</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\033</span><span style="color:#c41a16">[4m&#39;</span>
+   <span style="color:#000">END</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\033</span><span style="color:#c41a16">[0m&#39;</span>
+   
+<span style="color:#a90d91">def</span> <span style="color:#000">decorate_array</span>(<span style="color:#000">arr</span>, <span style="color:#000">idx1</span>, <span style="color:#000">idx2</span>, <span style="color:#000">plain_mark</span><span style="color:#000">=</span>(<span style="color:#000">style</span><span style="color:#000">.</span><span style="color:#000">CYAN</span>,<span style="color:#000">style</span><span style="color:#000">.</span><span style="color:#000">END</span>), 
+                        <span style="color:#000">emph_mark</span><span style="color:#000">=</span>(<span style="color:#000">style</span><span style="color:#000">.</span><span style="color:#000">YELLOW</span>,<span style="color:#000">style</span><span style="color:#000">.</span><span style="color:#000">END</span>),<span style="color:#000">emph</span><span style="color:#000">=</span><span style="color:#5b269a">False</span>):
+	<span style="color:#c41a16">&#39;&#39;&#39;
+</span><span style="color:#c41a16">	Returns a decorated string from array arr. The decoration goes
+</span><span style="color:#c41a16">	around the elements with indices idx1 and idx2. The plain deco
+</span><span style="color:#c41a16">	is used when deco is False and the emph deco is used when
+</span><span style="color:#c41a16">	deco is True. deco is True when elements have to swapped in the sort.	
+</span><span style="color:#c41a16">	&#39;&#39;&#39;</span>
+	<span style="color:#000">deco_str</span> <span style="color:#000">=</span> <span style="color:#c41a16">&#39;&#39;</span>
+	<span style="color:#a90d91">for</span> <span style="color:#000">idx</span>,<span style="color:#000">elem</span> <span style="color:#000">in</span> <span style="color:#a90d91">enumerate</span>(<span style="color:#000">arr</span>):
+		<span style="color:#a90d91">if</span> <span style="color:#000">idx</span> <span style="color:#000">in</span> [<span style="color:#000">idx1</span>,<span style="color:#000">idx2</span>]:
+			<span style="color:#000">mark</span> <span style="color:#000">=</span> [<span style="color:#000">plain_mark</span>,<span style="color:#000">emph_mark</span>][<span style="color:#000">emph</span>] <span style="color:#177500"># assigns plain or emph mark based on emph flag</span>
+		<span style="color:#a90d91">else</span>:
+			<span style="color:#000">mark</span> <span style="color:#000">=</span> (<span style="color:#c41a16">&#39;&#39;</span>,<span style="color:#c41a16">&#39;&#39;</span>)
+		
+		<span style="color:#000">deco_elem</span> <span style="color:#000">=</span> <span style="color:#000">f</span><span style="color:#c41a16">&#39;{mark[0]}&#39;</span><span style="color:#000">+</span><span style="color:#000">f</span><span style="color:#c41a16">&#39;{elem:^4}&#39;</span><span style="color:#000">+</span><span style="color:#000">f</span><span style="color:#c41a16">&#39;{mark[1]}&#39;</span> <span style="color:#177500"># control deco position</span>
+		<span style="color:#000">deco_str</span> <span style="color:#000">+=</span> <span style="color:#000">f</span><span style="color:#c41a16">&#39;{deco_elem:^6}&#39;</span> <span style="color:#177500"># print centered</span>
+			
+	<span style="color:#a90d91">return</span> <span style="color:#000">deco_str</span>
 
 
-<span style=color:#177500>#Bubble sort algorithm with cutaway implentation</span>
+<span style="color:#177500">#Bubble sort algorithm with cutaway implentation</span>
 
-<span style=color:#a90d91>def</span> <span style=color:#000>comb_sort</span>(<span style=color:#000>arr</span>,<span style=color:#000>animation</span><span style=color:#000>=</span><span style=color:#5b269a>False</span>):
-    <span style=color:#c41a16>&#39;&#39;&#39;Bubble sort an array with optional animation.&#39;&#39;&#39;</span>
+<span style="color:#a90d91">def</span> <span style="color:#000">comb_sort</span>(<span style="color:#000">arr</span>,<span style="color:#000">animation</span><span style="color:#000">=</span><span style="color:#5b269a">False</span>):
+    <span style="color:#c41a16">&#39;&#39;&#39;Bubble sort an array with optional animation.&#39;&#39;&#39;</span>
     
-    <span style=color:#177500>#simulate the C ternary operator -- c condition, t true value, f false value</span>
-    <span style=color:#000>ternary</span> <span style=color:#000>=</span> <span style=color:#a90d91>lambda</span> <span style=color:#000>c</span>,<span style=color:#000>t</span>,<span style=color:#000>f</span>: [<span style=color:#000>f</span>,<span style=color:#000>t</span>][<span style=color:#000>c</span>]
+    <span style="color:#177500">#simulate the C ternary operator -- c condition, t true value, f false value</span>
+    <span style="color:#000">ternary</span> <span style="color:#000">=</span> <span style="color:#a90d91">lambda</span> <span style="color:#000">c</span>,<span style="color:#000">t</span>,<span style="color:#000">f</span>: [<span style="color:#000">f</span>,<span style="color:#000">t</span>][<span style="color:#000">c</span>]
 
-    <span style=color:#000>gap</span> <span style=color:#000>=</span> <span style=color:#a90d91>len</span>(<span style=color:#000>arr</span>)  <span style=color:#177500>#Gap starts as length of array</span>
-    <span style=color:#000>k</span> <span style=color:#000>=</span> <span style=color:#1c01ce>1.1</span>  <span style=color:#177500># so called shrink factor</span>
-    <span style=color:#a90d91>sorted</span> <span style=color:#000>=</span> <span style=color:#5b269a>False</span>
+    <span style="color:#000">gap</span> <span style="color:#000">=</span> <span style="color:#a90d91">len</span>(<span style="color:#000">arr</span>)  <span style="color:#177500">#Gap starts as length of array</span>
+    <span style="color:#000">k</span> <span style="color:#000">=</span> <span style="color:#1c01ce">1.1</span>  <span style="color:#177500"># so called shrink factor</span>
+    <span style="color:#a90d91">sorted</span> <span style="color:#000">=</span> <span style="color:#5b269a">False</span>
     
-    <span style=color:#a90d91>cmp</span> <span style=color:#000>=</span> <span style=color:#1c01ce>0</span> <span style=color:#177500># number of comparisons</span>
-    <span style=color:#000>swp</span> <span style=color:#000>=</span> <span style=color:#1c01ce>0</span> <span style=color:#177500># number of swaps</span>
+    <span style="color:#a90d91">cmp</span> <span style="color:#000">=</span> <span style="color:#1c01ce">0</span> <span style="color:#177500"># number of comparisons</span>
+    <span style="color:#000">swp</span> <span style="color:#000">=</span> <span style="color:#1c01ce">0</span> <span style="color:#177500"># number of swaps</span>
     
-    <span style=color:#a90d91>while</span>(<span style=color:#000>not</span> <span style=color:#a90d91>sorted</span>):
-        <span style=color:#177500>#Gap is floor(gap/k) if this is &gt; 1, else 1</span>
-        <span style=color:#177500>#Update gap at the beginning of each iteration</span>
-        <span style=color:#000>gap</span> <span style=color:#000>=</span> <span style=color:#000>ternary</span>(<span style=color:#000>math</span><span style=color:#000>.</span><span style=color:#000>floor</span>(<span style=color:#000>gap</span><span style=color:#000>/</span><span style=color:#000>k</span>)<span style=color:#000>&gt;</span><span style=color:#1c01ce>1</span>,<span style=color:#000>math</span><span style=color:#000>.</span><span style=color:#000>floor</span>(<span style=color:#000>gap</span><span style=color:#000>/</span><span style=color:#000>k</span>),<span style=color:#1c01ce>1</span>)
+    <span style="color:#a90d91">while</span>(<span style="color:#000">not</span> <span style="color:#a90d91">sorted</span>):
+        <span style="color:#177500">#Gap is floor(gap/k) if this is &gt; 1, else 1</span>
+        <span style="color:#177500">#Update gap at the beginning of each iteration</span>
+        <span style="color:#000">gap</span> <span style="color:#000">=</span> <span style="color:#000">ternary</span>(<span style="color:#000">math</span><span style="color:#000">.</span><span style="color:#000">floor</span>(<span style="color:#000">gap</span><span style="color:#000">/</span><span style="color:#000">k</span>)<span style="color:#000">&gt;</span><span style="color:#1c01ce">1</span>,<span style="color:#000">math</span><span style="color:#000">.</span><span style="color:#000">floor</span>(<span style="color:#000">gap</span><span style="color:#000">/</span><span style="color:#000">k</span>),<span style="color:#1c01ce">1</span>)
         
-        <span style=color:#000>_idx</span> <span style=color:#000>=</span> <span style=color:#a90d91>len</span>(<span style=color:#000>arr</span>)<span style=color:#000>-</span><span style=color:#000>gap</span>
-        <span style=color:#a90d91>for</span> <span style=color:#000>i</span> <span style=color:#000>in</span> <span style=color:#a90d91>range</span>(<span style=color:#000>_idx</span>):
-            <span style=color:#a90d91>sorted</span> <span style=color:#000>=</span> <span style=color:#5b269a>True</span>  <span style=color:#177500># set to false if there is a swap in the next scan</span>
-            <span style=color:#a90d91>for</span> <span style=color:#000>j</span> <span style=color:#000>in</span> <span style=color:#a90d91>range</span>(<span style=color:#000>_idx</span><span style=color:#000>-</span><span style=color:#000>i</span>):
-                <span style=color:#000>swap</span> <span style=color:#000>=</span> <span style=color:#5b269a>False</span>
-                <span style=color:#a90d91>cmp</span> <span style=color:#000>+=</span> <span style=color:#1c01ce>1</span>  
-                <span style=color:#a90d91>if</span>(<span style=color:#000>arr</span>[<span style=color:#000>j</span>] <span style=color:#000>&gt;</span> <span style=color:#000>arr</span>[<span style=color:#000>j</span><span style=color:#000>+</span><span style=color:#000>gap</span>]): <span style=color:#177500>#is a swap needed?</span>
-                    <span style=color:#000>swap</span> <span style=color:#000>=</span> <span style=color:#5b269a>True</span>
-                <span style=color:#a90d91>if</span>(<span style=color:#000>animation</span>): <span style=color:#177500># if animation is True, print deco based on swap flag</span>
-                    <span style=color:#a90d91>print</span>(<span style=color:#c41a16>&#39; &#39;</span><span style=color:#000>*</span><span style=color:#1c01ce>120</span>,<span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\r</span><span style=color:#c41a16>&#39;</span>,<span style=color:#000>decorate_array</span>(<span style=color:#000>arr</span>,<span style=color:#000>j</span>,<span style=color:#000>j</span><span style=color:#000>+</span><span style=color:#000>gap</span>,<span style=color:#000>emph</span><span style=color:#000>=</span>[<span style=color:#5b269a>False</span>,<span style=color:#5b269a>True</span>][<span style=color:#000>swap</span>]),<span style=color:#c41a16>&#39;gap:&#39;</span>,<span style=color:#000>gap</span>,<span style=color:#c41a16>&#39;cmp:&#39;</span>,<span style=color:#a90d91>cmp</span>,<span style=color:#c41a16>&#39;swp:&#39;</span>,<span style=color:#000>swp</span>,<span style=color:#000>end</span><span style=color:#000>=</span><span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\r</span><span style=color:#c41a16>&#39;</span>)
-                    <span style=color:#000>sleep</span>(<span style=color:#1c01ce>0.7</span>)
-                <span style=color:#a90d91>if</span>(<span style=color:#000>swap</span>):
-                    <span style=color:#000>swp</span> <span style=color:#000>+=</span> <span style=color:#1c01ce>1</span>
-                    <span style=color:#000>arr</span>[<span style=color:#000>j</span>],<span style=color:#000>arr</span>[<span style=color:#000>j</span><span style=color:#000>+</span><span style=color:#000>gap</span>] <span style=color:#000>=</span> <span style=color:#000>arr</span>[<span style=color:#000>j</span><span style=color:#000>+</span><span style=color:#000>gap</span>],<span style=color:#000>arr</span>[<span style=color:#000>j</span>]
-                    <span style=color:#a90d91>sorted</span> <span style=color:#000>=</span> <span style=color:#5b269a>False</span>
-            <span style=color:#177500># scan finished with or without swaps</span>
-            <span style=color:#a90d91>if</span>(<span style=color:#a90d91>sorted</span>): <span style=color:#177500># no swap happened but was the gap 1?</span>
-                <span style=color:#a90d91>if</span> (<span style=color:#000>gap</span> <span style=color:#000>!=</span> <span style=color:#1c01ce>1</span>): 
-                    <span style=color:#a90d91>sorted</span> <span style=color:#000>=</span> <span style=color:#5b269a>False</span> <span style=color:#177500># we are not done yet</span>
-                <span style=color:#a90d91>break</span>
+        <span style="color:#000">_idx</span> <span style="color:#000">=</span> <span style="color:#a90d91">len</span>(<span style="color:#000">arr</span>)<span style="color:#000">-</span><span style="color:#000">gap</span>
+        <span style="color:#a90d91">for</span> <span style="color:#000">i</span> <span style="color:#000">in</span> <span style="color:#a90d91">range</span>(<span style="color:#000">_idx</span>):
+            <span style="color:#a90d91">sorted</span> <span style="color:#000">=</span> <span style="color:#5b269a">True</span>  <span style="color:#177500"># set to false if there is a swap in the next scan</span>
+            <span style="color:#a90d91">for</span> <span style="color:#000">j</span> <span style="color:#000">in</span> <span style="color:#a90d91">range</span>(<span style="color:#000">_idx</span><span style="color:#000">-</span><span style="color:#000">i</span>):
+                <span style="color:#000">swap</span> <span style="color:#000">=</span> <span style="color:#5b269a">False</span>
+                <span style="color:#a90d91">cmp</span> <span style="color:#000">+=</span> <span style="color:#1c01ce">1</span>  
+                <span style="color:#a90d91">if</span>(<span style="color:#000">arr</span>[<span style="color:#000">j</span>] <span style="color:#000">&gt;</span> <span style="color:#000">arr</span>[<span style="color:#000">j</span><span style="color:#000">+</span><span style="color:#000">gap</span>]): <span style="color:#177500">#is a swap needed?</span>
+                    <span style="color:#000">swap</span> <span style="color:#000">=</span> <span style="color:#5b269a">True</span>
+                <span style="color:#a90d91">if</span>(<span style="color:#000">animation</span>): <span style="color:#177500"># if animation is True, print deco based on swap flag</span>
+                    <span style="color:#a90d91">print</span>(<span style="color:#c41a16">&#39; &#39;</span><span style="color:#000">*</span><span style="color:#1c01ce">120</span>,<span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\r</span><span style="color:#c41a16">&#39;</span>,<span style="color:#000">decorate_array</span>(<span style="color:#000">arr</span>,<span style="color:#000">j</span>,<span style="color:#000">j</span><span style="color:#000">+</span><span style="color:#000">gap</span>,<span style="color:#000">emph</span><span style="color:#000">=</span>[<span style="color:#5b269a">False</span>,<span style="color:#5b269a">True</span>][<span style="color:#000">swap</span>]),<span style="color:#c41a16">&#39;gap:&#39;</span>,<span style="color:#000">gap</span>,<span style="color:#c41a16">&#39;cmp:&#39;</span>,<span style="color:#a90d91">cmp</span>,<span style="color:#c41a16">&#39;swp:&#39;</span>,<span style="color:#000">swp</span>,<span style="color:#000">end</span><span style="color:#000">=</span><span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\r</span><span style="color:#c41a16">&#39;</span>)
+                    <span style="color:#000">sleep</span>(<span style="color:#1c01ce">0.7</span>)
+                <span style="color:#a90d91">if</span>(<span style="color:#000">swap</span>):
+                    <span style="color:#000">swp</span> <span style="color:#000">+=</span> <span style="color:#1c01ce">1</span>
+                    <span style="color:#000">arr</span>[<span style="color:#000">j</span>],<span style="color:#000">arr</span>[<span style="color:#000">j</span><span style="color:#000">+</span><span style="color:#000">gap</span>] <span style="color:#000">=</span> <span style="color:#000">arr</span>[<span style="color:#000">j</span><span style="color:#000">+</span><span style="color:#000">gap</span>],<span style="color:#000">arr</span>[<span style="color:#000">j</span>]
+                    <span style="color:#a90d91">sorted</span> <span style="color:#000">=</span> <span style="color:#5b269a">False</span>
+            <span style="color:#177500"># scan finished with or without swaps</span>
+            <span style="color:#a90d91">if</span>(<span style="color:#a90d91">sorted</span>): <span style="color:#177500"># no swap happened but was the gap 1?</span>
+                <span style="color:#a90d91">if</span> (<span style="color:#000">gap</span> <span style="color:#000">!=</span> <span style="color:#1c01ce">1</span>): 
+                    <span style="color:#a90d91">sorted</span> <span style="color:#000">=</span> <span style="color:#5b269a">False</span> <span style="color:#177500"># we are not done yet</span>
+                <span style="color:#a90d91">break</span>
     
-    <span style=color:#a90d91>return</span> <span style=color:#000>arr</span>
+    <span style="color:#a90d91">return</span> <span style="color:#000">arr</span>
     
-<span style=color:#177500># Basic bubble sort for comparison</span>
+<span style="color:#177500"># Basic bubble sort for comparison</span>
 
-<span style=color:#a90d91>def</span> <span style=color:#000>basic_bubble_sort</span>(<span style=color:#000>arr</span>):
-    <span style=color:#a90d91>for</span> <span style=color:#000>i</span> <span style=color:#000>in</span> <span style=color:#a90d91>range</span>(<span style=color:#a90d91>len</span>(<span style=color:#000>arr</span>)<span style=color:#000>-</span><span style=color:#1c01ce>1</span>):
-        <span style=color:#a90d91>for</span> <span style=color:#000>j</span> <span style=color:#000>in</span> <span style=color:#a90d91>range</span>(<span style=color:#a90d91>len</span>(<span style=color:#000>arr</span>)<span style=color:#000>-</span><span style=color:#1c01ce>1</span><span style=color:#000>-</span><span style=color:#000>i</span>):
-            <span style=color:#a90d91>if</span>(<span style=color:#000>arr</span>[<span style=color:#000>j</span>] <span style=color:#000>&gt;</span> <span style=color:#000>arr</span>[<span style=color:#000>j</span><span style=color:#000>+</span><span style=color:#1c01ce>1</span>]): <span style=color:#177500>#is a swap needed?</span>
-                <span style=color:#000>arr</span>[<span style=color:#000>j</span>],<span style=color:#000>arr</span>[<span style=color:#000>j</span><span style=color:#000>+</span><span style=color:#1c01ce>1</span>] <span style=color:#000>=</span> <span style=color:#000>arr</span>[<span style=color:#000>j</span><span style=color:#000>+</span><span style=color:#1c01ce>1</span>],<span style=color:#000>arr</span>[<span style=color:#000>j</span>]
-    <span style=color:#a90d91>return</span> <span style=color:#000>arr</span>
+<span style="color:#a90d91">def</span> <span style="color:#000">basic_bubble_sort</span>(<span style="color:#000">arr</span>):
+    <span style="color:#a90d91">for</span> <span style="color:#000">i</span> <span style="color:#000">in</span> <span style="color:#a90d91">range</span>(<span style="color:#a90d91">len</span>(<span style="color:#000">arr</span>)<span style="color:#000">-</span><span style="color:#1c01ce">1</span>):
+        <span style="color:#a90d91">for</span> <span style="color:#000">j</span> <span style="color:#000">in</span> <span style="color:#a90d91">range</span>(<span style="color:#a90d91">len</span>(<span style="color:#000">arr</span>)<span style="color:#000">-</span><span style="color:#1c01ce">1</span><span style="color:#000">-</span><span style="color:#000">i</span>):
+            <span style="color:#a90d91">if</span>(<span style="color:#000">arr</span>[<span style="color:#000">j</span>] <span style="color:#000">&gt;</span> <span style="color:#000">arr</span>[<span style="color:#000">j</span><span style="color:#000">+</span><span style="color:#1c01ce">1</span>]): <span style="color:#177500">#is a swap needed?</span>
+                <span style="color:#000">arr</span>[<span style="color:#000">j</span>],<span style="color:#000">arr</span>[<span style="color:#000">j</span><span style="color:#000">+</span><span style="color:#1c01ce">1</span>] <span style="color:#000">=</span> <span style="color:#000">arr</span>[<span style="color:#000">j</span><span style="color:#000">+</span><span style="color:#1c01ce">1</span>],<span style="color:#000">arr</span>[<span style="color:#000">j</span>]
+    <span style="color:#a90d91">return</span> <span style="color:#000">arr</span>
 
-<span style=color:#a90d91>if</span> <span style=color:#000>__name__</span> <span style=color:#000>==</span> <span style=color:#c41a16>&#34;__main__&#34;</span>:
+<span style="color:#a90d91">if</span> <span style="color:#000">__name__</span> <span style="color:#000">==</span> <span style="color:#c41a16">&#34;__main__&#34;</span>:
              
-    <span style=color:#000>arr</span> <span style=color:#000>=</span> [<span style=color:#1c01ce>95</span>,<span style=color:#1c01ce>96</span>]<span style=color:#000>+</span><span style=color:#a90d91>list</span>(<span style=color:#a90d91>range</span>(<span style=color:#1c01ce>11</span>))<span style=color:#000>+</span>[<span style=color:#1c01ce>97</span>,<span style=color:#1c01ce>98</span>]
-    <span style=color:#000>arr</span> <span style=color:#000>=</span> <span style=color:#a90d91>list</span>(<span style=color:#a90d91>range</span>(<span style=color:#1c01ce>11</span>,<span style=color:#1c01ce>0</span>,<span style=color:#000>-</span><span style=color:#1c01ce>1</span>))
-    <span style=color:#177500># suggestion: numbers 0 and 99 to avoid the format messing up.</span>
+    <span style="color:#000">arr</span> <span style="color:#000">=</span> [<span style="color:#1c01ce">95</span>,<span style="color:#1c01ce">96</span>]<span style="color:#000">+</span><span style="color:#a90d91">list</span>(<span style="color:#a90d91">range</span>(<span style="color:#1c01ce">11</span>))<span style="color:#000">+</span>[<span style="color:#1c01ce">97</span>,<span style="color:#1c01ce">98</span>]
+    <span style="color:#000">arr</span> <span style="color:#000">=</span> <span style="color:#a90d91">list</span>(<span style="color:#a90d91">range</span>(<span style="color:#1c01ce">11</span>,<span style="color:#1c01ce">0</span>,<span style="color:#000">-</span><span style="color:#1c01ce">1</span>))
+    <span style="color:#177500"># suggestion: numbers 0 and 99 to avoid the format messing up.</span>
     
-    <span style=color:#a90d91>print</span>(<span style=color:#000>*</span><span style=color:#000>arr</span>)
+    <span style="color:#a90d91">print</span>(<span style="color:#000">*</span><span style="color:#000">arr</span>)
 
-    <span style=color:#a90d91>print</span>(<span style=color:#c41a16>&#39;</span><span style=color:#c41a16>\n</span><span style=color:#c41a16>&#39;</span>,<span style=color:#000>*</span><span style=color:#000>comb_sort</span>(<span style=color:#000>arr</span>,<span style=color:#000>animation</span><span style=color:#000>=</span><span style=color:#5b269a>True</span>))
-    <span style=color:#177500>#print(&#39;\n&#39;,*basic_bubble_sort(arr))</span></code></pre></td></tr></table></div></div><h2 id=ways-to-experiment-with-this-code>Ways to experiment with this code</h2><ul><li>Change the value of k. Does it affect the number of comparisons and swaps?</li><li>Try sorting with different arrays.</li><li>Is a value of 1.3 for k really the optimum?</li></ul><p>Let us take a look at how the number of comparisons and swaps varies with the
-value of k. Note how the number of swaps goes down drastically around k=1.3.</p><p><img src=comb_sort.png alt=png></p><p>The latest version of code, will be available in my
-<a href=https://github.com/progmatix21/Algorithms_cutaway>Github repository</a>.</p></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/comb-sort/ rel=tag>comb sort</a></li></ul></div></footer></article></main><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/bubble-sort-cutaway/ rel=prev><span class=pager__subtitle>«&#8201;Previous</span><p class=pager__title>Bubble Sort Cutaway</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/posts/naive-bayes-with-quantile-discretization/ rel=next><span class=pager__subtitle>Next&#8201;»</span><p class=pager__title>Naive Bayes With Quantile Discretization</p></a></div></nav></div></div><footer class=footer><div class="container footer__container flex"><div class=footer__links><a class=footer__link href=/about/>About</a></div><div class=footer__copyright>&copy; 2023 Atrij Talgery.
-<span class=footer__copyright-credits>Generated with <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> and <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> theme.</span></div></div></footer></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script></body></html>
+    <span style="color:#a90d91">print</span>(<span style="color:#c41a16">&#39;</span><span style="color:#c41a16">\n</span><span style="color:#c41a16">&#39;</span>,<span style="color:#000">*</span><span style="color:#000">comb_sort</span>(<span style="color:#000">arr</span>,<span style="color:#000">animation</span><span style="color:#000">=</span><span style="color:#5b269a">True</span>))
+    <span style="color:#177500">#print(&#39;\n&#39;,*basic_bubble_sort(arr))</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="ways-to-experiment-with-this-code">Ways to experiment with this code</h2>
+<ul>
+<li>Change the value of k.  Does it affect the number of comparisons and swaps?</li>
+<li>Try sorting with different arrays.</li>
+<li>Is a value of 1.3 for k really the optimum?</li>
+</ul>
+<p>Let us take a look at how the number of comparisons and swaps varies with the
+value of k.  Note how the number of swaps goes down drastically around k=1.3.</p>
+<p><img src="comb_sort.png" alt="png"></p>
+<p>The latest version of code, will be available in my
+<a href="https://github.com/progmatix21/Algorithms_cutaway">Github repository</a>.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/comb-sort/" rel="tag">comb sort</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/posts/bubble-sort-cutaway/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Bubble Sort Cutaway</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/posts/naive-bayes-with-quantile-discretization/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Naive Bayes With Quantile Discretization</p>
+		</a>
+	</div>
+</nav>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+<div class="footer__links">
+	<a class="footer__link" href="/about/">About</a>
+</div>
+		<div class="footer__copyright">
+			&copy; 2023 Atrij Talgery.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>
