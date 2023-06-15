@@ -1,489 +1,811 @@
-<!doctype html><html class=no-js lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Perceptron From Scratch - Progmatix 21</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/css/style.css><link rel="shortcut icon" href=/favicon.ico></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class=logo><a class=logo__link href=/ title="Progmatix 21" rel=home><div class="logo__item logo__text"><div class=logo__title>Progmatix 21</div><div class=logo__tagline>My learnings: byte by byte</div></div></a></div><div class=divider></div></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Perceptron From Scratch</h1><p class=post__lead>Power of a neuron</p><div class="post__meta meta"><div class="meta__item-datetime meta__item"><!doctype html><svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar" width="18" height="16" viewBox="0 0 458 458" style="enable-background:new 0 0 458 458"><g><path d="M111.938 135.598c11.046.0 20-8.954 20-20V21.597c0-11.046-8.954-20-20-20s-20 8.954-20 20v94.001C91.938 126.644 100.892 135.598 111.938 135.598z"/><path d="M346.063 135.598c11.046.0 20-8.954 20-20V21.597c0-11.046-8.954-20-20-20s-20 8.954-20 20v94.001C326.063 126.644 335.017 135.598 346.063 135.598z"/><path d="M443 82.403h-46.938c0 12.42.0 20.918.0 33.195.0 27.614-22.386 50-50 50s-50-22.386-50-50c0-12.281.0-20.771.0-33.195H161.938c0 12.42.0 20.918.0 33.195.0 27.614-22.386 50-50 50s-50-22.386-50-50c0-12.281.0-20.771.0-33.195H15c-8.284.0-15 6.716-15 15v89.641h458V97.403C458 89.119 451.284 82.403 443 82.403z"/><path d="M0 441.403c0 8.284 6.716 15 15 15h428c8.284.0 15-6.716 15-15V227.044H0V441.403zM244.191 313.046c0-6.036 3.59-11.504 9.127-13.907 7.49-3.249 16.316-9.028 21.176-13.393 2.782-2.499 6.38-3.88 10.121-3.88h19.254c4.395.0 7.957 3.563 7.957 7.958v80.903h11.445c8.275.0 14.984 6.708 14.984 14.984.0 8.275-6.708 14.984-14.984 14.984h-59.934c-8.275.0-14.984-6.708-14.984-14.984.0-8.275 6.708-14.984 14.984-14.984h14.567V317.66c-2.163 2.886-6.797 6.077-12.243 8.754-4.618 2.27-10.076 2.008-14.445-.711-4.369-2.718-7.025-7.501-7.025-12.647V313.046zM123.295 390.677c2.691-29.175 18.127-37.168 47.125-52.83 4.622-2.493 12.811-7.06 15.92-11.134 3.842-5.044 1.97-18.001-14.359-18.001-5.549.0-11.094 1.106-17.704 5.967-6.262 4.605-14.984 3.637-20.067-2.244l-.594-.688c-3.026-3.501-4.246-8.216-3.31-12.747s3.925-8.371 8.09-10.387c22.329-10.811 56.654-13.101 73.853.952 7.977 6.523 11.966 15.332 11.966 26.43.0 32.434-40.129 38.997-54.315 54.731h41.622c8.275.0 14.984 6.708 14.984 14.984.0 8.275-6.708 14.984-14.984 14.984h-79.1c-2.577.0-5.036-1.095-6.772-3C123.914 395.789 123.059 393.243 123.295 390.677z"/></g></svg><time class=meta__text datetime=2023-03-21T11:24:17+05:30>March 21, 2023</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/machine-learning/ rel=category>machine learning</a></span></div><div class="meta__item-categories meta__item"><span class=meta__text><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>2115 words/10 min read</span></div></div></header><figure class="post__thumbnail thumbnail"><img class=thumbnail__image src=/img/nn.svg alt="Perceptron From Scratch"></figure><div class="post__toc toc"><div class=toc__title>Page content</div><div class=toc__menu><details><summary>Click to toggle</summary><nav id=TableOfContents><ul><li><a href=#what-is-a-perceptron>What is a perceptron?</a></li><li><a href=#how-does-a-perceptron-learn>How does a perceptron learn?</a><ul><li><a href=#the-cost-function>The cost function</a></li><li><a href=#follow-up-after-training>Follow-up after training</a></li></ul></li><li><a href=#implementation-notes>Implementation notes</a><ul><li><a href=#the-perceptron-class>The perceptron class</a></li><li><a href=#the-data-generator-class>The data generator class</a></li></ul></li><li><a href=#training-and-evaluation>Training and evaluation</a><ul><li><a href=#evaluation-using-plots>Evaluation using plots</a></li></ul></li><li><a href=#experiment-with-the-code>Experiment with the code</a></li></ul></nav></details></div></div><div class="content post__content clearfix"><style>#myBtn{display:none;position:fixed;bottom:20px;right:30px;z-index:99;font-size:36px;font-weight:700;border:none;outline:none;background-color:#444;color:#fff;cursor:pointer;padding:15px;border-radius:50%}#myBtn:hover{background-color:teal}</style><button onclick=topFunction() id=myBtn title="Go to top">&#11161;</button>
-<script>let mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){if(document.body.scrollTop>20||document.documentElement.scrollTop>20){mybutton.style.display="block";}else{mybutton.style.display="none";}}
-function topFunction(){document.body.scrollTop=0;document.documentElement.scrollTop=0;}</script><p>Neural Networks are very fascinating, but they are very complicated to understand.
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Perceptron From Scratch - Progmatix 21</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Progmatix 21" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Progmatix 21</div>
+					<div class="logo__tagline">My learnings: byte by byte</div>
+				</div>
+		</a>
+	</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Perceptron From Scratch</h1>
+			<p class="post__lead">Power of a neuron</p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" class="meta__icon icon icon-calendar" width="18" height="16" 
+	 viewBox="0 0 458 458" style="enable-background:new 0 0 458 458;" xml:space="preserve">
+<g>
+	<path d="M111.938,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
+		C91.938,126.644,100.892,135.598,111.938,135.598z"/>
+	<path d="M346.063,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
+		C326.063,126.644,335.017,135.598,346.063,135.598z"/>
+	<path d="M443,82.403h-46.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
+		c0-12.281,0-20.771,0-33.195H161.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
+		c0-12.281,0-20.771,0-33.195H15c-8.284,0-15,6.716-15,15v89.641h458V97.403C458,89.119,451.284,82.403,443,82.403z"/>
+	<path d="M0,441.403c0,8.284,6.716,15,15,15h428c8.284,0,15-6.716,15-15V227.044H0V441.403z M244.191,313.046
+		c0-6.036,3.59-11.504,9.127-13.907c7.49-3.249,16.316-9.028,21.176-13.393c2.782-2.499,6.38-3.88,10.121-3.88h19.254
+		c4.395,0,7.957,3.563,7.957,7.958v80.903h11.445c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-59.934
+		c-8.275,0-14.984-6.708-14.984-14.984c0-8.275,6.708-14.984,14.984-14.984h14.567V317.66c-2.163,2.886-6.797,6.077-12.243,8.754
+		c-4.618,2.27-10.076,2.008-14.445-0.711c-4.369-2.718-7.025-7.501-7.025-12.647V313.046z M123.295,390.677
+		c2.691-29.175,18.127-37.168,47.125-52.83c4.622-2.493,12.811-7.06,15.92-11.134c3.842-5.044,1.97-18.001-14.359-18.001
+		c-5.549,0-11.094,1.106-17.704,5.967c-6.262,4.605-14.984,3.637-20.067-2.244l-0.594-0.688c-3.026-3.501-4.246-8.216-3.31-12.747
+		s3.925-8.371,8.09-10.387c22.329-10.811,56.654-13.101,73.853,0.952c7.977,6.523,11.966,15.332,11.966,26.43
+		c0,32.434-40.129,38.997-54.315,54.731h41.622c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-79.1
+		c-2.577,0-5.036-1.095-6.772-3C123.914,395.789,123.059,393.243,123.295,390.677z"/>
+</g>
+</svg>
+<time class="meta__text" datetime="2023-03-21T11:24:17&#43;05:30">March 21, 2023</time></div>
+<div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/machine-learning/" rel="category">machine learning</a>
+	</span>
+</div><div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>2115 words/10 min read
+	</span>
+</div>
+</div>
+		</header>
+		
+		
+		
+	<figure class="post__thumbnail thumbnail">
+		
+		<img class="thumbnail__image" src="/img/nn.svg" alt="Perceptron From Scratch">
+		
+	</figure>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+	    <details>
+	        <summary>Click to toggle</summary>
+		        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-a-perceptron">What is a perceptron?</a></li>
+    <li><a href="#how-does-a-perceptron-learn">How does a perceptron learn?</a>
+      <ul>
+        <li><a href="#the-cost-function">The cost function</a></li>
+        <li><a href="#follow-up-after-training">Follow-up after training</a></li>
+      </ul>
+    </li>
+    <li><a href="#implementation-notes">Implementation notes</a>
+      <ul>
+        <li><a href="#the-perceptron-class">The perceptron class</a></li>
+        <li><a href="#the-data-generator-class">The data generator class</a></li>
+      </ul>
+    </li>
+    <li><a href="#training-and-evaluation">Training and evaluation</a>
+      <ul>
+        <li><a href="#evaluation-using-plots">Evaluation using plots</a></li>
+      </ul>
+    </li>
+    <li><a href="#experiment-with-the-code">Experiment with the code</a></li>
+  </ul>
+</nav>
+		    </details>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<style>
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 36px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+#myBtn:hover {
+  background-color: #008080;
+}
+</style>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">&#11161;</button>
+
+
+<script>
+
+let mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+
+
+<p>Neural Networks are very fascinating, but they are very complicated to understand.
 To simplify our understanding, we start with the simplest unit of the neural network
 &ndash; the perceptron. We want to understand what role
 the perceptron plays and its functioning as a simple logical unit. This should hopefully
-improve our understanding of a neural network.</p><h2 id=what-is-a-perceptron>What is a perceptron?</h2><p>A perceptron is an artificial neuron that takes in several inputs, processes them
-and produces an output. There are three components constituting the input side
-of a perceptron:</p><ul><li>the inputs themselves</li><li>a weight associated with each input</li><li>a bias</li></ul><p>The perceptron computes its output as follows:
+improve our understanding of a neural network.</p>
+<h2 id="what-is-a-perceptron">What is a perceptron?</h2>
+<p>A perceptron is an artificial neuron that takes in several inputs, processes them
+and produces an output.  There are three components constituting the input side
+of a perceptron:</p>
+<ul>
+<li>the inputs themselves</li>
+<li>a weight associated with each input</li>
+<li>a bias</li>
+</ul>
+<p>The perceptron computes its output as follows:
 $$
-f(x) = w_0+w_1x_1+w_2x_2+w_3x_3+&mldr;w_nx_n \tag{1}
-$$</p><p>In other words, the output of a perceptron is the weighted sum of its inputs,
-optionally conditioned by an activation function. We will not be considering
-an activation function in this exploration.</p><p>In the expression above, the \(w_0\) is the bias and each \(w_ix_i\) is an
-input multiplied by its corresponding weight.</p><p>The perceptron is quite similar to the biological neuron as it has inputs,
-processing and output just as that of the biological neuron. Many perceptrons
+f(x) = w_0+w_1x_1+w_2x_2+w_3x_3+&hellip;w_nx_n  \tag{1}
+$$</p>
+<p>In other words, the output of a perceptron is the weighted sum of its inputs,
+optionally conditioned by an activation function.  We will not be considering
+an activation function in this exploration.</p>
+<p>In the expression above, the \(w_0\) is the bias and each \(w_ix_i\) is an
+input multiplied by its corresponding weight.</p>
+<p>The perceptron is quite similar to the biological neuron as it has inputs,
+processing and output just as that of the biological neuron.  Many perceptrons
 combine to form a neural network containing many layers capable of performing
-complex learning tasks.</p><h2 id=how-does-a-perceptron-learn>How does a perceptron learn?</h2><p>Perceptrons learn in the same way as the human brain does. The biological neuron
-has structures like the nucleus, dendrites and axon. The dendrites collect
+complex learning tasks.</p>
+<h2 id="how-does-a-perceptron-learn">How does a perceptron learn?</h2>
+<p>Perceptrons learn in the same way as the human brain does.  The biological neuron
+has structures like the nucleus, dendrites and axon.  The dendrites collect
 information from other neurons, the neuron processes and sends it out
-through the axon(the long tail below the neuron). The perceptron is a derivative
-of the neuron and has a similar structure but in a more simplified form.</p><p>What does it mean for a perceptron to learn? Perceptrons learn through supervised
+through the axon(the long tail below the neuron).  The perceptron is a derivative
+of the neuron and has a similar structure but in a more simplified form.</p>
+<p>What does it mean for a perceptron to learn? Perceptrons learn through supervised
 methods. A perceptron learns by adjusting its weights(see equation above) so as to
 learn the best approximation of the correct function \(f(x)\) that gives the
-expected set of outputs for the corresponding set of inputs of the form \(x_1&mldr;x_n\).
+expected set of outputs for the corresponding set of inputs of the form \(x_1&hellip;x_n\).
 This is done by training the perceptron repeatedly on a training set containing a lot
-many training samples. Each such repetition is called an <em>epoch</em>.</p><p>Each epoch takes the perceptron closer and closer to the expected function \(f(x)\)
-by the process of adjusting its weights and bias. This is also called fitting
-the model to the training data.</p><h3 id=the-cost-function>The cost function</h3><p>We are always interested in knowing how far we have come in training our
-perceptron. This is achieved by calculating a so-called cost function.
+many training samples.  Each such repetition is called an <em>epoch</em>.</p>
+<p>Each epoch takes the perceptron closer and closer to the expected function \(f(x)\)
+by the process of adjusting its weights and bias.  This is also called fitting
+the model to the training data.</p>
+<h3 id="the-cost-function">The cost function</h3>
+<p>We are always interested in knowing how far we have come in training our
+perceptron.  This is achieved by calculating a so-called cost function.
 Although there are many kinds of cost functions, we will stick to a quadratic
-cost function which is defined as follows:</p><p>$$
-E(\vec{w}) = 0.5\sum\limits_{d \in D} (t_d - o_d)^2 \tag{2}
-$$</p><p>where, \(E, \vec{w}, d \in D, t_d, o_d\) are respectively the error(cost),
+cost function which is defined as follows:</p>
+<p>$$
+E(\vec{w}) = 0.5\sum\limits_{d \in D} (t_d - o_d)^2  \tag{2}
+$$</p>
+<p>where, \(E, \vec{w}, d \in D, t_d, o_d\) are respectively the error(cost),
 the weight vector, the particular training instance as a subset of the training
 set, the target output for the training instance and the actual output for the
-training instance. The total error is a summation of the errors across all the
-training instances.</p><p>This function gives us a parabolic error surface with a global minimum. This
-error is a function of the weight vector. To arrive at the weight vector that
+training instance.  The total error is a summation of the errors across all the
+training instances.</p>
+<p>This function gives us a parabolic error surface with a global minimum.  This
+error is a function of the weight vector.  To arrive at the weight vector that
 gives us the minimum error, we need to descend the gradient of the error surface
-to the point of the global minimum. The direction of the steepest descent down
-the gradient is given by:</p><p>$$
-\nabla{E(\vec{w})} \tag{3}
-$$</p><p>and the update to the weight vector is given by</p><p>$$
-\Delta{\vec{w}} = -\eta\nabla{E(\vec{w})} \tag{4}
-$$</p><p>where, \(\eta\) is the learning rate chosen to be small enough so as not to
-skip over the minimum point on the parabolic error surface.</p><p>After derivation steps (based on &lsquo;Machine Learning&rsquo; by <em>Tom M. Mitchell</em>), we arrive
-at an update rule for the individual weight:</p><p>$$
+to the point of the global minimum.  The direction of the steepest descent down
+the gradient is given by:</p>
+<p>$$
+\nabla{E(\vec{w})}  \tag{3}
+$$</p>
+<p>and the update to the weight vector is given by</p>
+<p>$$
+\Delta{\vec{w}}  =  -\eta\nabla{E(\vec{w})} \tag{4}
+$$</p>
+<p>where, \(\eta\) is the learning rate chosen to be small enough so as not to
+skip over the minimum point on the parabolic error surface.</p>
+<p>After derivation steps (based on &lsquo;Machine Learning&rsquo; by <em>Tom M. Mitchell</em>), we arrive
+at an update rule for the individual weight:</p>
+<p>$$
 \Delta{w_i} = \eta\sum\limits_{d \in D}(t_d-o_d)x_{id} \tag{5}
-$$</p><p>The above expression considers the entire training set \(D\) to get to the
-change in the weight. However, we will look at a variation called stochastic
+$$</p>
+<p>The above expression considers the entire training set \(D\) to get to the
+change in the weight.  However, we will look at a variation called stochastic
 gradient descent(SGD) where we update weights after each training instance in
-the training set. This approach approximates the standard gradient descent to
-any arbitrary degree of closeness.</p><h3 id=follow-up-after-training>Follow-up after training</h3><p>Two steps that closely follow the training step are:</p><ol><li>Evaluation of the training process itself.</li><li>Evaluation of the performance of the trained perceptron.</li></ol><p>For evaluation of the training process, we need to keep track of the cost
+the training set.  This approach approximates the standard gradient descent to
+any arbitrary degree of closeness.</p>
+<h3 id="follow-up-after-training">Follow-up after training</h3>
+<p>Two steps that closely follow the training step are:</p>
+<ol>
+<li>Evaluation of the training process itself.</li>
+<li>Evaluation of the performance of the trained perceptron.</li>
+</ol>
+<p>For evaluation of the training process, we need to keep track of the cost
 function both for the training set and the cross-validation set and use
-graphical means to watch their convergence. Optionally, we can also plot the
-convergence of the weights. This data is captured after each epoch.</p><p>For evaluation of the trained perceptron performance, we can consider
-classification or regression metrics that are appropriate to the problem at hand.</p><h2 id=implementation-notes>Implementation notes</h2><p>We will now use the above theoretical explanation to implement a simple perceptron,
+graphical means to watch their convergence.  Optionally, we can also plot the
+convergence of the weights.  This data is captured after each epoch.</p>
+<p>For evaluation of the trained perceptron performance, we can consider
+classification or regression metrics that are appropriate to the problem at hand.</p>
+<h2 id="implementation-notes">Implementation notes</h2>
+<p>We will now use the above theoretical explanation to implement a simple perceptron,
 train it as a D2A converter, evaluate the training process, and finally evaluate
-the performance of the trained perceptron.</p><h3 id=the-perceptron-class>The perceptron class</h3><div class=highlight><div style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  7
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  8
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">  9
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 10
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 11
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 12
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 13
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 14
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 15
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 16
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 17
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 18
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 19
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 20
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 21
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 22
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 23
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 24
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 25
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 26
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 27
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 28
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 29
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 30
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 31
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 32
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 33
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 34
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 35
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 36
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 37
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 38
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 39
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 40
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 41
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 42
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 43
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 44
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 45
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 46
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 47
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 48
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 49
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 50
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 51
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 52
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 53
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 54
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 55
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 56
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 57
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 58
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 59
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 60
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 61
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 62
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 63
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 64
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 65
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 66
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 67
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 68
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 69
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 70
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 71
-</span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 72
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 73
-</span></span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 74
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 75
-</span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 76
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 77
-</span></span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 78
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 79
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 80
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 81
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 82
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 83
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 84
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 85
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 86
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 87
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 88
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 89
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 90
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 91
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 92
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 93
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 94
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 95
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 96
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 97
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 98
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 99
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">100
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#408080;font-style:italic>#!/usr/bin/env python3</span>
+the performance of the trained perceptron.</p>
+<h3 id="the-perceptron-class">The perceptron class</h3>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#408080;font-style:italic">#!/usr/bin/env python3</span>
 
-<span style=color:#ba2121>&#34;&#34;&#34;
-</span><span style=color:#ba2121>Module to implement a single perceptron and a
-</span><span style=color:#ba2121>helper class to generate training data.
-</span><span style=color:#ba2121>
-</span><span style=color:#ba2121>Reference implementation: Create a D2A converter using a 
-</span><span style=color:#ba2121>single perceptron.
-</span><span style=color:#ba2121>&#34;&#34;&#34;</span>
-<span style=color:green;font-weight:700>import</span> <span style=color:#00f;font-weight:700>numpy</span> <span style=color:green;font-weight:700>as</span> <span style=color:#00f;font-weight:700>np</span>
-<span style=color:green;font-weight:700>import</span> <span style=color:#00f;font-weight:700>matplotlib.pyplot</span> <span style=color:green;font-weight:700>as</span> <span style=color:#00f;font-weight:700>plt</span>
+<span style="color:#ba2121">&#34;&#34;&#34;
+</span><span style="color:#ba2121">Module to implement a single perceptron and a
+</span><span style="color:#ba2121">helper class to generate training data.
+</span><span style="color:#ba2121">
+</span><span style="color:#ba2121">Reference implementation: Create a D2A converter using a 
+</span><span style="color:#ba2121">single perceptron.
+</span><span style="color:#ba2121">&#34;&#34;&#34;</span>
+<span style="color:#008000;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">numpy</span> <span style="color:#008000;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">np</span>
+<span style="color:#008000;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">matplotlib.pyplot</span> <span style="color:#008000;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">plt</span>
 
-<span style=color:green;font-weight:700>class</span> <span style=color:#00f;font-weight:700>Perceptron</span>():
-    <span style=color:#ba2121>&#34;&#34;&#34;
-</span><span style=color:#ba2121>    Class to implement an n-input perceptron with identity activation.
-</span><span style=color:#ba2121>    
-</span><span style=color:#ba2121>    Arguments:
-</span><span style=color:#ba2121>        n_inputs: no. of inputs
-</span><span style=color:#ba2121>        
-</span><span style=color:#ba2121>    Attributes:
-</span><span style=color:#ba2121>        _weights: list of weights(w0,...,wn), one per epoch
-</span><span style=color:#ba2121>        _cost: list of cost function values(one per epoch)
-</span><span style=color:#ba2121>        _epochs: no. of epochs to train the perceptron
-</span><span style=color:#ba2121>        
-</span><span style=color:#ba2121>    Methods:
-</span><span style=color:#ba2121>        fit(X,y,n_epochs=10,batch_size=1): train the perceptron with
-</span><span style=color:#ba2121>            training data X,y for n_epochs(default 10) with batch size
-</span><span style=color:#ba2121>            of batch_size(default 1)
-</span><span style=color:#ba2121>        predict(X): predict y for test data X on an already fitted perceptron.
-</span><span style=color:#ba2121>            
-</span><span style=color:#ba2121>    Since the training  and test data are deterministic,
-</span><span style=color:#ba2121>    we do not need cross-validation.  It is enough if we
-</span><span style=color:#ba2121>    just look at the cost function.
-</span><span style=color:#ba2121>    &#34;&#34;&#34;</span>
+<span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">Perceptron</span>():
+    <span style="color:#ba2121">&#34;&#34;&#34;
+</span><span style="color:#ba2121">    Class to implement an n-input perceptron with identity activation.
+</span><span style="color:#ba2121">    
+</span><span style="color:#ba2121">    Arguments:
+</span><span style="color:#ba2121">        n_inputs: no. of inputs
+</span><span style="color:#ba2121">        
+</span><span style="color:#ba2121">    Attributes:
+</span><span style="color:#ba2121">        _weights: list of weights(w0,...,wn), one per epoch
+</span><span style="color:#ba2121">        _cost: list of cost function values(one per epoch)
+</span><span style="color:#ba2121">        _epochs: no. of epochs to train the perceptron
+</span><span style="color:#ba2121">        
+</span><span style="color:#ba2121">    Methods:
+</span><span style="color:#ba2121">        fit(X,y,n_epochs=10,batch_size=1): train the perceptron with
+</span><span style="color:#ba2121">            training data X,y for n_epochs(default 10) with batch size
+</span><span style="color:#ba2121">            of batch_size(default 1)
+</span><span style="color:#ba2121">        predict(X): predict y for test data X on an already fitted perceptron.
+</span><span style="color:#ba2121">            
+</span><span style="color:#ba2121">    Since the training  and test data are deterministic,
+</span><span style="color:#ba2121">    we do not need cross-validation.  It is enough if we
+</span><span style="color:#ba2121">    just look at the cost function.
+</span><span style="color:#ba2121">    &#34;&#34;&#34;</span>
 
-    <span style=color:green;font-weight:700>def</span> __init__(self, n_inputs):
-        <span style=color:#ba2121>&#34;&#34;&#34;Create perceptron with n inputs.&#34;&#34;&#34;</span>
+    <span style="color:#008000;font-weight:bold">def</span> __init__(self, n_inputs):
+        <span style="color:#ba2121">&#34;&#34;&#34;Create perceptron with n inputs.&#34;&#34;&#34;</span>
         
-        self<span style=color:#666>.</span>_n_inputs <span style=color:#666>=</span> n_inputs
-        <span style=color:#408080;font-style:italic># Generate n_inputs random weights[0,1) and 1 bias.</span>
-        self<span style=color:#666>.</span>_weights <span style=color:#666>=</span> np<span style=color:#666>.</span>random<span style=color:#666>.</span>uniform(low<span style=color:#666>=-</span><span style=color:#666>0.1</span>, high<span style=color:#666>=</span><span style=color:#666>0.1</span>, size<span style=color:#666>=</span>(n_inputs<span style=color:#666>+</span><span style=color:#666>1</span>,))
-        <span style=color:#408080;font-style:italic># Will get updated at end of every epoch.  At end of training, has all</span>
-        <span style=color:#408080;font-style:italic># weights of a trained perceptron.</span>
-        <span style=color:#408080;font-style:italic># history of weights</span>
-        self<span style=color:#666>.</span>_weights_hist <span style=color:#666>=</span> []
-        <span style=color:#408080;font-style:italic># store the initial weights first</span>
-        self<span style=color:#666>.</span>_weights_hist<span style=color:#666>.</span>append(self<span style=color:#666>.</span>_weights)
+        self<span style="color:#666">.</span>_n_inputs <span style="color:#666">=</span> n_inputs
+        <span style="color:#408080;font-style:italic"># Generate n_inputs random weights[0,1) and 1 bias.</span>
+        self<span style="color:#666">.</span>_weights <span style="color:#666">=</span> np<span style="color:#666">.</span>random<span style="color:#666">.</span>uniform(low<span style="color:#666">=-</span><span style="color:#666">0.1</span>, high<span style="color:#666">=</span><span style="color:#666">0.1</span>, size<span style="color:#666">=</span>(n_inputs<span style="color:#666">+</span><span style="color:#666">1</span>,))
+        <span style="color:#408080;font-style:italic"># Will get updated at end of every epoch.  At end of training, has all</span>
+        <span style="color:#408080;font-style:italic"># weights of a trained perceptron.</span>
+        <span style="color:#408080;font-style:italic"># history of weights</span>
+        self<span style="color:#666">.</span>_weights_hist <span style="color:#666">=</span> []
+        <span style="color:#408080;font-style:italic"># store the initial weights first</span>
+        self<span style="color:#666">.</span>_weights_hist<span style="color:#666">.</span>append(self<span style="color:#666">.</span>_weights)
         
-        <span style=color:#408080;font-style:italic># Array of costs 1 per epoch.</span>
-        self<span style=color:#666>.</span>_cost_hist <span style=color:#666>=</span> []
+        <span style="color:#408080;font-style:italic"># Array of costs 1 per epoch.</span>
+        self<span style="color:#666">.</span>_cost_hist <span style="color:#666">=</span> []
         
-        <span style=color:#408080;font-style:italic># For how many epochs have we trained?</span>
-        self<span style=color:#666>.</span>_epochs <span style=color:#666>=</span> <span style=color:#666>0</span>
+        <span style="color:#408080;font-style:italic"># For how many epochs have we trained?</span>
+        self<span style="color:#666">.</span>_epochs <span style="color:#666">=</span> <span style="color:#666">0</span>
                 
         
-    <span style=color:green;font-weight:700>def</span> <span style=color:#00f>fit</span>(self,X,y, epochs<span style=color:#666>=</span><span style=color:#666>10</span>, batch_size<span style=color:#666>=</span><span style=color:#666>1</span>):
-        <span style=color:#ba2121>&#34;&#34;&#34;Train the perceptron with X,y
-</span><span style=color:#ba2121>        
-</span><span style=color:#ba2121>        Arguments: 
-</span><span style=color:#ba2121>            epochs: no.of epochs to train
-</span><span style=color:#ba2121>            batch_size: batch size            
-</span><span style=color:#ba2121>        &#34;&#34;&#34;</span>
-        lr <span style=color:#666>=</span> <span style=color:#666>0.01</span>  <span style=color:#408080;font-style:italic>#learning rate</span>
+    <span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">fit</span>(self,X,y, epochs<span style="color:#666">=</span><span style="color:#666">10</span>, batch_size<span style="color:#666">=</span><span style="color:#666">1</span>):
+        <span style="color:#ba2121">&#34;&#34;&#34;Train the perceptron with X,y
+</span><span style="color:#ba2121">        
+</span><span style="color:#ba2121">        Arguments: 
+</span><span style="color:#ba2121">            epochs: no.of epochs to train
+</span><span style="color:#ba2121">            batch_size: batch size            
+</span><span style="color:#ba2121">        &#34;&#34;&#34;</span>
+        lr <span style="color:#666">=</span> <span style="color:#666">0.01</span>  <span style="color:#408080;font-style:italic">#learning rate</span>
         
-        <span style=color:green;font-weight:700>for</span> i <span style=color:#a2f;font-weight:700>in</span> <span style=color:green>range</span>(epochs):
-            <span style=color:green;font-weight:700>for</span> x_vec,y_true <span style=color:#a2f;font-weight:700>in</span> <span style=color:green>zip</span>(X,y):
-                x_vec <span style=color:#666>=</span> np<span style=color:#666>.</span>append([<span style=color:#666>1</span>],x_vec) <span style=color:#408080;font-style:italic># Prepend 1 for the bias</span>
-                output <span style=color:#666>=</span> np<span style=color:#666>.</span>dot(self<span style=color:#666>.</span>_weights,x_vec)<span style=color:#666>.</span>squeeze()
+        <span style="color:#008000;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(epochs):
+            <span style="color:#008000;font-weight:bold">for</span> x_vec,y_true <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">zip</span>(X,y):
+                x_vec <span style="color:#666">=</span> np<span style="color:#666">.</span>append([<span style="color:#666">1</span>],x_vec) <span style="color:#408080;font-style:italic"># Prepend 1 for the bias</span>
+                output <span style="color:#666">=</span> np<span style="color:#666">.</span>dot(self<span style="color:#666">.</span>_weights,x_vec)<span style="color:#666">.</span>squeeze()
                 
-                <span style=color:#408080;font-style:italic>#Calculate delta_w from error gradient and learning rate</span>
-                <span style=color:#408080;font-style:italic>######### Update the weights ############</span>
-<span style=display:block;width:100%;background-color:#e5e5e5>                delta_w <span style=color:#666>=</span> lr<span style=color:#666>*</span>x_vec<span style=color:#666>*</span>(y_true<span style=color:#666>-</span>output)
-</span><span style=display:block;width:100%;background-color:#e5e5e5>                self<span style=color:#666>.</span>_weights <span style=color:#666>=</span> self<span style=color:#666>.</span>_weights<span style=color:#666>+</span>delta_w
+                <span style="color:#408080;font-style:italic">#Calculate delta_w from error gradient and learning rate</span>
+                <span style="color:#408080;font-style:italic">######### Update the weights ############</span>
+<span style="display:block;width:100%;background-color:#e5e5e5">                delta_w <span style="color:#666">=</span> lr<span style="color:#666">*</span>x_vec<span style="color:#666">*</span>(y_true<span style="color:#666">-</span>output)
+</span><span style="display:block;width:100%;background-color:#e5e5e5">                self<span style="color:#666">.</span>_weights <span style="color:#666">=</span> self<span style="color:#666">.</span>_weights<span style="color:#666">+</span>delta_w
 </span>
-            <span style=color:#408080;font-style:italic>#Keep track of the cost function</span>
-<span style=display:block;width:100%;background-color:#e5e5e5>            cost_func <span style=color:#666>=</span> <span style=color:#666>0.5</span><span style=color:#666>*</span>(output<span style=color:#666>-</span>y_true)<span style=color:#666>**</span><span style=color:#666>2</span>
-</span><span style=display:block;width:100%;background-color:#e5e5e5>            self<span style=color:#666>.</span>_cost_hist<span style=color:#666>.</span>append(cost_func)
+            <span style="color:#408080;font-style:italic">#Keep track of the cost function</span>
+<span style="display:block;width:100%;background-color:#e5e5e5">            cost_func <span style="color:#666">=</span> <span style="color:#666">0.5</span><span style="color:#666">*</span>(output<span style="color:#666">-</span>y_true)<span style="color:#666">**</span><span style="color:#666">2</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">            self<span style="color:#666">.</span>_cost_hist<span style="color:#666">.</span>append(cost_func)
 </span>                            
-            <span style=color:#408080;font-style:italic>#keep weights history</span>
-            self<span style=color:#666>.</span>_weights_hist<span style=color:#666>.</span>append(self<span style=color:#666>.</span>_weights)
+            <span style="color:#408080;font-style:italic">#keep weights history</span>
+            self<span style="color:#666">.</span>_weights_hist<span style="color:#666">.</span>append(self<span style="color:#666">.</span>_weights)
                 
-            self<span style=color:#666>.</span>_epochs <span style=color:#666>+=</span> <span style=color:#666>1</span>  <span style=color:#408080;font-style:italic>#Increment epochs count</span>
+            self<span style="color:#666">.</span>_epochs <span style="color:#666">+=</span> <span style="color:#666">1</span>  <span style="color:#408080;font-style:italic">#Increment epochs count</span>
             
-        <span style=color:#408080;font-style:italic>#Return training history</span>
-        <span style=color:green;font-weight:700>return</span> {<span style=color:#ba2121>&#34;cost&#34;</span>:self<span style=color:#666>.</span>_cost_hist, <span style=color:#ba2121>&#34;weights&#34;</span>:self<span style=color:#666>.</span>_weights_hist,<span style=color:#ba2121>&#34;epochs&#34;</span>:self<span style=color:#666>.</span>_epochs}
+        <span style="color:#408080;font-style:italic">#Return training history</span>
+        <span style="color:#008000;font-weight:bold">return</span> {<span style="color:#ba2121">&#34;cost&#34;</span>:self<span style="color:#666">.</span>_cost_hist, <span style="color:#ba2121">&#34;weights&#34;</span>:self<span style="color:#666">.</span>_weights_hist,<span style="color:#ba2121">&#34;epochs&#34;</span>:self<span style="color:#666">.</span>_epochs}
         
-    <span style=color:green;font-weight:700>def</span> <span style=color:#00f>predict</span>(self,X):
-        <span style=color:#ba2121>&#34;&#34;&#34;
-</span><span style=color:#ba2121>        Predict target y for test data X
-</span><span style=color:#ba2121>        Arguments: X test data
-</span><span style=color:#ba2121>        &#34;&#34;&#34;</span>
-        <span style=color:#408080;font-style:italic>#Insert a 1 in the first column(index 0) of all X rows</span>
-        _X <span style=color:#666>=</span> np<span style=color:#666>.</span>insert(X, <span style=color:#666>0</span>, <span style=color:#666>1</span>, axis<span style=color:#666>=</span><span style=color:#666>1</span>)
-        <span style=color:green;font-weight:700>return</span> np<span style=color:#666>.</span>dot(_X,self<span style=color:#666>.</span>_weights)
+    <span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">predict</span>(self,X):
+        <span style="color:#ba2121">&#34;&#34;&#34;
+</span><span style="color:#ba2121">        Predict target y for test data X
+</span><span style="color:#ba2121">        Arguments: X test data
+</span><span style="color:#ba2121">        &#34;&#34;&#34;</span>
+        <span style="color:#408080;font-style:italic">#Insert a 1 in the first column(index 0) of all X rows</span>
+        _X <span style="color:#666">=</span> np<span style="color:#666">.</span>insert(X, <span style="color:#666">0</span>, <span style="color:#666">1</span>, axis<span style="color:#666">=</span><span style="color:#666">1</span>)
+        <span style="color:#008000;font-weight:bold">return</span> np<span style="color:#666">.</span>dot(_X,self<span style="color:#666">.</span>_weights)
         
-    <span style=color:green;font-weight:700>def</span> __repr__(self):
-        <span style=color:#ba2121>&#34;&#34;&#34;
-</span><span style=color:#ba2121>        Print representation of the object.
-</span><span style=color:#ba2121>        &#34;&#34;&#34;</span>
-        <span style=color:green;font-weight:700>return</span> f<span style=color:#ba2121>&#39;perceptron &lt;{id(self):x}&gt; inputs:{self._n_inputs}, epochs:{self._epochs}, weights:{self._weights}&#39;</span></code></pre></td></tr></table></div></div><p>This is an implementation of a perceptron parameterized on the number of inputs.</p><p>The <strong>constructor</strong> does the following:</p><ul><li>Create n_inputs and generate their corresponding random weights and a bias.</li><li>Create provision to capture weights history, cost history and epochs.</li></ul><p>The <strong>fit()</strong> method used to train the perceptron over the specified number of
-epochs:</p><ul><li>uses equation (2) to calculate the cost.</li><li>uses equation (5) to directly update the weight vector.</li><li>accumulate history of both the cost and the weights.</li></ul><p>We exploit the capabilities of numpy to vectorize our computations.</p><p>The <strong>predict()</strong> method used to predict values involves:</p><ul><li>equation (1) to calculate the dot product of weights and inputs.</li></ul><p>There is no need of finding the error or the cost because we are out of the training
-phase and already have a trained perceptron.</p><h3 id=the-data-generator-class>The data generator class</h3><p>Although, not part of the perceptron implementation itself, a data generator is
+    <span style="color:#008000;font-weight:bold">def</span> __repr__(self):
+        <span style="color:#ba2121">&#34;&#34;&#34;
+</span><span style="color:#ba2121">        Print representation of the object.
+</span><span style="color:#ba2121">        &#34;&#34;&#34;</span>
+        <span style="color:#008000;font-weight:bold">return</span> f<span style="color:#ba2121">&#39;perceptron &lt;{id(self):x}&gt; inputs:{self._n_inputs}, epochs:{self._epochs}, weights:{self._weights}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>This is an implementation of a perceptron parameterized on the number of inputs.</p>
+<p>The <strong>constructor</strong> does the following:</p>
+<ul>
+<li>Create n_inputs and generate their corresponding random weights and a bias.</li>
+<li>Create provision to capture weights history, cost history and epochs.</li>
+</ul>
+<p>The <strong>fit()</strong> method used to train the perceptron over the specified number of
+epochs:</p>
+<ul>
+<li>uses equation (2) to calculate the cost.</li>
+<li>uses equation (5) to directly update the weight vector.</li>
+<li>accumulate history of both the cost and the weights.</li>
+</ul>
+<p>We exploit the capabilities of numpy to vectorize our computations.</p>
+<p>The <strong>predict()</strong> method used to predict values involves:</p>
+<ul>
+<li>equation (1) to calculate the dot product of weights and inputs.</li>
+</ul>
+<p>There is no need of finding the error or the cost because we are out of the training
+phase and already have a trained perceptron.</p>
+<h3 id="the-data-generator-class">The data generator class</h3>
+<p>Although, not part of the perceptron implementation itself, a data generator is
 very important to our task. After all, a model is only as good as the data it is
-trained on. It has two methods:</p><ul><li><code>get_samples()</code> method to get random vector samples training</li><li><code>get_cons_samples()</code> method to get consecutive samples for testing and evaluation</li></ul><div class=highlight><div style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
-</span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
-</span></span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
-</span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
-</span></span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:green;font-weight:700>class</span> <span style=color:#00f;font-weight:700>Vector_generator</span>():
-    <span style=color:#ba2121>&#34;&#34;&#34; 
-</span><span style=color:#ba2121>    Generate list of binary digit vectors of specified length and width.
-</span><span style=color:#ba2121>    
-</span><span style=color:#ba2121>    Arguments:
-</span><span style=color:#ba2121>        n_bits: width of the vector(default 8).
-</span><span style=color:#ba2121>        
-</span><span style=color:#ba2121>    Methods:
-</span><span style=color:#ba2121>        get_samples(n_samples=10): get specified number of random
-</span><span style=color:#ba2121>            samples(default 10) of type X,y with y scaled[0,1)
-</span><span style=color:#ba2121>        get_cons_samples(): get consecutive samples from 0 to 2^n_bits-1        
-</span><span style=color:#ba2121>    &#34;&#34;&#34;</span>
+trained on.  It has two methods:</p>
+<ul>
+<li><code>get_samples()</code> method to get random vector samples training</li>
+<li><code>get_cons_samples()</code> method to get consecutive samples for testing and evaluation</li>
+</ul>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">Vector_generator</span>():
+    <span style="color:#ba2121">&#34;&#34;&#34; 
+</span><span style="color:#ba2121">    Generate list of binary digit vectors of specified length and width.
+</span><span style="color:#ba2121">    
+</span><span style="color:#ba2121">    Arguments:
+</span><span style="color:#ba2121">        n_bits: width of the vector(default 8).
+</span><span style="color:#ba2121">        
+</span><span style="color:#ba2121">    Methods:
+</span><span style="color:#ba2121">        get_samples(n_samples=10): get specified number of random
+</span><span style="color:#ba2121">            samples(default 10) of type X,y with y scaled[0,1)
+</span><span style="color:#ba2121">        get_cons_samples(): get consecutive samples from 0 to 2^n_bits-1        
+</span><span style="color:#ba2121">    &#34;&#34;&#34;</span>
 
-    <span style=color:green;font-weight:700>def</span> __init__(self, n_bits<span style=color:#666>=</span><span style=color:#666>8</span>):
-        <span style=color:#ba2121>&#34;&#34;&#34;Initialize a vector generator of width n_bits&#34;&#34;&#34;</span>
-        self<span style=color:#666>.</span>_n_bits <span style=color:#666>=</span> n_bits
-        self<span style=color:#666>.</span>_X_arr <span style=color:#666>=</span> []
-        self<span style=color:#666>.</span>_y_arr <span style=color:#666>=</span> []
+    <span style="color:#008000;font-weight:bold">def</span> __init__(self, n_bits<span style="color:#666">=</span><span style="color:#666">8</span>):
+        <span style="color:#ba2121">&#34;&#34;&#34;Initialize a vector generator of width n_bits&#34;&#34;&#34;</span>
+        self<span style="color:#666">.</span>_n_bits <span style="color:#666">=</span> n_bits
+        self<span style="color:#666">.</span>_X_arr <span style="color:#666">=</span> []
+        self<span style="color:#666">.</span>_y_arr <span style="color:#666">=</span> []
         
-<span style=display:block;width:100%;background-color:#e5e5e5>    <span style=color:green;font-weight:700>def</span> <span style=color:#00f>get_samples</span>(self, n_samples<span style=color:#666>=</span><span style=color:#666>10</span>):
-</span><span style=display:block;width:100%;background-color:#e5e5e5>        <span style=color:#ba2121>&#34;&#34;&#34;Get specified no. of random vectors(default 10)&#34;&#34;&#34;</span>
+<span style="display:block;width:100%;background-color:#e5e5e5">    <span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">get_samples</span>(self, n_samples<span style="color:#666">=</span><span style="color:#666">10</span>):
+</span><span style="display:block;width:100%;background-color:#e5e5e5">        <span style="color:#ba2121">&#34;&#34;&#34;Get specified no. of random vectors(default 10)&#34;&#34;&#34;</span>
 </span>        
-        self<span style=color:#666>.</span>_X_arr <span style=color:#666>=</span> []
-        self<span style=color:#666>.</span>_y_arr <span style=color:#666>=</span> []
+        self<span style="color:#666">.</span>_X_arr <span style="color:#666">=</span> []
+        self<span style="color:#666">.</span>_y_arr <span style="color:#666">=</span> []
         
-        <span style=color:green;font-weight:700>for</span> i <span style=color:#a2f;font-weight:700>in</span> <span style=color:green>range</span>(n_samples):
-            <span style=color:#408080;font-style:italic># Get 1 random integer in range 0,2**n_bits</span>
-            n <span style=color:#666>=</span> np<span style=color:#666>.</span>random<span style=color:#666>.</span>randint(<span style=color:#666>2</span><span style=color:#666>**</span>self<span style=color:#666>.</span>_n_bits)
-            <span style=color:#408080;font-style:italic># Convert it to binary vector</span>
-            X <span style=color:#666>=</span> [<span style=color:green>int</span>(i) <span style=color:green;font-weight:700>for</span> i <span style=color:#a2f;font-weight:700>in</span> <span style=color:green>list</span>(f<span style=color:#ba2121>&#39;{n:0{self._n_bits}b}&#39;</span>)]
-            <span style=color:#408080;font-style:italic># Alternatively</span>
-            <span style=color:#408080;font-style:italic># X = np.array(list(f&#39;{n:0{_n_bits}b}&#39;)).astype(int)</span>
-            <span style=color:#408080;font-style:italic># Its equivalent floating point value in range [0,1)</span>
-            y <span style=color:#666>=</span> <span style=color:green>round</span>(n<span style=color:#666>/</span>(<span style=color:#666>2</span><span style=color:#666>**</span>self<span style=color:#666>.</span>_n_bits),<span style=color:#666>6</span>)
-            self<span style=color:#666>.</span>_X_arr<span style=color:#666>.</span>append(X)
-            self<span style=color:#666>.</span>_y_arr<span style=color:#666>.</span>append(y)
+        <span style="color:#008000;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(n_samples):
+            <span style="color:#408080;font-style:italic"># Get 1 random integer in range 0,2**n_bits</span>
+            n <span style="color:#666">=</span> np<span style="color:#666">.</span>random<span style="color:#666">.</span>randint(<span style="color:#666">2</span><span style="color:#666">**</span>self<span style="color:#666">.</span>_n_bits)
+            <span style="color:#408080;font-style:italic"># Convert it to binary vector</span>
+            X <span style="color:#666">=</span> [<span style="color:#008000">int</span>(i) <span style="color:#008000;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">list</span>(f<span style="color:#ba2121">&#39;{n:0{self._n_bits}b}&#39;</span>)]
+            <span style="color:#408080;font-style:italic"># Alternatively</span>
+            <span style="color:#408080;font-style:italic"># X = np.array(list(f&#39;{n:0{_n_bits}b}&#39;)).astype(int)</span>
+            <span style="color:#408080;font-style:italic"># Its equivalent floating point value in range [0,1)</span>
+            y <span style="color:#666">=</span> <span style="color:#008000">round</span>(n<span style="color:#666">/</span>(<span style="color:#666">2</span><span style="color:#666">**</span>self<span style="color:#666">.</span>_n_bits),<span style="color:#666">6</span>)
+            self<span style="color:#666">.</span>_X_arr<span style="color:#666">.</span>append(X)
+            self<span style="color:#666">.</span>_y_arr<span style="color:#666">.</span>append(y)
             
-        <span style=color:green;font-weight:700>return</span> self<span style=color:#666>.</span>_X_arr, self<span style=color:#666>.</span>_y_arr
+        <span style="color:#008000;font-weight:bold">return</span> self<span style="color:#666">.</span>_X_arr, self<span style="color:#666">.</span>_y_arr
 
         
-<span style=display:block;width:100%;background-color:#e5e5e5>    <span style=color:green;font-weight:700>def</span> <span style=color:#00f>get_cons_samples</span>(self):
-</span><span style=display:block;width:100%;background-color:#e5e5e5>        <span style=color:#ba2121>&#34;&#34;&#34;get consecutive samples from 0 to 2^n_bits-1&#34;&#34;&#34;</span>
+<span style="display:block;width:100%;background-color:#e5e5e5">    <span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">get_cons_samples</span>(self):
+</span><span style="display:block;width:100%;background-color:#e5e5e5">        <span style="color:#ba2121">&#34;&#34;&#34;get consecutive samples from 0 to 2^n_bits-1&#34;&#34;&#34;</span>
 </span>        
-        self<span style=color:#666>.</span>_X_arr <span style=color:#666>=</span> []
-        self<span style=color:#666>.</span>_y_arr <span style=color:#666>=</span> []
+        self<span style="color:#666">.</span>_X_arr <span style="color:#666">=</span> []
+        self<span style="color:#666">.</span>_y_arr <span style="color:#666">=</span> []
         
-        <span style=color:green;font-weight:700>for</span> cons_n <span style=color:#a2f;font-weight:700>in</span> <span style=color:green>range</span>(<span style=color:#666>2</span><span style=color:#666>**</span>self<span style=color:#666>.</span>_n_bits):
-            <span style=color:#408080;font-style:italic># Get the integer from the range 0,2**n_bits</span>
-            <span style=color:#408080;font-style:italic># Convert it to binary vector</span>
-            X <span style=color:#666>=</span> [<span style=color:green>int</span>(i) <span style=color:green;font-weight:700>for</span> i <span style=color:#a2f;font-weight:700>in</span> <span style=color:green>list</span>(f<span style=color:#ba2121>&#39;{cons_n:0{self._n_bits}b}&#39;</span>)]
-            y <span style=color:#666>=</span> <span style=color:green>round</span>(cons_n<span style=color:#666>/</span>(<span style=color:#666>2</span><span style=color:#666>**</span>self<span style=color:#666>.</span>_n_bits),<span style=color:#666>6</span>)
-            self<span style=color:#666>.</span>_X_arr<span style=color:#666>.</span>append(X)
-            self<span style=color:#666>.</span>_y_arr<span style=color:#666>.</span>append(y)
+        <span style="color:#008000;font-weight:bold">for</span> cons_n <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">range</span>(<span style="color:#666">2</span><span style="color:#666">**</span>self<span style="color:#666">.</span>_n_bits):
+            <span style="color:#408080;font-style:italic"># Get the integer from the range 0,2**n_bits</span>
+            <span style="color:#408080;font-style:italic"># Convert it to binary vector</span>
+            X <span style="color:#666">=</span> [<span style="color:#008000">int</span>(i) <span style="color:#008000;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#008000">list</span>(f<span style="color:#ba2121">&#39;{cons_n:0{self._n_bits}b}&#39;</span>)]
+            y <span style="color:#666">=</span> <span style="color:#008000">round</span>(cons_n<span style="color:#666">/</span>(<span style="color:#666">2</span><span style="color:#666">**</span>self<span style="color:#666">.</span>_n_bits),<span style="color:#666">6</span>)
+            self<span style="color:#666">.</span>_X_arr<span style="color:#666">.</span>append(X)
+            self<span style="color:#666">.</span>_y_arr<span style="color:#666">.</span>append(y)
             
-        <span style=color:green;font-weight:700>return</span> self<span style=color:#666>.</span>_X_arr, self<span style=color:#666>.</span>_y_arr</code></pre></td></tr></table></div></div><h2 id=training-and-evaluation>Training and evaluation</h2><p>The following code illustrates how to use the perceptron class to instantiate,
-train and evaluate a perceptron.</p><div class=highlight><div style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
-</span></span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:green;font-weight:700>if</span> __name__ <span style=color:#666>==</span> <span style=color:#ba2121>&#34;__main__&#34;</span>:
-    <span style=color:#408080;font-style:italic># Create a data generator</span>
-    v_gen10bit <span style=color:#666>=</span> Vector_generator(n_bits <span style=color:#666>=</span> <span style=color:#666>10</span>)    
-    X,y <span style=color:#666>=</span> v_gen10bit<span style=color:#666>.</span>get_samples(n_samples<span style=color:#666>=</span><span style=color:#666>200</span>)
+        <span style="color:#008000;font-weight:bold">return</span> self<span style="color:#666">.</span>_X_arr, self<span style="color:#666">.</span>_y_arr</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="training-and-evaluation">Training and evaluation</h2>
+<p>The following code illustrates how to use the perceptron class to instantiate,
+train and evaluate a perceptron.</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000;font-weight:bold">if</span> __name__ <span style="color:#666">==</span> <span style="color:#ba2121">&#34;__main__&#34;</span>:
+    <span style="color:#408080;font-style:italic"># Create a data generator</span>
+    v_gen10bit <span style="color:#666">=</span> Vector_generator(n_bits <span style="color:#666">=</span> <span style="color:#666">10</span>)    
+    X,y <span style="color:#666">=</span> v_gen10bit<span style="color:#666">.</span>get_samples(n_samples<span style="color:#666">=</span><span style="color:#666">200</span>)
     
-    <span style=color:#408080;font-style:italic>#Create the perceptron</span>
-    percep <span style=color:#666>=</span> Perceptron(n_inputs <span style=color:#666>=</span> <span style=color:#666>10</span>)
-    <span style=color:green;font-weight:700>print</span>(percep)
+    <span style="color:#408080;font-style:italic">#Create the perceptron</span>
+    percep <span style="color:#666">=</span> Perceptron(n_inputs <span style="color:#666">=</span> <span style="color:#666">10</span>)
+    <span style="color:#008000;font-weight:bold">print</span>(percep)
     
-    <span style=color:#408080;font-style:italic>#Train the perceptron</span>
-    training_history <span style=color:#666>=</span> percep<span style=color:#666>.</span>fit(X,y,epochs<span style=color:#666>=</span><span style=color:#666>50</span>)
-    <span style=color:green;font-weight:700>print</span>(percep)
+    <span style="color:#408080;font-style:italic">#Train the perceptron</span>
+    training_history <span style="color:#666">=</span> percep<span style="color:#666">.</span>fit(X,y,epochs<span style="color:#666">=</span><span style="color:#666">50</span>)
+    <span style="color:#008000;font-weight:bold">print</span>(percep)
 
-    <span style=color:#408080;font-style:italic>#plot the minimization of the cost function and ...    </span>
-    <span style=color:#408080;font-style:italic>#...the convergence of the weights+bias</span>
-    <span style=color:#408080;font-style:italic>#In short, plot the training progress.</span>
-    fig,ax <span style=color:#666>=</span> plt<span style=color:#666>.</span>subplots(<span style=color:#666>1</span>,<span style=color:#666>3</span>, figsize<span style=color:#666>=</span>(<span style=color:#666>15</span>,<span style=color:#666>5</span>))
+    <span style="color:#408080;font-style:italic">#plot the minimization of the cost function and ...    </span>
+    <span style="color:#408080;font-style:italic">#...the convergence of the weights+bias</span>
+    <span style="color:#408080;font-style:italic">#In short, plot the training progress.</span>
+    fig,ax <span style="color:#666">=</span> plt<span style="color:#666">.</span>subplots(<span style="color:#666">1</span>,<span style="color:#666">3</span>, figsize<span style="color:#666">=</span>(<span style="color:#666">15</span>,<span style="color:#666">5</span>))
     
-<span style=display:block;width:100%;background-color:#e5e5e5>    <span style=color:#408080;font-style:italic># Some nuances of plotting. For plotting costs, epochs start at 1</span>
-</span><span style=display:block;width:100%;background-color:#e5e5e5>    <span style=color:#408080;font-style:italic># Cost at the end of each epoch    </span>
-</span><span style=display:block;width:100%;background-color:#e5e5e5>    ax[<span style=color:#666>0</span>]<span style=color:#666>.</span>plot(np<span style=color:#666>.</span>arange(<span style=color:#666>1</span>,training_history[<span style=color:#ba2121>&#34;epochs&#34;</span>]<span style=color:#666>+</span><span style=color:#666>1</span>),training_history[<span style=color:#ba2121>&#34;cost&#34;</span>], <span style=color:#ba2121>&#39;.-&#39;</span>)
-</span><span style=display:block;width:100%;background-color:#e5e5e5>    ax[<span style=color:#666>0</span>]<span style=color:#666>.</span>set_xticks(np<span style=color:#666>.</span>arange(<span style=color:#666>0</span>,training_history[<span style=color:#ba2121>&#34;epochs&#34;</span>]<span style=color:#666>+</span><span style=color:#666>1</span>,<span style=color:#666>5</span>))
-</span><span style=display:block;width:100%;background-color:#e5e5e5>    ax[<span style=color:#666>0</span>]<span style=color:#666>.</span>set_title(<span style=color:#ba2121>&#34;Cost function vs. Epoch&#34;</span>)
-</span><span style=display:block;width:100%;background-color:#e5e5e5>    ax[<span style=color:#666>0</span>]<span style=color:#666>.</span>set_xlabel(<span style=color:#ba2121>&#34;Epoch&#34;</span>)
-</span><span style=display:block;width:100%;background-color:#e5e5e5>    ax[<span style=color:#666>0</span>]<span style=color:#666>.</span>set_ylabel(<span style=color:#ba2121>&#34;Cost&#34;</span>)
-</span><span style=display:block;width:100%;background-color:#e5e5e5>    ax[<span style=color:#666>0</span>]<span style=color:#666>.</span>grid()
+<span style="display:block;width:100%;background-color:#e5e5e5">    <span style="color:#408080;font-style:italic"># Some nuances of plotting. For plotting costs, epochs start at 1</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    <span style="color:#408080;font-style:italic"># Cost at the end of each epoch    </span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    ax[<span style="color:#666">0</span>]<span style="color:#666">.</span>plot(np<span style="color:#666">.</span>arange(<span style="color:#666">1</span>,training_history[<span style="color:#ba2121">&#34;epochs&#34;</span>]<span style="color:#666">+</span><span style="color:#666">1</span>),training_history[<span style="color:#ba2121">&#34;cost&#34;</span>], <span style="color:#ba2121">&#39;.-&#39;</span>)
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    ax[<span style="color:#666">0</span>]<span style="color:#666">.</span>set_xticks(np<span style="color:#666">.</span>arange(<span style="color:#666">0</span>,training_history[<span style="color:#ba2121">&#34;epochs&#34;</span>]<span style="color:#666">+</span><span style="color:#666">1</span>,<span style="color:#666">5</span>))
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    ax[<span style="color:#666">0</span>]<span style="color:#666">.</span>set_title(<span style="color:#ba2121">&#34;Cost function vs. Epoch&#34;</span>)
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    ax[<span style="color:#666">0</span>]<span style="color:#666">.</span>set_xlabel(<span style="color:#ba2121">&#34;Epoch&#34;</span>)
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    ax[<span style="color:#666">0</span>]<span style="color:#666">.</span>set_ylabel(<span style="color:#ba2121">&#34;Cost&#34;</span>)
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    ax[<span style="color:#666">0</span>]<span style="color:#666">.</span>grid()
 </span>    
 
-    <span style=color:#408080;font-style:italic># There is one more set of weights than number of epochs because</span>
-    <span style=color:#408080;font-style:italic># We also plot the initial weights before we started the first epoch</span>
-    <span style=color:#408080;font-style:italic># Epoch starts with 0</span>
+    <span style="color:#408080;font-style:italic"># There is one more set of weights than number of epochs because</span>
+    <span style="color:#408080;font-style:italic"># We also plot the initial weights before we started the first epoch</span>
+    <span style="color:#408080;font-style:italic"># Epoch starts with 0</span>
 
-    ax[<span style=color:#666>1</span>]<span style=color:#666>.</span>plot(training_history[<span style=color:#ba2121>&#34;weights&#34;</span>], <span style=color:#ba2121>&#39;.-&#39;</span>)
-    ax[<span style=color:#666>1</span>]<span style=color:#666>.</span>set_xticks(np<span style=color:#666>.</span>arange(<span style=color:#666>0</span>,training_history[<span style=color:#ba2121>&#34;epochs&#34;</span>]<span style=color:#666>+</span><span style=color:#666>1</span>,<span style=color:#666>5</span>))
-    ax[<span style=color:#666>1</span>]<span style=color:#666>.</span>set_title(<span style=color:#ba2121>&#34;Weight vs. Epoch&#34;</span>)
-    ax[<span style=color:#666>1</span>]<span style=color:#666>.</span>set_xlabel(<span style=color:#ba2121>&#34;Epoch&#34;</span>)
-    ax[<span style=color:#666>1</span>]<span style=color:#666>.</span>set_ylabel(<span style=color:#ba2121>&#34;Weights&#34;</span>)
-    ax[<span style=color:#666>1</span>]<span style=color:#666>.</span>grid()
+    ax[<span style="color:#666">1</span>]<span style="color:#666">.</span>plot(training_history[<span style="color:#ba2121">&#34;weights&#34;</span>], <span style="color:#ba2121">&#39;.-&#39;</span>)
+    ax[<span style="color:#666">1</span>]<span style="color:#666">.</span>set_xticks(np<span style="color:#666">.</span>arange(<span style="color:#666">0</span>,training_history[<span style="color:#ba2121">&#34;epochs&#34;</span>]<span style="color:#666">+</span><span style="color:#666">1</span>,<span style="color:#666">5</span>))
+    ax[<span style="color:#666">1</span>]<span style="color:#666">.</span>set_title(<span style="color:#ba2121">&#34;Weight vs. Epoch&#34;</span>)
+    ax[<span style="color:#666">1</span>]<span style="color:#666">.</span>set_xlabel(<span style="color:#ba2121">&#34;Epoch&#34;</span>)
+    ax[<span style="color:#666">1</span>]<span style="color:#666">.</span>set_ylabel(<span style="color:#ba2121">&#34;Weights&#34;</span>)
+    ax[<span style="color:#666">1</span>]<span style="color:#666">.</span>grid()
 
-    <span style=color:#408080;font-style:italic>#Try out predictions with our perceptron</span>
-    <span style=color:#408080;font-style:italic>#Generate consecutive data</span>
-    Xt,yt <span style=color:#666>=</span> v_gen10bit<span style=color:#666>.</span>get_cons_samples()
-    y_pred <span style=color:#666>=</span> percep<span style=color:#666>.</span>predict(Xt)
+    <span style="color:#408080;font-style:italic">#Try out predictions with our perceptron</span>
+    <span style="color:#408080;font-style:italic">#Generate consecutive data</span>
+    Xt,yt <span style="color:#666">=</span> v_gen10bit<span style="color:#666">.</span>get_cons_samples()
+    y_pred <span style="color:#666">=</span> percep<span style="color:#666">.</span>predict(Xt)
     
-    <span style=color:#408080;font-style:italic>#Plot y_pred vs. y_true</span>
-    ax[<span style=color:#666>2</span>]<span style=color:#666>.</span>scatter(yt, y_pred, c <span style=color:#666>=</span> <span style=color:#ba2121>&#39;c&#39;</span>, alpha<span style=color:#666>=</span><span style=color:#666>0.5</span>, label<span style=color:#666>=</span><span style=color:#ba2121>&#39;predicted&#39;</span>)
-    ax[<span style=color:#666>2</span>]<span style=color:#666>.</span>plot(yt,yt, <span style=color:#ba2121>&#39;k&#39;</span>, label<span style=color:#666>=</span><span style=color:#ba2121>&#39;identity&#39;</span>)
-    ax[<span style=color:#666>2</span>]<span style=color:#666>.</span>set_title(<span style=color:#ba2121>&#34;y_pred vs. y_true scaled [0,1]&#34;</span>)
-    ax[<span style=color:#666>2</span>]<span style=color:#666>.</span>set_xlabel(<span style=color:#ba2121>&#34;y_true&#34;</span>)
-    ax[<span style=color:#666>2</span>]<span style=color:#666>.</span>set_ylabel(<span style=color:#ba2121>&#34;y_pred&#34;</span>)
-    ax[<span style=color:#666>2</span>]<span style=color:#666>.</span>legend(loc<span style=color:#666>=</span><span style=color:#ba2121>&#39;best&#39;</span>)
-    ax[<span style=color:#666>2</span>]<span style=color:#666>.</span>grid()
-    plt<span style=color:#666>.</span>tight_layout()
+    <span style="color:#408080;font-style:italic">#Plot y_pred vs. y_true</span>
+    ax[<span style="color:#666">2</span>]<span style="color:#666">.</span>scatter(yt, y_pred, c <span style="color:#666">=</span> <span style="color:#ba2121">&#39;c&#39;</span>, alpha<span style="color:#666">=</span><span style="color:#666">0.5</span>, label<span style="color:#666">=</span><span style="color:#ba2121">&#39;predicted&#39;</span>)
+    ax[<span style="color:#666">2</span>]<span style="color:#666">.</span>plot(yt,yt, <span style="color:#ba2121">&#39;k&#39;</span>, label<span style="color:#666">=</span><span style="color:#ba2121">&#39;identity&#39;</span>)
+    ax[<span style="color:#666">2</span>]<span style="color:#666">.</span>set_title(<span style="color:#ba2121">&#34;y_pred vs. y_true scaled [0,1]&#34;</span>)
+    ax[<span style="color:#666">2</span>]<span style="color:#666">.</span>set_xlabel(<span style="color:#ba2121">&#34;y_true&#34;</span>)
+    ax[<span style="color:#666">2</span>]<span style="color:#666">.</span>set_ylabel(<span style="color:#ba2121">&#34;y_pred&#34;</span>)
+    ax[<span style="color:#666">2</span>]<span style="color:#666">.</span>legend(loc<span style="color:#666">=</span><span style="color:#ba2121">&#39;best&#39;</span>)
+    ax[<span style="color:#666">2</span>]<span style="color:#666">.</span>grid()
+    plt<span style="color:#666">.</span>tight_layout()
         
-    plt<span style=color:#666>.</span>show()</code></pre></td></tr></table></div></div><h3 id=evaluation-using-plots>Evaluation using plots</h3><p>The first two plots track the training process. The last shows how well our
-perceptron output tracks the true output.</p><p><img src=Figure_1.png alt="Training and Evaluation"></p><h2 id=experiment-with-the-code>Experiment with the code</h2><ul><li>Vary the number of inputs. Create and train perceptrons with these inputs.</li><li>Change/vary the learning rate. What happens if we choose too small or large
-values?</li><li>Change the number of epochs. How does an inadequately trained perceptron
-behave?</li><li>Train the perceptron with insufficient training data. For instance, train
-an 8-input perceptron with only 128 samples. How does the perceptron fare in
-the evaluation?</li></ul><blockquote><p>To get the complete version of the code, refer to this
-<a href=https://github.com/progmatix21/ML_from_scratch/blob/main/perceptron.py>github link</a>.</p></blockquote></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/perceptron/ rel=tag>perceptron</a></li><li class=tags__item><a class="tags__link btn" href=/tags/howto/ rel=tag>howto</a></li></ul></div></footer></article></main><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/naive-bayes-with-quantile-discretization/ rel=prev><span class=pager__subtitle>«&#8201;Previous</span><p class=pager__title>Naive Bayes With Quantile Discretization</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/posts/categorical-vs-categorical-heatmap/ rel=next><span class=pager__subtitle>Next&#8201;»</span><p class=pager__title>Categorical vs Categorical Heatmap</p></a></div></nav></div></div><footer class=footer><div class="container footer__container flex"><div class=footer__links><a class=footer__link href=/about/>About</a></div><div class=footer__copyright>&copy; 2023 Atrij Talgery.
-<span class=footer__copyright-credits>Generated with <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> and <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> theme.</span></div></div></footer></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script></body></html>
+    plt<span style="color:#666">.</span>show()</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="evaluation-using-plots">Evaluation using plots</h3>
+<p>The first two plots track the training process.  The last shows how well our
+perceptron output tracks the true output.</p>
+<p><img src="Figure_1.png" alt="Training and Evaluation"></p>
+<h2 id="experiment-with-the-code">Experiment with the code</h2>
+<ul>
+<li>Vary the number of inputs.  Create and train perceptrons with these inputs.</li>
+<li>Change/vary the learning rate.  What happens if we choose too small or large
+values?</li>
+<li>Change the number of epochs.  How does an inadequately trained perceptron
+behave?</li>
+<li>Train the perceptron with insufficient training data.  For instance, train
+an 8-input perceptron with only 128 samples.  How does the perceptron fare in
+the evaluation?</li>
+</ul>
+<blockquote>
+<p>To get the complete version of the code, refer to this
+<a href="https://github.com/progmatix21/ML_from_scratch/blob/main/perceptron.py">github link</a>.</p>
+</blockquote>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/perceptron/" rel="tag">perceptron</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/howto/" rel="tag">howto</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/posts/naive-bayes-with-quantile-discretization/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Naive Bayes With Quantile Discretization</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/posts/categorical-vs-categorical-heatmap/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Categorical vs Categorical Heatmap</p>
+		</a>
+	</div>
+</nav>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+<div class="footer__links">
+	<a class="footer__link" href="/about/">About</a>
+</div>
+		<div class="footer__copyright">
+			&copy; 2023 Atrij Talgery.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

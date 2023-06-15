@@ -1,82 +1,561 @@
-<!doctype html><html class=no-js lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>Non-parametric One-way ANOVA - Progmatix 21</title><script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script><meta name=description content><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/css/style.css><link rel="shortcut icon" href=/favicon.ico></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class=logo><a class=logo__link href=/ title="Progmatix 21" rel=home><div class="logo__item logo__text"><div class=logo__title>Progmatix 21</div><div class=logo__tagline>My learnings: byte by byte</div></div></a></div><div class=divider></div></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Non-parametric One-way ANOVA</h1><p class=post__lead>Correlate categorical predictor with continuous response variable</p><div class="post__meta meta"><div class="meta__item-datetime meta__item"><!doctype html><svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="meta__icon icon icon-calendar" width="18" height="16" viewBox="0 0 458 458" style="enable-background:new 0 0 458 458"><g><path d="M111.938 135.598c11.046.0 20-8.954 20-20V21.597c0-11.046-8.954-20-20-20s-20 8.954-20 20v94.001C91.938 126.644 100.892 135.598 111.938 135.598z"/><path d="M346.063 135.598c11.046.0 20-8.954 20-20V21.597c0-11.046-8.954-20-20-20s-20 8.954-20 20v94.001C326.063 126.644 335.017 135.598 346.063 135.598z"/><path d="M443 82.403h-46.938c0 12.42.0 20.918.0 33.195.0 27.614-22.386 50-50 50s-50-22.386-50-50c0-12.281.0-20.771.0-33.195H161.938c0 12.42.0 20.918.0 33.195.0 27.614-22.386 50-50 50s-50-22.386-50-50c0-12.281.0-20.771.0-33.195H15c-8.284.0-15 6.716-15 15v89.641h458V97.403C458 89.119 451.284 82.403 443 82.403z"/><path d="M0 441.403c0 8.284 6.716 15 15 15h428c8.284.0 15-6.716 15-15V227.044H0V441.403zM244.191 313.046c0-6.036 3.59-11.504 9.127-13.907 7.49-3.249 16.316-9.028 21.176-13.393 2.782-2.499 6.38-3.88 10.121-3.88h19.254c4.395.0 7.957 3.563 7.957 7.958v80.903h11.445c8.275.0 14.984 6.708 14.984 14.984.0 8.275-6.708 14.984-14.984 14.984h-59.934c-8.275.0-14.984-6.708-14.984-14.984.0-8.275 6.708-14.984 14.984-14.984h14.567V317.66c-2.163 2.886-6.797 6.077-12.243 8.754-4.618 2.27-10.076 2.008-14.445-.711-4.369-2.718-7.025-7.501-7.025-12.647V313.046zM123.295 390.677c2.691-29.175 18.127-37.168 47.125-52.83 4.622-2.493 12.811-7.06 15.92-11.134 3.842-5.044 1.97-18.001-14.359-18.001-5.549.0-11.094 1.106-17.704 5.967-6.262 4.605-14.984 3.637-20.067-2.244l-.594-.688c-3.026-3.501-4.246-8.216-3.31-12.747s3.925-8.371 8.09-10.387c22.329-10.811 56.654-13.101 73.853.952 7.977 6.523 11.966 15.332 11.966 26.43.0 32.434-40.129 38.997-54.315 54.731h41.622c8.275.0 14.984 6.708 14.984 14.984.0 8.275-6.708 14.984-14.984 14.984h-79.1c-2.577.0-5.036-1.095-6.772-3C123.914 395.789 123.059 393.243 123.295 390.677z"/></g></svg><time class=meta__text datetime=2022-09-14T10:00:34+05:30>September 14, 2022</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/data-science/ rel=category>data science</a></span></div><div class="meta__item-categories meta__item"><span class=meta__text><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>934 words/5 min read</span></div></div></header><div class="content post__content clearfix"><style>#myBtn{display:none;position:fixed;bottom:20px;right:30px;z-index:99;font-size:36px;font-weight:700;border:none;outline:none;background-color:#444;color:#fff;cursor:pointer;padding:15px;border-radius:50%}#myBtn:hover{background-color:teal}</style><button onclick=topFunction() id=myBtn title="Go to top">&#11161;</button>
-<script>let mybutton=document.getElementById("myBtn");window.onscroll=function(){scrollFunction()};function scrollFunction(){if(document.body.scrollTop>20||document.documentElement.scrollTop>20){mybutton.style.display="block";}else{mybutton.style.display="none";}}
-function topFunction(){document.body.scrollTop=0;document.documentElement.scrollTop=0;}</script><p>Regression datasets often have a mix of categorical and continuous predictor
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Non-parametric One-way ANOVA - Progmatix 21</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Progmatix 21" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Progmatix 21</div>
+					<div class="logo__tagline">My learnings: byte by byte</div>
+				</div>
+		</a>
+	</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Non-parametric One-way ANOVA</h1>
+			<p class="post__lead">Correlate categorical predictor with continuous response variable</p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" class="meta__icon icon icon-calendar" width="18" height="16" 
+	 viewBox="0 0 458 458" style="enable-background:new 0 0 458 458;" xml:space="preserve">
+<g>
+	<path d="M111.938,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
+		C91.938,126.644,100.892,135.598,111.938,135.598z"/>
+	<path d="M346.063,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
+		C326.063,126.644,335.017,135.598,346.063,135.598z"/>
+	<path d="M443,82.403h-46.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
+		c0-12.281,0-20.771,0-33.195H161.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
+		c0-12.281,0-20.771,0-33.195H15c-8.284,0-15,6.716-15,15v89.641h458V97.403C458,89.119,451.284,82.403,443,82.403z"/>
+	<path d="M0,441.403c0,8.284,6.716,15,15,15h428c8.284,0,15-6.716,15-15V227.044H0V441.403z M244.191,313.046
+		c0-6.036,3.59-11.504,9.127-13.907c7.49-3.249,16.316-9.028,21.176-13.393c2.782-2.499,6.38-3.88,10.121-3.88h19.254
+		c4.395,0,7.957,3.563,7.957,7.958v80.903h11.445c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-59.934
+		c-8.275,0-14.984-6.708-14.984-14.984c0-8.275,6.708-14.984,14.984-14.984h14.567V317.66c-2.163,2.886-6.797,6.077-12.243,8.754
+		c-4.618,2.27-10.076,2.008-14.445-0.711c-4.369-2.718-7.025-7.501-7.025-12.647V313.046z M123.295,390.677
+		c2.691-29.175,18.127-37.168,47.125-52.83c4.622-2.493,12.811-7.06,15.92-11.134c3.842-5.044,1.97-18.001-14.359-18.001
+		c-5.549,0-11.094,1.106-17.704,5.967c-6.262,4.605-14.984,3.637-20.067-2.244l-0.594-0.688c-3.026-3.501-4.246-8.216-3.31-12.747
+		s3.925-8.371,8.09-10.387c22.329-10.811,56.654-13.101,73.853,0.952c7.977,6.523,11.966,15.332,11.966,26.43
+		c0,32.434-40.129,38.997-54.315,54.731h41.622c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-79.1
+		c-2.577,0-5.036-1.095-6.772-3C123.914,395.789,123.059,393.243,123.295,390.677z"/>
+</g>
+</svg>
+<time class="meta__text" datetime="2022-09-14T10:00:34&#43;05:30">September 14, 2022</time></div>
+<div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/data-science/" rel="category">data science</a>
+	</span>
+</div><div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>934 words/5 min read
+	</span>
+</div>
+</div>
+		</header>
+		
+<div class="content post__content clearfix">
+			<style>
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 36px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+#myBtn:hover {
+  background-color: #008080;
+}
+</style>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">&#11161;</button>
+
+
+<script>
+
+let mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+
+
+<p>Regression datasets often have a mix of categorical and continuous predictor
 variables. When the number of categorical variables is large, how do you pick
 the ones that are relevant to the regression(i.e. correlated to the response
-variable)?</p><p>The <a href=https://www.kaggle.com/datasets/marcopale/housing>Ames Housing dataset</a>
-is a property dataset containing 79 features of which 43 are categorical. The
+variable)?</p>
+<p>The <a href="https://www.kaggle.com/datasets/marcopale/housing">Ames Housing dataset</a>
+is a property dataset containing 79 features of which 43 are categorical.  The
 task is to predict the saleprice of houses using regression. As part of feature
 selection step, we would use one-way ANOVA to rank the categorical features so
-that we can pick the top ones.</p><p>There are two ways to do this:</p><h2 id=the-visual-approach>The visual approach</h2><p>In this approach, we plot boxplots showing the distribution of <code>SalePrice</code>
-across the values of various categorical variables.</p><p><img src=boxplots.png alt=Boxplot></p><p>To see the boxplots in context, go to my Kaggle notebook
-<a href=https://www.kaggle.com/code/atrijtalgery/comprehensiveeda-ameshousing#One-way-ANOVA>here</a></p><p>From the boxplots, we can easily see that <code>Paved Drive</code> and <code>Sale Type</code>(among
-others) have a clear influence on the <code>SalePrice</code>.</p><p>We can use visual approach when there are a few categorical variables. When the
+that we can pick the top ones.</p>
+<p>There are two ways to do this:</p>
+<h2 id="the-visual-approach">The visual approach</h2>
+<p>In this approach, we plot boxplots showing the distribution of <code>SalePrice</code>
+across the values of various categorical variables.</p>
+<p><img src="boxplots.png" alt="Boxplot"></p>
+<p>To see the boxplots in context, go to my Kaggle notebook
+<a href="https://www.kaggle.com/code/atrijtalgery/comprehensiveeda-ameshousing#One-way-ANOVA">here</a></p>
+<p>From the boxplots, we can easily see that <code>Paved Drive</code> and <code>Sale Type</code>(among
+others) have a clear influence on the <code>SalePrice</code>.</p>
+<p>We can use visual approach when there are a few categorical variables. When the
 number of categorical variables(also called factors) is more than a handful, we
-need a quantitative approach to rank their influence on the target variable.</p><h2 id=the-quantitative-approach>The quantitative approach</h2><p>Traditional ANOVA has strict requirements in terms of the response variable
+need a quantitative approach to rank their influence on the target variable.</p>
+<h2 id="the-quantitative-approach">The quantitative approach</h2>
+<p>Traditional ANOVA has strict requirements in terms of the response variable
 distributions being Gaussian with equal variances. However, this condition is
-violated in our dataset.</p><p>Hence, we will use the <em>Kruskal-Wallis</em> test which is the non-parametric version of the one-way ANOVA.</p><p>We will follow the following steps:</p><ul><li>Group the dataframe based on values of each categorical variable.</li><li>Extract the response variable column from each group.</li><li>Use these columns to do a one-way ANOVA.</li><li>Create a dataframe sorted by p-values then by h-score and pick the top n.</li></ul><p>The following is a code fragment from the same notebook mentioned above.</p><div class=highlight><div style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
-</span></span><span style=display:block;width:100%;background-color:#e5e5e5><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
-</span></span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre style=-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:green;font-weight:700>import</span> <span style=color:#00f;font-weight:700>scipy.stats</span> <span style=color:green;font-weight:700>as</span> <span style=color:#00f;font-weight:700>stats</span>
-response_var <span style=color:#666>=</span> <span style=color:#ba2121>&#39;SalePrice&#39;</span>  <span style=color:#408080;font-style:italic>#or &#39;SalePrice&#39; log</span>
-CATVAL, DF <span style=color:#666>=</span> <span style=color:#666>0</span>,<span style=color:#666>1</span>  <span style=color:#408080;font-style:italic>#C style enum type. See note below.</span>
-arg_list <span style=color:#666>=</span> []  <span style=color:#408080;font-style:italic>#argument list for f oneway() function.</span>
-res_list <span style=color:#666>=</span> []  <span style=color:#408080;font-style:italic>#result list with tuples: (f-score, p-value)</span>
+violated in our dataset.</p>
+<p>Hence, we will use the <em>Kruskal-Wallis</em> test which is the non-parametric version of the one-way ANOVA.</p>
+<p>We will follow the following steps:</p>
+<ul>
+<li>Group the dataframe based on values of each categorical variable.</li>
+<li>Extract the response variable column from each group.</li>
+<li>Use these columns to do a one-way ANOVA.</li>
+<li>Create a dataframe sorted by p-values then by h-score and pick the top n.</li>
+</ul>
+<p>The following is a code fragment from the same notebook mentioned above.</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">scipy.stats</span> <span style="color:#008000;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">stats</span>
+response_var <span style="color:#666">=</span> <span style="color:#ba2121">&#39;SalePrice&#39;</span>  <span style="color:#408080;font-style:italic">#or &#39;SalePrice&#39; log</span>
+CATVAL, DF <span style="color:#666">=</span> <span style="color:#666">0</span>,<span style="color:#666">1</span>  <span style="color:#408080;font-style:italic">#C style enum type. See note below.</span>
+arg_list <span style="color:#666">=</span> []  <span style="color:#408080;font-style:italic">#argument list for f oneway() function.</span>
+res_list <span style="color:#666">=</span> []  <span style="color:#408080;font-style:italic">#result list with tuples: (f-score, p-value)</span>
 
-<span style=color:green;font-weight:700>for</span> feat <span style=color:#a2f;font-weight:700>in</span> cat_feat_names_fin:
-    <span style=color:#408080;font-style:italic>#create cat feature value wise groups of the main dataframe.</span>
-    group_list <span style=color:#666>=</span> <span style=color:green>list</span>(housingdf_dc<span style=color:#666>.</span>groupby(feat))  <span style=color:#408080;font-style:italic>#get the groups into a list one dataframe per</span>
-    <span style=color:#408080;font-style:italic>#cat value.</span>
-    <span style=color:#408080;font-style:italic>#Structure of this array: Array of tuples - first element is cat value, second element is dataframe.</span>
-    <span style=color:#408080;font-style:italic>#Note: Use the enum values above to traverse through group list.</span>
+<span style="color:#008000;font-weight:bold">for</span> feat <span style="color:#a2f;font-weight:bold">in</span> cat_feat_names_fin:
+    <span style="color:#408080;font-style:italic">#create cat feature value wise groups of the main dataframe.</span>
+    group_list <span style="color:#666">=</span> <span style="color:#008000">list</span>(housingdf_dc<span style="color:#666">.</span>groupby(feat))  <span style="color:#408080;font-style:italic">#get the groups into a list one dataframe per</span>
+    <span style="color:#408080;font-style:italic">#cat value.</span>
+    <span style="color:#408080;font-style:italic">#Structure of this array: Array of tuples - first element is cat value, second element is dataframe.</span>
+    <span style="color:#408080;font-style:italic">#Note: Use the enum values above to traverse through group list.</span>
     
-    <span style=color:green;font-weight:700>for</span> grp <span style=color:#a2f;font-weight:700>in</span> group_list:  <span style=color:#408080;font-style:italic>#group gets tuples: (cat-val, df with selected cat-val)</span>
-        arg_list<span style=color:#666>.</span>append(grp[DF][response_var]<span style=color:#666>.</span>values)
-        <span style=color:#408080;font-style:italic>#arg_list now has a list of response variable columns, one for each category value.</span>
+    <span style="color:#008000;font-weight:bold">for</span> grp <span style="color:#a2f;font-weight:bold">in</span> group_list:  <span style="color:#408080;font-style:italic">#group gets tuples: (cat-val, df with selected cat-val)</span>
+        arg_list<span style="color:#666">.</span>append(grp[DF][response_var]<span style="color:#666">.</span>values)
+        <span style="color:#408080;font-style:italic">#arg_list now has a list of response variable columns, one for each category value.</span>
         
-<span style=display:block;width:100%;background-color:#e5e5e5>    <span style=color:#408080;font-style:italic>#Apply the one-way Kruskal-Wallis (non-parametric) ANOVA.</span>
-</span><span style=display:block;width:100%;background-color:#e5e5e5>    h, p <span style=color:#666>=</span> stats<span style=color:#666>.</span>kruskal(<span style=color:#666>*</span>arg_list) 
-</span><span style=display:block;width:100%;background-color:#e5e5e5>    res_list<span style=color:#666>.</span>append((feat,h,p))
+<span style="display:block;width:100%;background-color:#e5e5e5">    <span style="color:#408080;font-style:italic">#Apply the one-way Kruskal-Wallis (non-parametric) ANOVA.</span>
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    h, p <span style="color:#666">=</span> stats<span style="color:#666">.</span>kruskal(<span style="color:#666">*</span>arg_list) 
+</span><span style="display:block;width:100%;background-color:#e5e5e5">    res_list<span style="color:#666">.</span>append((feat,h,p))
 </span>    
-fvalue_df <span style=color:#666>=</span> pd<span style=color:#666>.</span>DataFrame(res_list, columns <span style=color:#666>=</span> [<span style=color:#ba2121>&#39;feat&#39;</span>, <span style=color:#ba2121>&#39;h&#39;</span>, <span style=color:#ba2121>&#39;p&#39;</span>])
-<span style=color:#408080;font-style:italic>#We have a dataframe with f/h scores and p-values; we need to pick the best n indicating strongest</span>
-<span style=color:#408080;font-style:italic>#correlation.</span>
-fvalue_df<span style=color:#666>.</span>sort_values([<span style=color:#ba2121>&#39;p&#39;</span>,<span style=color:#ba2121>&#39;h&#39;</span>], ascending <span style=color:#666>=</span> [True,False], inplace <span style=color:#666>=</span> True)
-fvalue_df<span style=color:#666>.</span>reset_index(drop <span style=color:#666>=</span> True, inplace <span style=color:#666>=</span> True) <span style=color:#408080;font-style:italic>#resetting the index gives us an advantage.</span>
-<span style=color:#408080;font-style:italic>#If two categories are related as shown by the chi square test, we can pick the one that has a </span>
-<span style=color:#408080;font-style:italic>#lower value as that will be more strongly correlated to the response variable.</span>
-fvalue_df<span style=color:#666>.</span>iloc[:,:]</code></pre></td></tr></table></div></div><blockquote><p>From line 7 we iterate over the list of categorical variables, splitting the
+fvalue_df <span style="color:#666">=</span> pd<span style="color:#666">.</span>DataFrame(res_list, columns <span style="color:#666">=</span> [<span style="color:#ba2121">&#39;feat&#39;</span>, <span style="color:#ba2121">&#39;h&#39;</span>, <span style="color:#ba2121">&#39;p&#39;</span>])
+<span style="color:#408080;font-style:italic">#We have a dataframe with f/h scores and p-values; we need to pick the best n indicating strongest</span>
+<span style="color:#408080;font-style:italic">#correlation.</span>
+fvalue_df<span style="color:#666">.</span>sort_values([<span style="color:#ba2121">&#39;p&#39;</span>,<span style="color:#ba2121">&#39;h&#39;</span>], ascending <span style="color:#666">=</span> [True,False], inplace <span style="color:#666">=</span> True)
+fvalue_df<span style="color:#666">.</span>reset_index(drop <span style="color:#666">=</span> True, inplace <span style="color:#666">=</span> True) <span style="color:#408080;font-style:italic">#resetting the index gives us an advantage.</span>
+<span style="color:#408080;font-style:italic">#If two categories are related as shown by the chi square test, we can pick the one that has a </span>
+<span style="color:#408080;font-style:italic">#lower value as that will be more strongly correlated to the response variable.</span>
+fvalue_df<span style="color:#666">.</span>iloc[:,:]</code></pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>From line 7 we iterate over the list of categorical variables, splitting the
 main dataframe into subframes one for each category value. From line 14, we
 iterate over the subframes to extract the response variable vectors(one per
 category value) and append it to an argument list preparatory to calling the
 ANOVA function. Finally, in the highlighted lines, we calculate the F-score for
 that particular feature and append it to a list which we later convert to a
-sorted dataframe from lines 22 onwards.</p></blockquote><p>We would then get a table of categorical features in decreasing order of importance
-as seen below.</p><style scoped>.dataframe tbody tr th:only-of-type{vertical-align:middle}.dataframe tbody tr th{vertical-align:top}.dataframe thead th{text-align:center}</style><table border=1 class=dataframe , style=width:40%><thead><tr style=text-align:center><th></th><th>feat</th><th>h</th><th>p</th></tr></thead><tbody><tr><th>0</th><td>Sale Condition</td><td>11862.088786</td><td>0.000000e+00</td></tr><tr><th>1</th><td>Sale Type</td><td>11649.484168</td><td>0.000000e+00</td></tr><tr><th>2</th><td>Paved Drive</td><td>11426.564666</td><td>0.000000e+00</td></tr><tr><th>3</th><td>Garage Cond</td><td>11268.378841</td><td>0.000000e+00</td></tr><tr><th>4</th><td>Garage Qual</td><td>11166.915197</td><td>0.000000e+00</td></tr><tr><th>5</th><td>Garage Finish</td><td>11030.495476</td><td>0.000000e+00</td></tr><tr><th>6</th><td>Garage Type</td><td>10328.708545</td><td>0.000000e+00</td></tr><tr><th>7</th><td>Functional</td><td>9674.236518</td><td>0.000000e+00</td></tr><tr><th>8</th><td>Kitchen Qual</td><td>9645.993093</td><td>0.000000e+00</td></tr><tr><th>9</th><td>Electrical</td><td>8721.048294</td><td>0.000000e+00</td></tr><tr><th>10</th><td>Central Air</td><td>8576.530553</td><td>0.000000e+00</td></tr><tr><th>11</th><td>Heating QC</td><td>8441.378149</td><td>0.000000e+00</td></tr><tr><th>12</th><td>Heating</td><td>7935.587928</td><td>0.000000e+00</td></tr><tr><th>13</th><td>BsmtFin Type 2</td><td>7924.419589</td><td>0.000000e+00</td></tr><tr><th>14</th><td>BsmtFin Type 1</td><td>7901.301287</td><td>0.000000e+00</td></tr><tr><th>15</th><td>Bsmt Exposure</td><td>7387.120701</td><td>0.000000e+00</td></tr><tr><th>16</th><td>Bsmt Cond</td><td>7124.662257</td><td>0.000000e+00</td></tr><tr><th>17</th><td>Bsmt Qual</td><td>7061.629472</td><td>0.000000e+00</td></tr><tr><th>18</th><td>Foundation</td><td>6096.974304</td><td>0.000000e+00</td></tr><tr><th>19</th><td>Exter Cond</td><td>5375.322697</td><td>0.000000e+00</td></tr><tr><th>20</th><td>Exter Qual</td><td>5344.786094</td><td>0.000000e+00</td></tr><tr><th>21</th><td>Mas Vnr Type</td><td>4407.873986</td><td>0.000000e+00</td></tr><tr><th>22</th><td>Exterior 2nd</td><td>4044.730460</td><td>0.000000e+00</td></tr><tr><th>23</th><td>Exterior 1st</td><td>3605.698606</td><td>0.000000e+00</td></tr><tr><th>24</th><td>Roof Matl</td><td>3166.997822</td><td>0.000000e+00</td></tr><tr><th>25</th><td>Roof Style</td><td>3150.723404</td><td>0.000000e+00</td></tr><tr><th>26</th><td>House Style</td><td>3072.309979</td><td>0.000000e+00</td></tr><tr><th>27</th><td>Bldg Type</td><td>2840.675901</td><td>0.000000e+00</td></tr><tr><th>28</th><td>Condition 2</td><td>2764.800185</td><td>0.000000e+00</td></tr><tr><th>29</th><td>Condition 1</td><td>2740.046612</td><td>0.000000e+00</td></tr><tr><th>30</th><td>Neighborhood</td><td>2630.599196</td><td>0.000000e+00</td></tr><tr><th>31</th><td>Lot Config</td><td>1406.872181</td><td>9.047556e-271</td></tr><tr><th>32</th><td>Land Slope</td><td>1414.790250</td><td>4.264197e-270</td></tr><tr><th>33</th><td>Land Contour</td><td>1358.608290</td><td>5.005876e-267</td></tr><tr><th>34</th><td>Utilities</td><td>1361.113269</td><td>4.387615e-265</td></tr><tr><th>35</th><td>Lot Shape</td><td>1298.090210</td><td>1.578868e-257</td></tr><tr><th>36</th><td>MS Zoning</td><td>1047.959037</td><td>2.291721e-209</td></tr><tr><th>37</th><td>Street</td><td>1055.446473</td><td>3.057046e-209</td></tr><tr><th>38</th><td>MS SubClass</td><td>676.652485</td><td>2.472914e-135</td></tr></tbody></table><p>The list throws up some surprising and not-so-surprising insights!</p></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/anova/ rel=tag>ANOVA</a></li><li class=tags__item><a class="tags__link btn" href=/tags/eda/ rel=tag>EDA</a></li><li class=tags__item><a class="tags__link btn" href=/tags/howto/ rel=tag>howto</a></li></ul></div></footer></article></main><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/posts/neat-wordcount-histograms/ rel=prev><span class=pager__subtitle>«&#8201;Previous</span><p class=pager__title>Neat Wordcount Histograms</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/posts/choosing-right-colormap-for-heatmap/ rel=next><span class=pager__subtitle>Next&#8201;»</span><p class=pager__title>Choosing Right Colormap for Heatmap</p></a></div></nav></div></div><footer class=footer><div class="container footer__container flex"><div class=footer__links><a class=footer__link href=/about/>About</a></div><div class=footer__copyright>&copy; 2023 Atrij Talgery.
-<span class=footer__copyright-credits>Generated with <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> and <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> theme.</span></div></div></footer></div><script async defer src=/js/menu.js></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script></body></html>
+sorted dataframe from lines 22 onwards.</p>
+</blockquote>
+<p>We would then get a table of categorical features in decreasing order of importance
+as seen below.</p>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: center;
+    }
+</style>
+<table border="1" class="dataframe", style="width:40%">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>feat</th>
+      <th>h</th>
+      <th>p</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sale Condition</td>
+      <td>11862.088786</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Sale Type</td>
+      <td>11649.484168</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Paved Drive</td>
+      <td>11426.564666</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Garage Cond</td>
+      <td>11268.378841</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Garage Qual</td>
+      <td>11166.915197</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Garage Finish</td>
+      <td>11030.495476</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Garage Type</td>
+      <td>10328.708545</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Functional</td>
+      <td>9674.236518</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Kitchen Qual</td>
+      <td>9645.993093</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Electrical</td>
+      <td>8721.048294</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Central Air</td>
+      <td>8576.530553</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Heating QC</td>
+      <td>8441.378149</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Heating</td>
+      <td>7935.587928</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>BsmtFin Type 2</td>
+      <td>7924.419589</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>BsmtFin Type 1</td>
+      <td>7901.301287</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Bsmt Exposure</td>
+      <td>7387.120701</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Bsmt Cond</td>
+      <td>7124.662257</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Bsmt Qual</td>
+      <td>7061.629472</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Foundation</td>
+      <td>6096.974304</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Exter Cond</td>
+      <td>5375.322697</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Exter Qual</td>
+      <td>5344.786094</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Mas Vnr Type</td>
+      <td>4407.873986</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Exterior 2nd</td>
+      <td>4044.730460</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Exterior 1st</td>
+      <td>3605.698606</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Roof Matl</td>
+      <td>3166.997822</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Roof Style</td>
+      <td>3150.723404</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>House Style</td>
+      <td>3072.309979</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Bldg Type</td>
+      <td>2840.675901</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Condition 2</td>
+      <td>2764.800185</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Condition 1</td>
+      <td>2740.046612</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Neighborhood</td>
+      <td>2630.599196</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Lot Config</td>
+      <td>1406.872181</td>
+      <td>9.047556e-271</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Land Slope</td>
+      <td>1414.790250</td>
+      <td>4.264197e-270</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Land Contour</td>
+      <td>1358.608290</td>
+      <td>5.005876e-267</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Utilities</td>
+      <td>1361.113269</td>
+      <td>4.387615e-265</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Lot Shape</td>
+      <td>1298.090210</td>
+      <td>1.578868e-257</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>MS Zoning</td>
+      <td>1047.959037</td>
+      <td>2.291721e-209</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Street</td>
+      <td>1055.446473</td>
+      <td>3.057046e-209</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>MS SubClass</td>
+      <td>676.652485</td>
+      <td>2.472914e-135</td>
+    </tr>
+  </tbody>
+</table>
+<p>The list throws up some surprising and not-so-surprising insights!</p>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/anova/" rel="tag">ANOVA</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/eda/" rel="tag">EDA</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/howto/" rel="tag">howto</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/posts/neat-wordcount-histograms/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Neat Wordcount Histograms</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/posts/choosing-right-colormap-for-heatmap/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Choosing Right Colormap for Heatmap</p>
+		</a>
+	</div>
+</nav>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+<div class="footer__links">
+	<a class="footer__link" href="/about/">About</a>
+</div>
+		<div class="footer__copyright">
+			&copy; 2023 Atrij Talgery.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

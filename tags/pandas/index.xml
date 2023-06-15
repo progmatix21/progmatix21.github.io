@@ -1,2 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>pandas on Progmatix 21</title><link>https://progmatix21.github.io/tags/pandas/</link><description>Recent content in pandas on Progmatix 21</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 20 Jan 2023 17:26:05 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/tags/pandas/index.xml" rel="self" type="application/rss+xml"/><item><title>Create a dataframe: three ways</title><link>https://progmatix21.github.io/posts/create-dataframe-three-ways/</link><pubDate>Fri, 20 Jan 2023 17:26:05 +0530</pubDate><guid>https://progmatix21.github.io/posts/create-dataframe-three-ways/</guid><description>&lt;p>At times it is necessary to create dataframes within a program. Learn
-three ways to create them.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pandas on Progmatix 21</title>
+    <link>https://progmatix21.github.io/tags/pandas/</link>
+    <description>Recent content in pandas on Progmatix 21</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Jan 2023 17:26:05 +0530</lastBuildDate>
+    
+	<atom:link href="https://progmatix21.github.io/tags/pandas/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Create a dataframe: three ways</title>
+      <link>https://progmatix21.github.io/posts/create-dataframe-three-ways/</link>
+      <pubDate>Fri, 20 Jan 2023 17:26:05 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/create-dataframe-three-ways/</guid>
+      <description>&lt;p&gt;At times it is necessary to create dataframes within a program. Learn
+three ways to create them.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

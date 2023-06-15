@@ -1,1 +1,159 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on Progmatix 21</title><link>https://progmatix21.github.io/tags/</link><description>Recent content in Tags on Progmatix 21</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 17 May 2023 16:13:01 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>classification</title><link>https://progmatix21.github.io/tags/classification/</link><pubDate>Wed, 17 May 2023 16:13:01 +0530</pubDate><guid>https://progmatix21.github.io/tags/classification/</guid><description/></item><item><title>linked lists</title><link>https://progmatix21.github.io/tags/linked-lists/</link><pubDate>Tue, 09 May 2023 11:04:56 +0530</pubDate><guid>https://progmatix21.github.io/tags/linked-lists/</guid><description/></item><item><title>python</title><link>https://progmatix21.github.io/tags/python/</link><pubDate>Tue, 09 May 2023 11:04:56 +0530</pubDate><guid>https://progmatix21.github.io/tags/python/</guid><description/></item><item><title>knapsack</title><link>https://progmatix21.github.io/tags/knapsack/</link><pubDate>Fri, 28 Apr 2023 10:59:54 +0530</pubDate><guid>https://progmatix21.github.io/tags/knapsack/</guid><description/></item><item><title>eda</title><link>https://progmatix21.github.io/tags/eda/</link><pubDate>Sun, 02 Apr 2023 14:33:20 +0530</pubDate><guid>https://progmatix21.github.io/tags/eda/</guid><description/></item><item><title>howto</title><link>https://progmatix21.github.io/tags/howto/</link><pubDate>Tue, 21 Mar 2023 11:24:17 +0530</pubDate><guid>https://progmatix21.github.io/tags/howto/</guid><description/></item><item><title>perceptron</title><link>https://progmatix21.github.io/tags/perceptron/</link><pubDate>Tue, 21 Mar 2023 11:24:17 +0530</pubDate><guid>https://progmatix21.github.io/tags/perceptron/</guid><description/></item><item><title>discretization</title><link>https://progmatix21.github.io/tags/discretization/</link><pubDate>Thu, 23 Feb 2023 21:29:43 +0530</pubDate><guid>https://progmatix21.github.io/tags/discretization/</guid><description/></item><item><title>comb sort</title><link>https://progmatix21.github.io/tags/comb-sort/</link><pubDate>Wed, 15 Feb 2023 10:28:29 +0530</pubDate><guid>https://progmatix21.github.io/tags/comb-sort/</guid><description/></item><item><title>bubble sort</title><link>https://progmatix21.github.io/tags/bubble-sort/</link><pubDate>Tue, 31 Jan 2023 10:38:21 +0530</pubDate><guid>https://progmatix21.github.io/tags/bubble-sort/</guid><description/></item><item><title>binary search</title><link>https://progmatix21.github.io/tags/binary-search/</link><pubDate>Thu, 26 Jan 2023 13:07:23 +0530</pubDate><guid>https://progmatix21.github.io/tags/binary-search/</guid><description/></item><item><title>pandas</title><link>https://progmatix21.github.io/tags/pandas/</link><pubDate>Fri, 20 Jan 2023 17:26:05 +0530</pubDate><guid>https://progmatix21.github.io/tags/pandas/</guid><description/></item><item><title>plotting</title><link>https://progmatix21.github.io/tags/plotting/</link><pubDate>Mon, 16 Jan 2023 11:37:32 +0530</pubDate><guid>https://progmatix21.github.io/tags/plotting/</guid><description/></item><item><title>ANOVA</title><link>https://progmatix21.github.io/tags/anova/</link><pubDate>Wed, 14 Sep 2022 10:00:34 +0530</pubDate><guid>https://progmatix21.github.io/tags/anova/</guid><description/></item><item><title>NLP</title><link>https://progmatix21.github.io/tags/nlp/</link><pubDate>Mon, 12 Sep 2022 17:41:37 +0530</pubDate><guid>https://progmatix21.github.io/tags/nlp/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Progmatix 21</title>
+    <link>https://progmatix21.github.io/tags/</link>
+    <description>Recent content in Tags on Progmatix 21</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Jun 2023 12:23:01 +0530</lastBuildDate>
+    
+	<atom:link href="https://progmatix21.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>classification</title>
+      <link>https://progmatix21.github.io/tags/classification/</link>
+      <pubDate>Thu, 15 Jun 2023 12:23:01 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>metrics</title>
+      <link>https://progmatix21.github.io/tags/metrics/</link>
+      <pubDate>Thu, 15 Jun 2023 12:23:01 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/metrics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>plotting</title>
+      <link>https://progmatix21.github.io/tags/plotting/</link>
+      <pubDate>Thu, 15 Jun 2023 12:23:01 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/plotting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linked lists</title>
+      <link>https://progmatix21.github.io/tags/linked-lists/</link>
+      <pubDate>Tue, 09 May 2023 11:04:56 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/linked-lists/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://progmatix21.github.io/tags/python/</link>
+      <pubDate>Tue, 09 May 2023 11:04:56 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>knapsack</title>
+      <link>https://progmatix21.github.io/tags/knapsack/</link>
+      <pubDate>Fri, 28 Apr 2023 10:59:54 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/knapsack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>eda</title>
+      <link>https://progmatix21.github.io/tags/eda/</link>
+      <pubDate>Sun, 02 Apr 2023 14:33:20 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/eda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>howto</title>
+      <link>https://progmatix21.github.io/tags/howto/</link>
+      <pubDate>Tue, 21 Mar 2023 11:24:17 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/howto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>perceptron</title>
+      <link>https://progmatix21.github.io/tags/perceptron/</link>
+      <pubDate>Tue, 21 Mar 2023 11:24:17 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/perceptron/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>discretization</title>
+      <link>https://progmatix21.github.io/tags/discretization/</link>
+      <pubDate>Thu, 23 Feb 2023 21:29:43 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/discretization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>comb sort</title>
+      <link>https://progmatix21.github.io/tags/comb-sort/</link>
+      <pubDate>Wed, 15 Feb 2023 10:28:29 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/comb-sort/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bubble sort</title>
+      <link>https://progmatix21.github.io/tags/bubble-sort/</link>
+      <pubDate>Tue, 31 Jan 2023 10:38:21 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/bubble-sort/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>binary search</title>
+      <link>https://progmatix21.github.io/tags/binary-search/</link>
+      <pubDate>Thu, 26 Jan 2023 13:07:23 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/binary-search/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pandas</title>
+      <link>https://progmatix21.github.io/tags/pandas/</link>
+      <pubDate>Fri, 20 Jan 2023 17:26:05 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/pandas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ANOVA</title>
+      <link>https://progmatix21.github.io/tags/anova/</link>
+      <pubDate>Wed, 14 Sep 2022 10:00:34 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/anova/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NLP</title>
+      <link>https://progmatix21.github.io/tags/nlp/</link>
+      <pubDate>Mon, 12 Sep 2022 17:41:37 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
