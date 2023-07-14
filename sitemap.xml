@@ -3,12 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://progmatix21.github.io/tags/anaconda/</loc>
-    <lastmod>2023-06-29T11:33:55+05:30</lastmod>
+    <loc>https://progmatix21.github.io/categories/</loc>
+    <lastmod>2023-07-14T11:51:17+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://progmatix21.github.io/categories/</loc>
+    <loc>https://progmatix21.github.io/tags/classification/</loc>
+    <lastmod>2023-07-14T11:51:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/categories/data-science/</loc>
+    <lastmod>2023-07-14T11:51:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/</loc>
+    <lastmod>2023-07-14T11:51:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/</loc>
+    <lastmod>2023-07-14T11:51:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/confusion-matrix/</loc>
+    <lastmod>2023-07-14T11:51:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/anaconda/</loc>
     <lastmod>2023-06-29T11:33:55+05:30</lastmod>
   </url>
   
@@ -20,21 +45,6 @@
   <url>
     <loc>https://progmatix21.github.io/categories/dev/</loc>
     <lastmod>2023-06-29T11:33:55+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/posts/</loc>
-    <lastmod>2023-06-29T11:33:55+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/</loc>
-    <lastmod>2023-06-29T11:33:55+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/classification/</loc>
-    <lastmod>2023-06-15T12:23:01+05:30</lastmod>
   </url>
   
   <url>
@@ -55,11 +65,6 @@
   <url>
     <loc>https://progmatix21.github.io/posts/the-validation-curve/</loc>
     <lastmod>2023-06-15T12:23:01+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/categories/data-science/</loc>
-    <lastmod>2023-05-17T16:13:01+05:30</lastmod>
   </url>
   
   <url>
