@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Mergesort Cutaway - Progmatix 21</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Progmatix 21" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Progmatix 21</div>
+					<div class="logo__tagline">My learnings: byte by byte</div>
+				</div>
+		</a>
+	</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Mergesort Cutaway</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" class="meta__icon icon icon-calendar" width="18" height="16" 
+	 viewBox="0 0 458 458" style="enable-background:new 0 0 458 458;" xml:space="preserve">
+<g>
+	<path d="M111.938,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
+		C91.938,126.644,100.892,135.598,111.938,135.598z"/>
+	<path d="M346.063,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
+		C326.063,126.644,335.017,135.598,346.063,135.598z"/>
+	<path d="M443,82.403h-46.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
+		c0-12.281,0-20.771,0-33.195H161.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
+		c0-12.281,0-20.771,0-33.195H15c-8.284,0-15,6.716-15,15v89.641h458V97.403C458,89.119,451.284,82.403,443,82.403z"/>
+	<path d="M0,441.403c0,8.284,6.716,15,15,15h428c8.284,0,15-6.716,15-15V227.044H0V441.403z M244.191,313.046
+		c0-6.036,3.59-11.504,9.127-13.907c7.49-3.249,16.316-9.028,21.176-13.393c2.782-2.499,6.38-3.88,10.121-3.88h19.254
+		c4.395,0,7.957,3.563,7.957,7.958v80.903h11.445c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-59.934
+		c-8.275,0-14.984-6.708-14.984-14.984c0-8.275,6.708-14.984,14.984-14.984h14.567V317.66c-2.163,2.886-6.797,6.077-12.243,8.754
+		c-4.618,2.27-10.076,2.008-14.445-0.711c-4.369-2.718-7.025-7.501-7.025-12.647V313.046z M123.295,390.677
+		c2.691-29.175,18.127-37.168,47.125-52.83c4.622-2.493,12.811-7.06,15.92-11.134c3.842-5.044,1.97-18.001-14.359-18.001
+		c-5.549,0-11.094,1.106-17.704,5.967c-6.262,4.605-14.984,3.637-20.067-2.244l-0.594-0.688c-3.026-3.501-4.246-8.216-3.31-12.747
+		s3.925-8.371,8.09-10.387c22.329-10.811,56.654-13.101,73.853,0.952c7.977,6.523,11.966,15.332,11.966,26.43
+		c0,32.434-40.129,38.997-54.315,54.731h41.622c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-79.1
+		c-2.577,0-5.036-1.095-6.772-3C123.914,395.789,123.059,393.243,123.295,390.677z"/>
+</g>
+</svg>
+<time class="meta__text" datetime="2023-08-12T11:39:17&#43;05:30">August 12, 2023</time></div>
+<div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/algorithms/" rel="category">algorithms</a>
+	</span>
+</div><div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>963 words/5 min read
+	</span>
+</div>
+</div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+	    <details>
+	        <summary>Click to toggle</summary>
+		        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-mergesort">What is mergesort?</a></li>
+    <li><a href="#why-mergesort">Why mergesort?</a></li>
+    <li><a href="#where-is-mergesort-used">Where is mergesort used?</a></li>
+    <li><a href="#mergesort-implementation">Mergesort implementation</a></li>
+  </ul>
+</nav>
+		    </details>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<style>
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 36px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+#myBtn:hover {
+  background-color: #008080;
+}
+</style>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">&#11161;</button>
+
+
+<script>
+
+let mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+
+
+<p>Sorting an array can be done in different ways.  It ranges from the simpler
+bubble sort to more complicated ones such as the merge sort.</p>
+<h2 id="what-is-mergesort">What is mergesort?</h2>
+<p>Top-down mergesort starts by continuously dividing an array into smaller
+sublists until each sublist is of size 1.  Then, pairs of individual sublists are
+merged in a sorted order, to form arrays of size 2.  This process continues until
+only one merged list remains.  This final list is the sorted array.</p>
+<p>The term mergesort is a combination of two subwords: merge - that is to
+merge smaller arrays into bigger ones and sort - meaning to rearrange terms
+in order &ndash; ascending or descending.</p>
+<h2 id="why-mergesort">Why mergesort?</h2>
+<p>Mergesort is one of the efficient sorting algorithms.  It outshines
+the capabilities of bubble sort by a large margin.  Mergesort has best and worst
+case complexity of \(O(n log n)\) compared to the even worse complexity of the
+bubble sort going up to \(O(n^2)\).</p>
+<h2 id="where-is-mergesort-used">Where is mergesort used?</h2>
+<p>Mergesort is one of the typical sorting algorithms used for sorting arrays or
+sequences of numbers.  It is the method used by many builtin functions of
+programming languages due to its efficiency and short sorting time.</p>
+<h2 id="mergesort-implementation">Mergesort implementation</h2>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#408080;font-style:italic">#!/usr/bin/env python3</span>
+
+<span style="color:#008000;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">operator</span>
+
+<span style="color:#008000;font-weight:bold">class</span> <span style="color:#00f;font-weight:bold">Mergesort</span>:
+    <span style="color:#408080;font-style:italic"># Implements the top down merge sort algorithm.</span>
+    
+    <span style="color:#008000;font-weight:bold">def</span> __init__(self, ascending<span style="color:#666">=</span>True, cutaway<span style="color:#666">=</span>False):
+        self<span style="color:#666">.</span>_ascending <span style="color:#666">=</span> ascending
+        self<span style="color:#666">.</span>_cutaway <span style="color:#666">=</span> cutaway
+                    
+    <span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">_rsplit</span>(self, arr):
+        <span style="color:#408080;font-style:italic"># Recursively splits an array and returns subarrays of size 1</span>
+        <span style="color:#008000;font-weight:bold">if</span> self<span style="color:#666">.</span>_cutaway:
+            <span style="color:#008000;font-weight:bold">print</span>(<span style="color:#ba2121">&#39;&lt;&lt; s p l i t &gt;&gt;&#39;</span>,arr)
+        _arr <span style="color:#666">=</span> arr<span style="color:#666">.</span>copy()
+        <span style="color:#008000;font-weight:bold">if</span> <span style="color:#008000">len</span>(_arr) <span style="color:#666">&lt;=</span> <span style="color:#666">1</span>:   <span style="color:#408080;font-style:italic"># edge condition</span>
+            <span style="color:#008000;font-weight:bold">return</span> [_arr]
+
+        mid <span style="color:#666">=</span> <span style="color:#008000">len</span>(_arr)<span style="color:#666">//</span><span style="color:#666">2</span> <span style="color:#408080;font-style:italic"># the &#39;middle&#39; dividing point</span>
+        
+        <span style="color:#408080;font-style:italic"># now array as two parts -- one slice is [:mid] and another [mid:]</span>
+        <span style="color:#008000;font-weight:bold">return</span> [<span style="color:#666">*</span>self<span style="color:#666">.</span>_rsplit(_arr[:mid]), <span style="color:#666">*</span>self<span style="color:#666">.</span>_rsplit(_arr[mid:])]
+            
+    <span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">_merge</span>(self,frag1,frag2):
+        <span style="color:#408080;font-style:italic"># Implements a sorted merge with another fragment.        </span>
+        <span style="color:#408080;font-style:italic"># Returns a merge of two sorted arrays</span>
+        _sarr1 <span style="color:#666">=</span> frag1<span style="color:#666">.</span>copy()
+        _sarr2 <span style="color:#666">=</span> frag2<span style="color:#666">.</span>copy()
+        
+        <span style="color:#408080;font-style:italic"># If 1 fragment is empty, return the other fragment</span>
+        <span style="color:#008000;font-weight:bold">if</span> <span style="color:#a2f;font-weight:bold">not</span> _sarr1:
+            <span style="color:#008000;font-weight:bold">return</span> _sarr2
+        
+        <span style="color:#008000;font-weight:bold">if</span> <span style="color:#a2f;font-weight:bold">not</span> _sarr2:
+            <span style="color:#008000;font-weight:bold">return</span> _sarr1
+        
+        <span style="color:#408080;font-style:italic"># Choose comparison operator based on ascending flag.</span>
+        comp_opr <span style="color:#666">=</span> [operator<span style="color:#666">.</span>ge,operator<span style="color:#666">.</span>le][self<span style="color:#666">.</span>_ascending]
+        pre <span style="color:#666">=</span> _sarr1<span style="color:#666">.</span>pop(<span style="color:#666">0</span>) <span style="color:#008000;font-weight:bold">if</span> comp_opr(_sarr1[<span style="color:#666">0</span>],_sarr2[<span style="color:#666">0</span>]) <span style="color:#008000;font-weight:bold">else</span> _sarr2<span style="color:#666">.</span>pop(<span style="color:#666">0</span>)        
+        
+        <span style="color:#008000;font-weight:bold">return</span> [pre] <span style="color:#666">+</span> self<span style="color:#666">.</span>_merge(_sarr1,_sarr2)        
+        
+    <span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">get_sorted</span>(self, ary):
+        <span style="color:#408080;font-style:italic"># input unsorted array, returns mergesorted array.</span>
+        <span style="color:#008000;font-weight:bold">if</span> <span style="color:#008000">len</span>(ary) <span style="color:#666">&lt;=</span> <span style="color:#666">1</span>:
+            <span style="color:#008000;font-weight:bold">return</span> ary
+        
+        <span style="color:#408080;font-style:italic"># Split operation: Create a list of arrays with one element each.</span>
+        frag_list <span style="color:#666">=</span> self<span style="color:#666">.</span>_rsplit(ary)
+        <span style="color:#408080;font-style:italic"># Alternatively, [[e] for e in ary]</span>
+
+        <span style="color:#408080;font-style:italic"># Merge operation</span>
+        <span style="color:#008000;font-weight:bold">while</span>(<span style="color:#008000">len</span>(frag_list)<span style="color:#666">&gt;</span><span style="color:#666">1</span>):
+            <span style="color:#408080;font-style:italic"># Remove element pairs from frag_list,merge them and append to frag_list.</span>
+            <span style="color:#008000;font-weight:bold">if</span> self<span style="color:#666">.</span>_cutaway:
+                <span style="color:#008000;font-weight:bold">print</span>(<span style="color:#ba2121">&#34;&gt;&gt;merge&lt;&lt;&#34;</span>, frag_list)
+            frag_list<span style="color:#666">.</span>append(self<span style="color:#666">.</span>_merge(frag_list<span style="color:#666">.</span>pop(<span style="color:#666">0</span>), frag_list<span style="color:#666">.</span>pop(<span style="color:#666">0</span>)))                               
+        
+        <span style="color:#008000;font-weight:bold">return</span> frag_list[<span style="color:#666">0</span>]   <span style="color:#408080;font-style:italic"># The only element here is the final merged/sorted list</span>
+    
+    <span style="color:#008000;font-weight:bold">def</span> __repr__(self):
+        <span style="color:#408080;font-style:italic"># Printable representation of object.</span>
+        <span style="color:#008000;font-weight:bold">return</span> f<span style="color:#ba2121">&#39;{self.__class__.__name__}:ascending={self._ascending},cutaway={self._cutaway}&#39;</span>
+  
+
+<span style="color:#008000;font-weight:bold">if</span> __name__ <span style="color:#666">==</span> <span style="color:#ba2121">&#34;__main__&#34;</span>:
+
+    arr3 <span style="color:#666">=</span> <span style="color:#008000">list</span>(<span style="color:#008000">range</span>(<span style="color:#666">10</span>,<span style="color:#666">0</span>,<span style="color:#666">-</span><span style="color:#666">1</span>))
+    
+    sorter <span style="color:#666">=</span> Mergesort(cutaway<span style="color:#666">=</span>True,ascending<span style="color:#666">=</span>True)
+    <span style="color:#008000;font-weight:bold">print</span>(sorter)
+    <span style="color:#008000;font-weight:bold">print</span>(sorter<span style="color:#666">.</span>get_sorted(arr3))
+    <span style="color:#408080;font-style:italic"># End</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The <code>_rsplit()</code> function recursively splits the array into sublists of 1 and adds
+them to a list of sublists (<code>frag_list</code>). The <code>_merge()</code> recursively merges these
+sublists, two at a time and appends them to <code>frag_list</code> and continues until just
+one sublist remains.  This final sublist is the sorted list.</p>
+<pre><code>Mergesort:ascending=True,cutaway=True
+&lt;&lt; s p l i t &gt;&gt; [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+&lt;&lt; s p l i t &gt;&gt; [10, 9, 8, 7, 6]
+&lt;&lt; s p l i t &gt;&gt; [10, 9]
+&lt;&lt; s p l i t &gt;&gt; [10]
+&lt;&lt; s p l i t &gt;&gt; [9]
+&lt;&lt; s p l i t &gt;&gt; [8, 7, 6]
+&lt;&lt; s p l i t &gt;&gt; [8]
+&lt;&lt; s p l i t &gt;&gt; [7, 6]
+&lt;&lt; s p l i t &gt;&gt; [7]
+&lt;&lt; s p l i t &gt;&gt; [6]
+&lt;&lt; s p l i t &gt;&gt; [5, 4, 3, 2, 1]
+&lt;&lt; s p l i t &gt;&gt; [5, 4]
+&lt;&lt; s p l i t &gt;&gt; [5]
+&lt;&lt; s p l i t &gt;&gt; [4]
+&lt;&lt; s p l i t &gt;&gt; [3, 2, 1]
+&lt;&lt; s p l i t &gt;&gt; [3]
+&lt;&lt; s p l i t &gt;&gt; [2, 1]
+&lt;&lt; s p l i t &gt;&gt; [2]
+&lt;&lt; s p l i t &gt;&gt; [1]
+&gt;&gt;merge&lt;&lt; [[10], [9], [8], [7], [6], [5], [4], [3], [2], [1]]
+&gt;&gt;merge&lt;&lt; [[8], [7], [6], [5], [4], [3], [2], [1], [9, 10]]
+&gt;&gt;merge&lt;&lt; [[6], [5], [4], [3], [2], [1], [9, 10], [7, 8]]
+&gt;&gt;merge&lt;&lt; [[4], [3], [2], [1], [9, 10], [7, 8], [5, 6]]
+&gt;&gt;merge&lt;&lt; [[2], [1], [9, 10], [7, 8], [5, 6], [3, 4]]
+&gt;&gt;merge&lt;&lt; [[9, 10], [7, 8], [5, 6], [3, 4], [1, 2]]
+&gt;&gt;merge&lt;&lt; [[5, 6], [3, 4], [1, 2], [7, 8, 9, 10]]
+&gt;&gt;merge&lt;&lt; [[1, 2], [7, 8, 9, 10], [3, 4, 5, 6]]
+&gt;&gt;merge&lt;&lt; [[3, 4, 5, 6], [1, 2, 7, 8, 9, 10]]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</code></pre><p>The above cutaway view first shows how the array is split and later how pairs of
+sublists get merged and appended to the list of lists until the final sorted list is
+generated.</p>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/mergesort/" rel="tag">mergesort</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/posts/learning-curve/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Learning Curve</p>
+		</a>
+	</div>
+</nav>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+<div class="footer__links">
+	<a class="footer__link" href="/about/">About</a>
+</div>
+		<div class="footer__copyright">
+			&copy; 2023 Atrij Talgery.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

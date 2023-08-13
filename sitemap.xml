@@ -3,8 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://progmatix21.github.io/categories/algorithms/</loc>
+    <lastmod>2023-08-12T11:39:17+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://progmatix21.github.io/categories/</loc>
-    <lastmod>2023-07-25T11:13:23+05:30</lastmod>
+    <lastmod>2023-08-12T11:39:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/mergesort/</loc>
+    <lastmod>2023-08-12T11:39:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/mergesort-cutaway/</loc>
+    <lastmod>2023-08-12T11:39:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/</loc>
+    <lastmod>2023-08-12T11:39:17+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/</loc>
+    <lastmod>2023-08-12T11:39:17+05:30</lastmod>
   </url>
   
   <url>
@@ -24,16 +49,6 @@
   
   <url>
     <loc>https://progmatix21.github.io/tags/metrics/</loc>
-    <lastmod>2023-07-25T11:13:23+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/posts/</loc>
-    <lastmod>2023-07-25T11:13:23+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/</loc>
     <lastmod>2023-07-25T11:13:23+05:30</lastmod>
   </url>
   
@@ -75,11 +90,6 @@
   <url>
     <loc>https://progmatix21.github.io/posts/classifier-slightly-better-than-random-guess/</loc>
     <lastmod>2023-05-17T16:13:01+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/categories/algorithms/</loc>
-    <lastmod>2023-05-09T11:04:56+05:30</lastmod>
   </url>
   
   <url>
