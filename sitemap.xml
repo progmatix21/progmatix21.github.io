@@ -3,12 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://progmatix21.github.io/categories/algorithms/</loc>
-    <lastmod>2023-08-12T11:39:17+05:30</lastmod>
+    <loc>https://progmatix21.github.io/categories/</loc>
+    <lastmod>2023-09-27T20:02:52+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://progmatix21.github.io/categories/</loc>
+    <loc>https://progmatix21.github.io/categories/data-science/</loc>
+    <lastmod>2023-09-27T20:02:52+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/howto/</loc>
+    <lastmod>2023-09-27T20:02:52+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/linear-regression-from-scratch/</loc>
+    <lastmod>2023-09-27T20:02:52+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/ols/</loc>
+    <lastmod>2023-09-27T20:02:52+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/</loc>
+    <lastmod>2023-09-27T20:02:52+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/regression/</loc>
+    <lastmod>2023-09-27T20:02:52+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/</loc>
+    <lastmod>2023-09-27T20:02:52+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/categories/algorithms/</loc>
     <lastmod>2023-08-12T11:39:17+05:30</lastmod>
   </url>
   
@@ -23,22 +58,7 @@
   </url>
   
   <url>
-    <loc>https://progmatix21.github.io/posts/</loc>
-    <lastmod>2023-08-12T11:39:17+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/</loc>
-    <lastmod>2023-08-12T11:39:17+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://progmatix21.github.io/tags/classification/</loc>
-    <lastmod>2023-07-25T11:13:23+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/categories/data-science/</loc>
     <lastmod>2023-07-25T11:13:23+05:30</lastmod>
   </url>
   
@@ -125,11 +145,6 @@
   <url>
     <loc>https://progmatix21.github.io/tags/eda/</loc>
     <lastmod>2023-04-02T14:33:20+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/howto/</loc>
-    <lastmod>2023-03-21T11:24:17+05:30</lastmod>
   </url>
   
   <url>
