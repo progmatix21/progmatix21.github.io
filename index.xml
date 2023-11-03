@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Roc Curve Step by Step</title>
+      <link>https://progmatix21.github.io/posts/roc-curve-step-by-step/</link>
+      <pubDate>Wed, 01 Nov 2023 12:03:31 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/roc-curve-step-by-step/</guid>
+      <description>The ROC curve is an important metric to compare classifiers.  Learn how to draw one step-by-step.</description>
+    </item>
+    
+    <item>
       <title>Linear Regression From Scratch</title>
       <link>https://progmatix21.github.io/posts/linear-regression-from-scratch/</link>
       <pubDate>Wed, 27 Sep 2023 20:02:52 +0530</pubDate>

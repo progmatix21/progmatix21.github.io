@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Roc Curve Step by Step - Progmatix 21</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Progmatix 21" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Progmatix 21</div>
+					<div class="logo__tagline">My learnings: byte by byte</div>
+				</div>
+		</a>
+	</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Roc Curve Step by Step</h1>
+			<p class="post__lead">...with precision-recall curve thrown in</p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" class="meta__icon icon icon-calendar" width="18" height="16" 
+	 viewBox="0 0 458 458" style="enable-background:new 0 0 458 458;" xml:space="preserve">
+<g>
+	<path d="M111.938,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
+		C91.938,126.644,100.892,135.598,111.938,135.598z"/>
+	<path d="M346.063,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
+		C326.063,126.644,335.017,135.598,346.063,135.598z"/>
+	<path d="M443,82.403h-46.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
+		c0-12.281,0-20.771,0-33.195H161.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
+		c0-12.281,0-20.771,0-33.195H15c-8.284,0-15,6.716-15,15v89.641h458V97.403C458,89.119,451.284,82.403,443,82.403z"/>
+	<path d="M0,441.403c0,8.284,6.716,15,15,15h428c8.284,0,15-6.716,15-15V227.044H0V441.403z M244.191,313.046
+		c0-6.036,3.59-11.504,9.127-13.907c7.49-3.249,16.316-9.028,21.176-13.393c2.782-2.499,6.38-3.88,10.121-3.88h19.254
+		c4.395,0,7.957,3.563,7.957,7.958v80.903h11.445c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-59.934
+		c-8.275,0-14.984-6.708-14.984-14.984c0-8.275,6.708-14.984,14.984-14.984h14.567V317.66c-2.163,2.886-6.797,6.077-12.243,8.754
+		c-4.618,2.27-10.076,2.008-14.445-0.711c-4.369-2.718-7.025-7.501-7.025-12.647V313.046z M123.295,390.677
+		c2.691-29.175,18.127-37.168,47.125-52.83c4.622-2.493,12.811-7.06,15.92-11.134c3.842-5.044,1.97-18.001-14.359-18.001
+		c-5.549,0-11.094,1.106-17.704,5.967c-6.262,4.605-14.984,3.637-20.067-2.244l-0.594-0.688c-3.026-3.501-4.246-8.216-3.31-12.747
+		s3.925-8.371,8.09-10.387c22.329-10.811,56.654-13.101,73.853,0.952c7.977,6.523,11.966,15.332,11.966,26.43
+		c0,32.434-40.129,38.997-54.315,54.731h41.622c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-79.1
+		c-2.577,0-5.036-1.095-6.772-3C123.914,395.789,123.059,393.243,123.295,390.677z"/>
+</g>
+</svg>
+<time class="meta__text" datetime="2023-11-01T12:03:31&#43;05:30">November 01, 2023</time></div>
+<div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/data-science/" rel="category">data science</a>
+	</span>
+</div><div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>1062 words/5 min read
+	</span>
+</div>
+</div>
+		</header>
+		
+<div class="content post__content clearfix">
+			
+<style>
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 36px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+#myBtn:hover {
+  background-color: #008080;
+}
+</style>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">&#11161;</button>
+
+
+<script>
+
+let mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+
+
+<p>The ROC (Receiver Operator Characteristic) curve dates to the time of the World
+War 2 and refers to the performance of radar operators along with their radar
+scopes for correctly identifying enemy aircraft.  Today, it refers to how fast
+a classifier identifies true positive cases or how consistently it ranks the
+positive cases over the negative ones.</p>
+<h2 id="a-couple-of-approaches">A couple of approaches</h2>
+<p>For starters, we would rank the predictions in decreasing order of
+probability.  As we go down the list, we would expect all probabilities linked
+to labelled positive cases to be consistently ranked above the labelled negative
+cases.  To plot the ROC curve, we would go down the list, say, ten ranks at a
+time, and keep track of the True Positive Rate (TPR) and the False Positive
+Rate (FPR), thus generating a series of points on the curve with the coordinates (FPR,TPR).</p>
+<p>Another approach, giving us a similar result would be:</p>
+<ul>
+<li>get the list of prediction probabilities from the classifier,</li>
+<li>repeatedly mask this list with a range of probability thresholds from
+high (strict) to low (lax) values say 0.95 to 0.05, to generate predicted labels,</li>
+<li>use the predicted labels at each step to generate TPR and FPR.</li>
+</ul>
+<p>We will use the latter approach to generate our ROC curve.</p>
+<h2 id="the-implementation">The implementation</h2>
+<p>We will use scikit-learn and other libraries to generate our dataset, do the
+plotting, etc.  However, the generation of points for the ROC curve &ndash; our
+purpose here &ndash; will be implemented explicitly.  Along the way, we will also
+generate points for a precision-recall curve and plot that as well.</p>
+<h3 id="generate-the-dataset">Generate the dataset</h3>
+<p>We use sklearn to generate the data because it gives us the flexibility to
+generate the dataset according to our requirements.  We have deliberately
+introduced a class imbalance.</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#408080;font-style:italic">#%% Import modules</span>
+
+<span style="color:#008000;font-weight:bold">from</span> <span style="color:#00f;font-weight:bold">sklearn.datasets</span> <span style="color:#008000;font-weight:bold">import</span> make_classification
+<span style="color:#008000;font-weight:bold">from</span> <span style="color:#00f;font-weight:bold">sklearn.model_selection</span> <span style="color:#008000;font-weight:bold">import</span> train_test_split
+<span style="color:#008000;font-weight:bold">from</span> <span style="color:#00f;font-weight:bold">sklearn.metrics</span> <span style="color:#008000;font-weight:bold">import</span> confusion_matrix
+<span style="color:#008000;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">matplotlib.pyplot</span> <span style="color:#008000;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">plt</span>
+<span style="color:#008000;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">numpy</span> <span style="color:#008000;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">np</span>
+<span style="color:#008000;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">seaborn</span> <span style="color:#008000;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">sns</span>
+<span style="color:#008000;font-weight:bold">from</span> <span style="color:#00f;font-weight:bold">sklearn.linear_model</span> <span style="color:#008000;font-weight:bold">import</span> LogisticRegression
+
+<span style="color:#408080;font-style:italic">#%% Utility functions</span>
+<span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">get_auc</span>(X,Y):
+    <span style="color:#408080;font-style:italic"># get area-under-curve for curve (X,Y)</span>
+    <span style="color:#408080;font-style:italic"># both X and Y should be limited by limits [0,1]</span>
+    <span style="color:#408080;font-style:italic"># Use trapezium rule: area of a sliver is (x2-x1)*(y2+y1)/2</span>
+    <span style="color:#408080;font-style:italic"># Area under curve is sum of all the slivers bounded by right limits</span>
+    <span style="color:#408080;font-style:italic"># X1 to Xn</span>
+    X_diff <span style="color:#666">=</span> np<span style="color:#666">.</span>diff(X)
+    Y_sum <span style="color:#666">=</span> (Y <span style="color:#666">+</span> np<span style="color:#666">.</span>roll(Y,<span style="color:#666">1</span>))[<span style="color:#666">1</span>:]
+    <span style="color:#008000;font-weight:bold">return</span> np<span style="color:#666">.</span>sum(X_diff <span style="color:#666">*</span> Y_sum <span style="color:#666">/</span> <span style="color:#666">2</span>)  
+
+<span style="color:#408080;font-style:italic">#%% Create dataset</span>
+
+X,y <span style="color:#666">=</span> make_classification(n_samples<span style="color:#666">=</span><span style="color:#666">10000</span>,n_features<span style="color:#666">=</span><span style="color:#666">2</span>,n_informative<span style="color:#666">=</span><span style="color:#666">2</span>,
+                          n_redundant<span style="color:#666">=</span><span style="color:#666">0</span>,n_repeated<span style="color:#666">=</span><span style="color:#666">0</span>,class_sep<span style="color:#666">=</span><span style="color:#666">1.0</span>,
+                          flip_y<span style="color:#666">=</span><span style="color:#666">0.1</span>, <span style="color:#408080;font-style:italic"># anamolous labels</span>
+                          weights<span style="color:#666">=</span>[<span style="color:#666">0.9</span>,<span style="color:#666">0.1</span>], <span style="color:#408080;font-style:italic"># Create class imbalance</span>
+                          random_state<span style="color:#666">=</span><span style="color:#666">21</span>) 
+
+sns<span style="color:#666">.</span>scatterplot(x<span style="color:#666">=</span>X[:,<span style="color:#666">0</span>],y<span style="color:#666">=</span>X[:,<span style="color:#666">1</span>],hue<span style="color:#666">=</span>y)
+plt<span style="color:#666">.</span>title(<span style="color:#ba2121">&#34;Generated Dataset&#34;</span>)
+plt<span style="color:#666">.</span>xlabel(<span style="color:#ba2121">&#34;$X_0$&#34;</span>)
+plt<span style="color:#666">.</span>ylabel(<span style="color:#ba2121">&#34;$X_1$&#34;</span>)
+
+plt<span style="color:#666">.</span>show()</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="fit-the-data-to-a-classifier">Fit the data to a classifier</h3>
+<p>We choose a Logistic Regression model to fit our data.  This is a simple model
+that plays well with linearly separable data.  However, given our &lsquo;engineered&rsquo;
+dataset, it is slightly challenged, thus giving us a distinct ROC curve.</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#408080;font-style:italic">#%% Train classifier</span>
+
+clf <span style="color:#666">=</span> LogisticRegression()
+X_train,X_test,y_train,y_test <span style="color:#666">=</span> train_test_split(X,y,test_size<span style="color:#666">=</span><span style="color:#666">0.4</span>)
+
+clf<span style="color:#666">.</span>fit(X_train,y_train)
+
+accuracy <span style="color:#666">=</span> clf<span style="color:#666">.</span>score(X_test,y_test)</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="compute-coordinates-for-roc-curve">Compute coordinates for ROC curve</h3>
+<p>The traditional confusion matrix computed for a classifier prediction usually
+assumes a probability threshold of 0.5.  A classifier probability greater than
+this threshold means the classifier is more confident that a particular instance
+belongs to class 1 than to class 0.</p>
+<p>To get the ROC curve, which is a more dynamic view of the classification, we
+compute a series of (virtual) confusion matrices each corresponding to a point
+on the ROC curve.</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#408080;font-style:italic">#Get probabilities for class 1</span>
+clf_probs <span style="color:#666">=</span> clf<span style="color:#666">.</span>predict_proba(X_test)[:,<span style="color:#666">1</span>]
+
+<span style="color:#408080;font-style:italic">#%% Get FPR and TPR values</span>
+
+<span style="color:#408080;font-style:italic"># Thresholds to use for plotting</span>
+thresh <span style="color:#666">=</span> np<span style="color:#666">.</span>linspace(<span style="color:#666">0.95</span>,<span style="color:#666">0.00</span>,num<span style="color:#666">=</span><span style="color:#666">20</span>,endpoint<span style="color:#666">=</span>True)
+
+<span style="color:#408080;font-style:italic"># For each threshold, get predictions, a confusion matrix and</span>
+<span style="color:#408080;font-style:italic"># FPR and TPR values. These FPR, TPR tuples are our points for</span>
+<span style="color:#408080;font-style:italic"># the ROC plot.</span>
+
+fpr <span style="color:#666">=</span> []
+tpr <span style="color:#666">=</span> []  <span style="color:#408080;font-style:italic"># List to hold fpr, tpr </span>
+precision <span style="color:#666">=</span> []
+acc <span style="color:#666">=</span> []
+
+<span style="color:#008000;font-weight:bold">for</span> t <span style="color:#a2f;font-weight:bold">in</span> thresh:
+    clf_preds <span style="color:#666">=</span> (clf_probs <span style="color:#666">&gt;</span> t)<span style="color:#666">.</span>astype(<span style="color:#008000">int</span>)
+    tn,fp,fn,tp <span style="color:#666">=</span> confusion_matrix(y_test,clf_preds)<span style="color:#666">.</span>ravel()
+    fpr<span style="color:#666">.</span>append(fp<span style="color:#666">/</span>(fp<span style="color:#666">+</span>tn))
+    precision<span style="color:#666">.</span>append(tp<span style="color:#666">/</span>(tp<span style="color:#666">+</span>fp))
+    tpr<span style="color:#666">.</span>append(tp<span style="color:#666">/</span>(tp<span style="color:#666">+</span>fn))
+    acc<span style="color:#666">.</span>append((tp<span style="color:#666">+</span>tn)<span style="color:#666">/</span>(tp<span style="color:#666">+</span>tn<span style="color:#666">+</span>fp<span style="color:#666">+</span>fn)) </code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="plot-the-curves">Plot the curves</h3>
+<p>Each point on the curve corresponds to a probability threshold.  We sweep this
+threshold from 0.95 to 0.05 inclusive.  The marker sizes reflect this threshold.</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#408080;font-style:italic">#%% Plot ROC curve</span>
+
+plt<span style="color:#666">.</span>plot(fpr,tpr,label<span style="color:#666">=</span>f<span style="color:#ba2121">&#39;ROC AUC:{get_auc(fpr,tpr):0.2f}&#39;</span>)
+plt<span style="color:#666">.</span>scatter(fpr,tpr,s<span style="color:#666">=</span>thresh<span style="color:#666">*</span><span style="color:#666">200</span>,alpha<span style="color:#666">=</span><span style="color:#666">0.4</span>) <span style="color:#408080;font-style:italic"># superimpose markers scaled on prob threshold</span>
+plt<span style="color:#666">.</span>scatter([fpr[<span style="color:#666">9</span>]],[tpr[<span style="color:#666">9</span>]],c<span style="color:#666">=</span><span style="color:#ba2121">&#39;r&#39;</span>,s<span style="color:#666">=</span><span style="color:#666">100</span>)  <span style="color:#408080;font-style:italic"># red dot for 0.5 threshold</span>
+
+plt<span style="color:#666">.</span>plot(tpr,precision, label<span style="color:#666">=</span>f<span style="color:#ba2121">&#39;PR AUC:{get_auc(tpr,precision):0.2f}&#39;</span>)
+plt<span style="color:#666">.</span>scatter(tpr,precision,s<span style="color:#666">=</span>thresh<span style="color:#666">*</span><span style="color:#666">200</span>,alpha<span style="color:#666">=</span><span style="color:#666">0.4</span>)
+plt<span style="color:#666">.</span>scatter([tpr[<span style="color:#666">9</span>]],[precision[<span style="color:#666">9</span>]],c<span style="color:#666">=</span><span style="color:#ba2121">&#39;r&#39;</span>,s<span style="color:#666">=</span><span style="color:#666">100</span>)  <span style="color:#408080;font-style:italic"># red dot for 0.5 threshold</span>
+
+plt<span style="color:#666">.</span>plot(thresh,acc,<span style="color:#ba2121">&#39;c^--&#39;</span>, markersize<span style="color:#666">=</span><span style="color:#666">4</span>, label<span style="color:#666">=</span><span style="color:#ba2121">&#39;acc vs thresh&#39;</span>)
+
+plt<span style="color:#666">.</span>text(<span style="color:#666">0.3</span>,<span style="color:#666">0.4</span>,<span style="color:#ba2121">&#39;Marker sizes denote prob. thresholds&#39;</span>)
+plt<span style="color:#666">.</span>text(<span style="color:#666">0.3</span>,<span style="color:#666">0.35</span>,<span style="color:#ba2121">&#39;Red marker denotes 0.5 prob. threshold&#39;</span>)
+plt<span style="color:#666">.</span>plot((<span style="color:#666">0.0</span>,<span style="color:#666">1.0</span>),(<span style="color:#666">0.0</span>,<span style="color:#666">1.0</span>),<span style="color:#ba2121">&#39;k:&#39;</span>,label<span style="color:#666">=</span><span style="color:#ba2121">&#39;ROC dummy&#39;</span>)
+
+plt<span style="color:#666">.</span>title(f<span style="color:#ba2121">&#39;ROC &amp; PR Curves accuracy:{accuracy:0.2f}&#39;</span>)
+plt<span style="color:#666">.</span>xlabel(<span style="color:#ba2121">&#39;FPR(ROC) or Recall(PR)&#39;</span>)
+plt<span style="color:#666">.</span>ylabel(<span style="color:#ba2121">&#39;TPR(ROC) or Precision(PR)&#39;</span>)
+plt<span style="color:#666">.</span>grid()
+plt<span style="color:#666">.</span>legend(loc<span style="color:#666">=</span><span style="color:#ba2121">&#39;lower right&#39;</span>)
+plt<span style="color:#666">.</span>show()</code></pre></td></tr></table>
+</div>
+</div>
+<!--<img src="data_plot.png" style="float:left;margin:0px 0px 0px 20px;height:30%;width:30%" />-->
+<!--<img src="roc_pr_plot.png" style="float:right;margin:0px 0px 0px 20px;height:30%;width:30%" />-->
+<p><img src="generated_plot.png" alt="data_png">
+<img src="roc_pr_curves.png" alt="roc_png"></p>
+<h2 id="interpreting-the-curves">Interpreting the curves</h2>
+<p>We have plotted three curves; the ROC curve and the PR curve are
+the traditional metrics while the third (accuracy) curve helps us track the most
+common metric for a classifier.</p>
+<p>A red marker designates the probability threshold of 0.5.  This is
+the point where the <code>.predict()</code> method of a classifier usually gives its predictions.
+For the PR curve, the &lsquo;knee&rsquo; portion corresponds to the threshold that offers
+the best precision/recall tradeoff.  For the given plots, the knee corresponds to
+a threshold of ~0.45.</p>
+<p>The ROC and PR curves can be used to compare classifier performance on the
+same dataset using the Area Under Curve (AUC) metric.  The greater the AUC
+for a particular classifier, the better the classifier is deemed to be.  The
+dotted diagonal line denotes the dummy classifier that randomly selects positive
+cases.  It has an AUC of 0.5.</p>
+<p>For a mediocre ROC-AUC and PR-AUC, the accuracy curve hovers around an impressive
+~0.9.  Not surprising considering that accuracy is a misleading and overly optimistic
+metric for imbalanced datasets.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/classification/" rel="tag">classification</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/roc/" rel="tag">ROC</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/posts/linear-regression-from-scratch/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Linear Regression From Scratch</p>
+		</a>
+	</div>
+</nav>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+<div class="footer__links">
+	<a class="footer__link" href="/about/">About</a>
+</div>
+		<div class="footer__copyright">
+			&copy; 2023 Atrij Talgery.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

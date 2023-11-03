@@ -4,12 +4,37 @@
   
   <url>
     <loc>https://progmatix21.github.io/categories/</loc>
-    <lastmod>2023-09-27T20:02:52+05:30</lastmod>
+    <lastmod>2023-11-01T12:03:31+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/classification/</loc>
+    <lastmod>2023-11-01T12:03:31+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://progmatix21.github.io/categories/data-science/</loc>
-    <lastmod>2023-09-27T20:02:52+05:30</lastmod>
+    <lastmod>2023-11-01T12:03:31+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/</loc>
+    <lastmod>2023-11-01T12:03:31+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/roc/</loc>
+    <lastmod>2023-11-01T12:03:31+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/roc-curve-step-by-step/</loc>
+    <lastmod>2023-11-01T12:03:31+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/</loc>
+    <lastmod>2023-11-01T12:03:31+05:30</lastmod>
   </url>
   
   <url>
@@ -28,17 +53,7 @@
   </url>
   
   <url>
-    <loc>https://progmatix21.github.io/posts/</loc>
-    <lastmod>2023-09-27T20:02:52+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://progmatix21.github.io/tags/regression/</loc>
-    <lastmod>2023-09-27T20:02:52+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/</loc>
     <lastmod>2023-09-27T20:02:52+05:30</lastmod>
   </url>
   
@@ -55,11 +70,6 @@
   <url>
     <loc>https://progmatix21.github.io/posts/mergesort-cutaway/</loc>
     <lastmod>2023-08-12T11:39:17+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/classification/</loc>
-    <lastmod>2023-07-25T11:13:23+05:30</lastmod>
   </url>
   
   <url>

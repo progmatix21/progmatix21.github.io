@@ -6,10 +6,19 @@
     <description>Recent content in data science on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Sep 2023 20:02:52 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 01 Nov 2023 12:03:31 +0530</lastBuildDate>
     
 	<atom:link href="https://progmatix21.github.io/categories/data-science/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Roc Curve Step by Step</title>
+      <link>https://progmatix21.github.io/posts/roc-curve-step-by-step/</link>
+      <pubDate>Wed, 01 Nov 2023 12:03:31 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/roc-curve-step-by-step/</guid>
+      <description>The ROC curve is an important metric to compare classifiers.  Learn how to draw one step-by-step.</description>
+    </item>
     
     <item>
       <title>Linear Regression From Scratch</title>
