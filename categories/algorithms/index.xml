@@ -40,7 +40,7 @@
 }
 &lt;/style&gt;
 
-&lt;button onclick=&#34;topFunction()&#34; id=&#34;myBtn&#34; title=&#34;Go to top&#34;&gt;&amp;#11161;&lt;/button&gt;
+&lt;button onclick=&#34;topFunction()&#34; id=&#34;myBtn&#34; title=&#34;Go to top&#34;&gt;&amp;#9650;&lt;/button&gt;
 
 
 &lt;script&gt;
@@ -51,7 +51,7 @@ let mybutton = document.getElementById(&#34;myBtn&#34;);
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop &gt; 20 || document.documentElement.scrollTop &gt; 20) {
+  if (document.body.scrollTop &gt; 1000 || document.documentElement.scrollTop &gt; 1000) {
     mybutton.style.display = &#34;block&#34;;
   } else {
     mybutton.style.display = &#34;none&#34;;
@@ -100,7 +100,7 @@ bubble sort to more complicated ones such as the merge sort.&lt;/p&gt;</descript
 }
 &lt;/style&gt;
 
-&lt;button onclick=&#34;topFunction()&#34; id=&#34;myBtn&#34; title=&#34;Go to top&#34;&gt;&amp;#11161;&lt;/button&gt;
+&lt;button onclick=&#34;topFunction()&#34; id=&#34;myBtn&#34; title=&#34;Go to top&#34;&gt;&amp;#9650;&lt;/button&gt;
 
 
 &lt;script&gt;
@@ -111,7 +111,7 @@ let mybutton = document.getElementById(&#34;myBtn&#34;);
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop &gt; 20 || document.documentElement.scrollTop &gt; 20) {
+  if (document.body.scrollTop &gt; 1000 || document.documentElement.scrollTop &gt; 1000) {
     mybutton.style.display = &#34;block&#34;;
   } else {
     mybutton.style.display = &#34;none&#34;;
@@ -162,7 +162,7 @@ certainly so.  Would a cutaway view be helpful?&lt;/p&gt;</description>
 }
 &lt;/style&gt;
 
-&lt;button onclick=&#34;topFunction()&#34; id=&#34;myBtn&#34; title=&#34;Go to top&#34;&gt;&amp;#11161;&lt;/button&gt;
+&lt;button onclick=&#34;topFunction()&#34; id=&#34;myBtn&#34; title=&#34;Go to top&#34;&gt;&amp;#9650;&lt;/button&gt;
 
 
 &lt;script&gt;
@@ -173,7 +173,7 @@ let mybutton = document.getElementById(&#34;myBtn&#34;);
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop &gt; 20 || document.documentElement.scrollTop &gt; 20) {
+  if (document.body.scrollTop &gt; 1000 || document.documentElement.scrollTop &gt; 1000) {
     mybutton.style.display = &#34;block&#34;;
   } else {
     mybutton.style.display = &#34;none&#34;;

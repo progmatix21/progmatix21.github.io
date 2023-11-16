@@ -66,12 +66,13 @@
 		c-2.577,0-5.036-1.095-6.772-3C123.914,395.789,123.059,393.243,123.295,390.677z"/>
 </g>
 </svg>
-<time class="meta__text" datetime="2023-08-12T11:39:17&#43;05:30">August 12, 2023</time></div>
+<time class="meta__text" datetime="2023-08-12T11:39:17&#43;05:30">August 12, 2023</time>
+	<time class="meta__text" datetime="2023-11-16T13:31:17&#43;05:30">(Last Modified: November 16, 2023)</time></div>
 <div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/algorithms/" rel="category">algorithms</a>
 	</span>
 </div><div class="meta__item-categories meta__item">
 	<span class="meta__text">
-		<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>962 words/5 min read
+		<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>1431 words/7 min read
 	</span>
 </div>
 </div>
@@ -88,6 +89,7 @@
     <li><a href="#why-mergesort">Why mergesort?</a></li>
     <li><a href="#where-is-mergesort-used">Where is mergesort used?</a></li>
     <li><a href="#mergesort-implementation">Mergesort implementation</a></li>
+    <li><a href="#top-down-mergesort-implementation">Top-down mergesort implementation</a></li>
   </ul>
 </nav>
 		    </details>
@@ -117,7 +119,7 @@
 }
 </style>
 
-<button onclick="topFunction()" id="myBtn" title="Go to top">&#11161;</button>
+<button onclick="topFunction()" id="myBtn" title="Go to top">&#9650;</button>
 
 
 <script>
@@ -128,7 +130,7 @@ let mybutton = document.getElementById("myBtn");
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
     mybutton.style.display = "block";
   } else {
     mybutton.style.display = "none";
@@ -355,6 +357,107 @@ one sublist remains.  This final sublist is the sorted list.</p>
 </code></pre><p>The above cutaway view first shows how the array is split and later how pairs of
 sublists get merged and appended to the list of lists until the final sorted list is
 generated.</p>
+<h2 id="top-down-mergesort-implementation">Top-down mergesort implementation</h2>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#408080;font-style:italic">#! /usr/bin/env python3</span>
+<span style="color:#408080;font-style:italic"># Top-down mergesort implementation</span>
+
+<span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">merge</span>(larr, rarr):
+    <span style="color:#408080;font-style:italic"># Merge two sorted arrays    </span>
+    <span style="color:#008000;font-weight:bold">assert</span> larr <span style="color:#a2f;font-weight:bold">and</span> rarr, f<span style="color:#ba2121">&#39;merge: array argument length cannot be zero&#39;</span>
+    
+    <span style="color:#008000;font-weight:bold">print</span>(f<span style="color:#ba2121">&#39;{larr} &gt;&gt; merge &lt;&lt; {rarr}&#39;</span>, end<span style="color:#666">=</span><span style="color:#ba2121">&#39;&#39;</span>)
+    
+    resarr <span style="color:#666">=</span> []    
+    <span style="color:#008000;font-weight:bold">while</span> (larr <span style="color:#a2f;font-weight:bold">and</span> rarr):  <span style="color:#408080;font-style:italic"># both arrays no-empty</span>
+        resarr<span style="color:#666">.</span>append(larr<span style="color:#666">.</span>pop(<span style="color:#666">0</span>) <span style="color:#008000;font-weight:bold">if</span> larr[<span style="color:#666">0</span>] <span style="color:#666">&lt;=</span> rarr[<span style="color:#666">0</span>] <span style="color:#008000;font-weight:bold">else</span> rarr<span style="color:#666">.</span>pop(<span style="color:#666">0</span>))
+        <span style="color:#408080;font-style:italic"># ascending sort, exit loop when one array empties</span>
+
+    <span style="color:#008000;font-weight:bold">assert</span> <span style="color:#008000">bool</span>(larr) <span style="color:#666">^</span> <span style="color:#008000">bool</span>(rarr), f<span style="color:#ba2121">&#39;merge: of larr and rarr only one has to be 0 length&#39;</span>
+        
+    resarr<span style="color:#666">.</span>extend(larr <span style="color:#008000;font-weight:bold">if</span> larr <span style="color:#008000;font-weight:bold">else</span> rarr)
+    
+    <span style="color:#008000;font-weight:bold">print</span>(f<span style="color:#ba2121">&#39; ---&gt; {resarr}&#39;</span>)
+    <span style="color:#008000;font-weight:bold">return</span> resarr
+
+    
+<span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">mergesort</span>(arr):
+
+    <span style="color:#008000;font-weight:bold">if</span> <span style="color:#008000">len</span>(arr) <span style="color:#666">&lt;=</span> <span style="color:#666">1</span>:   <span style="color:#408080;font-style:italic"># base case</span>
+        <span style="color:#008000;font-weight:bold">return</span> arr
+    mid <span style="color:#666">=</span> <span style="color:#008000">len</span>(arr)<span style="color:#666">//</span><span style="color:#666">2</span>
+    <span style="color:#008000;font-weight:bold">print</span>(f<span style="color:#ba2121">&#39;{arr} ---&gt; {arr[:mid]} &lt;&lt; s p l i t &gt;&gt; {arr[mid:]}&#39;</span>)
+    <span style="color:#008000;font-weight:bold">return</span> merge(mergesort(arr[:mid]),mergesort(arr[mid:]))
+
+    
+<span style="color:#008000;font-weight:bold">if</span> __name__ <span style="color:#666">==</span> <span style="color:#ba2121">&#34;__main__&#34;</span>:
+    ary <span style="color:#666">=</span> [<span style="color:#666">10</span>,<span style="color:#666">9</span>,<span style="color:#666">8</span>,<span style="color:#666">7</span>,<span style="color:#666">6</span>,<span style="color:#666">5</span>,<span style="color:#666">4</span>,<span style="color:#666">3</span>,<span style="color:#666">2</span>,<span style="color:#666">1</span>]
+    <span style="color:#008000;font-weight:bold">print</span>(mergesort(ary))
+    </code></pre></td></tr></table>
+</div>
+</div>
+<p>The output of this program is as follows:</p>
+<pre><code>[10, 9, 8, 7, 6, 5, 4, 3, 2, 1] ---&gt; [10, 9, 8, 7, 6] &lt;&lt; s p l i t &gt;&gt; [5, 4, 3, 2, 1]
+[10, 9, 8, 7, 6] ---&gt; [10, 9] &lt;&lt; s p l i t &gt;&gt; [8, 7, 6]
+[10, 9] ---&gt; [10] &lt;&lt; s p l i t &gt;&gt; [9]
+[10] &gt;&gt; merge &lt;&lt; [9] ---&gt; [9, 10]
+[8, 7, 6] ---&gt; [8] &lt;&lt; s p l i t &gt;&gt; [7, 6]
+[7, 6] ---&gt; [7] &lt;&lt; s p l i t &gt;&gt; [6]
+[7] &gt;&gt; merge &lt;&lt; [6] ---&gt; [6, 7]
+[8] &gt;&gt; merge &lt;&lt; [6, 7] ---&gt; [6, 7, 8]
+[9, 10] &gt;&gt; merge &lt;&lt; [6, 7, 8] ---&gt; [6, 7, 8, 9, 10]
+[5, 4, 3, 2, 1] ---&gt; [5, 4] &lt;&lt; s p l i t &gt;&gt; [3, 2, 1]
+[5, 4] ---&gt; [5] &lt;&lt; s p l i t &gt;&gt; [4]
+[5] &gt;&gt; merge &lt;&lt; [4] ---&gt; [4, 5]
+[3, 2, 1] ---&gt; [3] &lt;&lt; s p l i t &gt;&gt; [2, 1]
+[2, 1] ---&gt; [2] &lt;&lt; s p l i t &gt;&gt; [1]
+[2] &gt;&gt; merge &lt;&lt; [1] ---&gt; [1, 2]
+[3] &gt;&gt; merge &lt;&lt; [1, 2] ---&gt; [1, 2, 3]
+[4, 5] &gt;&gt; merge &lt;&lt; [1, 2, 3] ---&gt; [1, 2, 3, 4, 5]
+[6, 7, 8, 9, 10] &gt;&gt; merge &lt;&lt; [1, 2, 3, 4, 5] ---&gt; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</code></pre><p>Note that the recursive mergesort function recurses all the way to the point where
+the array length is just 1.  This is the base case.  When all these recursive calls
+return, they merge the (now sorted) split array segments in the correct order and
+assemble the complete sorted array.</p>
 		</div>
 		<footer class="post__footer">
 			
