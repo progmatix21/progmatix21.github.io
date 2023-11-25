@@ -3,8 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://progmatix21.github.io/categories/algorithms/</loc>
+    <lastmod>2023-11-21T19:39:01+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://progmatix21.github.io/categories/</loc>
-    <lastmod>2023-11-16T13:31:17+05:30</lastmod>
+    <lastmod>2023-11-21T19:39:01+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/lcs/</loc>
+    <lastmod>2023-11-21T19:39:01+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/longest-common-subsequence/</loc>
+    <lastmod>2023-11-21T19:39:01+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/</loc>
+    <lastmod>2023-11-21T19:39:01+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/</loc>
+    <lastmod>2023-11-21T19:39:01+05:30</lastmod>
   </url>
   
   <url>
@@ -18,11 +43,6 @@
   </url>
   
   <url>
-    <loc>https://progmatix21.github.io/posts/</loc>
-    <lastmod>2023-11-16T13:31:17+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://progmatix21.github.io/tags/roc/</loc>
     <lastmod>2023-11-01T12:03:31+05:30</lastmod>
   </url>
@@ -30,11 +50,6 @@
   <url>
     <loc>https://progmatix21.github.io/posts/roc-curve-step-by-step/</loc>
     <lastmod>2023-11-01T12:03:31+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/</loc>
-    <lastmod>2023-11-16T13:31:17+05:30</lastmod>
   </url>
   
   <url>
@@ -55,11 +70,6 @@
   <url>
     <loc>https://progmatix21.github.io/tags/regression/</loc>
     <lastmod>2023-09-27T20:02:52+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/categories/algorithms/</loc>
-    <lastmod>2023-11-16T13:31:17+05:30</lastmod>
   </url>
   
   <url>

@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Longest Common Subsequence</title>
+      <link>https://progmatix21.github.io/posts/longest-common-subsequence/</link>
+      <pubDate>Tue, 21 Nov 2023 19:39:01 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/longest-common-subsequence/</guid>
+      <description>This is a &lt;em&gt;three&lt;/em&gt; way LCS solution using a &amp;lsquo;sparse&amp;rsquo; data structure and an intuitive conceptual model to aid your understanding.</description>
+    </item>
+    
+    <item>
       <title>Roc Curve Step by Step</title>
       <link>https://progmatix21.github.io/posts/roc-curve-step-by-step/</link>
       <pubDate>Wed, 01 Nov 2023 12:03:31 +0530</pubDate>
