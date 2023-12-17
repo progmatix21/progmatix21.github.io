@@ -6,10 +6,19 @@
     <description>Recent content in classification on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Nov 2023 12:03:31 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 17 Dec 2023 11:13:10 +0530</lastBuildDate>
     
 	<atom:link href="https://progmatix21.github.io/tags/classification/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Calibrate Your Classifier</title>
+      <link>https://progmatix21.github.io/posts/calibrate-your-classifier/</link>
+      <pubDate>Sun, 17 Dec 2023 11:13:10 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/calibrate-your-classifier/</guid>
+      <description>Would you buy oranges weighed on an uncalibrated weighing scale?  Then why would you trust an uncalibrated classifier?</description>
+    </item>
     
     <item>
       <title>Roc Curve Step by Step</title>

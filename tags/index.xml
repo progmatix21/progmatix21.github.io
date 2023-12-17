@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Nov 2023 19:39:01 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 17 Dec 2023 11:13:10 +0530</lastBuildDate>
     
 	<atom:link href="https://progmatix21.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>calibration</title>
+      <link>https://progmatix21.github.io/tags/calibration/</link>
+      <pubDate>Sun, 17 Dec 2023 11:13:10 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/calibration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>classification</title>
+      <link>https://progmatix21.github.io/tags/classification/</link>
+      <pubDate>Sun, 17 Dec 2023 11:13:10 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/classification/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>lcs</title>
@@ -17,15 +35,6 @@
       <pubDate>Tue, 21 Nov 2023 19:39:01 +0530</pubDate>
       
       <guid>https://progmatix21.github.io/tags/lcs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>classification</title>
-      <link>https://progmatix21.github.io/tags/classification/</link>
-      <pubDate>Wed, 01 Nov 2023 12:03:31 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/tags/classification/</guid>
       <description></description>
     </item>
     

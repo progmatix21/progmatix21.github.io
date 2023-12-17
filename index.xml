@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Calibrate Your Classifier</title>
+      <link>https://progmatix21.github.io/posts/calibrate-your-classifier/</link>
+      <pubDate>Sun, 17 Dec 2023 11:13:10 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/calibrate-your-classifier/</guid>
+      <description>Would you buy oranges weighed on an uncalibrated weighing scale?  Then why would you trust an uncalibrated classifier?</description>
+    </item>
+    
+    <item>
       <title>Longest Common Subsequence</title>
       <link>https://progmatix21.github.io/posts/longest-common-subsequence/</link>
       <pubDate>Tue, 21 Nov 2023 19:39:01 +0530</pubDate>

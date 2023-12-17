@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>calibration on Progmatix 21</title>
+    <link>https://progmatix21.github.io/tags/calibration/</link>
+    <description>Recent content in calibration on Progmatix 21</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Dec 2023 11:13:10 +0530</lastBuildDate>
+    
+	<atom:link href="https://progmatix21.github.io/tags/calibration/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Calibrate Your Classifier</title>
+      <link>https://progmatix21.github.io/posts/calibrate-your-classifier/</link>
+      <pubDate>Sun, 17 Dec 2023 11:13:10 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/calibrate-your-classifier/</guid>
+      <description>Would you buy oranges weighed on an uncalibrated weighing scale?  Then why would you trust an uncalibrated classifier?</description>
+    </item>
+    
+  </channel>
+</rss>
