@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Are Outliers Always a Problem?</title>
+      <link>https://progmatix21.github.io/posts/are-outliers-always-a-problem/</link>
+      <pubDate>Wed, 17 Jan 2024 11:14:16 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/are-outliers-always-a-problem/</guid>
+      <description>Outliers are mostly seen as not needed.  We will see an example where this is not true.</description>
+    </item>
+    
+    <item>
       <title>Calibrate Your Classifier</title>
       <link>https://progmatix21.github.io/posts/calibrate-your-classifier/</link>
       <pubDate>Sun, 17 Dec 2023 11:13:10 +0530</pubDate>
