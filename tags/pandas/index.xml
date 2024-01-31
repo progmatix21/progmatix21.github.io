@@ -6,11 +6,7 @@
     <description>Recent content in pandas on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Jan 2023 17:26:05 +0530</lastBuildDate>
-    
-	<atom:link href="https://progmatix21.github.io/tags/pandas/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 20 Jan 2023 17:26:05 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/tags/pandas/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Create a dataframe: three ways</title>
       <link>https://progmatix21.github.io/posts/create-dataframe-three-ways/</link>

@@ -6,11 +6,7 @@
     <description>Recent content in eda on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Apr 2023 14:33:20 +0530</lastBuildDate>
-    
-	<atom:link href="https://progmatix21.github.io/tags/eda/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 02 Apr 2023 14:33:20 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/tags/eda/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Categorical vs Categorical Heatmap</title>
       <link>https://progmatix21.github.io/posts/categorical-vs-categorical-heatmap/</link>
