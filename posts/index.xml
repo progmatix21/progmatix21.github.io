@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Jan 2024 11:38:22 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Feb 2024 17:27:29 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Text Classification Using Keras LSTM, CNN and embeddings</title>
+      <link>https://progmatix21.github.io/posts/text-classification-using-keras-lstm-cnn/</link>
+      <pubDate>Fri, 09 Feb 2024 17:27:29 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/text-classification-using-keras-lstm-cnn/</guid>
+      <description>Exploiting the temporal and spatial aspects of text for classification is easy.</description>
+    </item>
+    
     <item>
       <title>Regressor as Classifier</title>
       <link>https://progmatix21.github.io/posts/regressor-as-classifier/</link>

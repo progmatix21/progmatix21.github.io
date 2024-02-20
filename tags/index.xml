@@ -6,13 +6,40 @@
     <description>Recent content in Tags on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Jan 2024 11:38:22 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Feb 2024 17:27:29 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>classification</title>
       <link>https://progmatix21.github.io/tags/classification/</link>
-      <pubDate>Tue, 30 Jan 2024 11:38:22 +0530</pubDate>
+      <pubDate>Fri, 09 Feb 2024 17:27:29 +0530</pubDate>
       
       <guid>https://progmatix21.github.io/tags/classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cnn</title>
+      <link>https://progmatix21.github.io/tags/cnn/</link>
+      <pubDate>Fri, 09 Feb 2024 17:27:29 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/cnn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lstm</title>
+      <link>https://progmatix21.github.io/tags/lstm/</link>
+      <pubDate>Fri, 09 Feb 2024 17:27:29 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/lstm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NLP</title>
+      <link>https://progmatix21.github.io/tags/nlp/</link>
+      <pubDate>Fri, 09 Feb 2024 17:27:29 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/tags/nlp/</guid>
       <description></description>
     </item>
     
@@ -220,15 +247,6 @@
       <pubDate>Wed, 14 Sep 2022 10:00:34 +0530</pubDate>
       
       <guid>https://progmatix21.github.io/tags/anova/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>NLP</title>
-      <link>https://progmatix21.github.io/tags/nlp/</link>
-      <pubDate>Mon, 12 Sep 2022 17:41:37 +0530</pubDate>
-      
-      <guid>https://progmatix21.github.io/tags/nlp/</guid>
       <description></description>
     </item>
     

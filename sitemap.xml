@@ -4,12 +4,52 @@
   
   <url>
     <loc>https://progmatix21.github.io/categories/</loc>
-    <lastmod>2024-01-30T11:38:22+05:30</lastmod>
+    <lastmod>2024-02-09T17:27:29+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://progmatix21.github.io/tags/classification/</loc>
-    <lastmod>2024-01-30T11:38:22+05:30</lastmod>
+    <lastmod>2024-02-09T17:27:29+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/cnn/</loc>
+    <lastmod>2024-02-09T17:27:29+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/categories/deep-learning/</loc>
+    <lastmod>2024-02-09T17:27:29+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/lstm/</loc>
+    <lastmod>2024-02-09T17:27:29+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/nlp/</loc>
+    <lastmod>2024-02-09T17:27:29+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/</loc>
+    <lastmod>2024-02-09T17:27:29+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/</loc>
+    <lastmod>2024-02-09T17:27:29+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/</loc>
+    <lastmod>2024-02-09T17:27:29+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/posts/text-classification-using-keras-lstm-cnn/</loc>
+    <lastmod>2024-02-09T17:27:29+05:30</lastmod>
   </url>
   
   <url>
@@ -23,27 +63,12 @@
   </url>
   
   <url>
-    <loc>https://progmatix21.github.io/posts/</loc>
-    <lastmod>2024-01-30T11:38:22+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/</loc>
-    <lastmod>2024-01-30T11:38:22+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://progmatix21.github.io/tags/regression/</loc>
     <lastmod>2024-01-30T11:38:22+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://progmatix21.github.io/posts/regressor-as-classifier/</loc>
-    <lastmod>2024-01-30T11:38:22+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/</loc>
     <lastmod>2024-01-30T11:38:22+05:30</lastmod>
   </url>
   
@@ -279,11 +304,6 @@
   
   <url>
     <loc>https://progmatix21.github.io/posts/neat-wordcount-histograms/</loc>
-    <lastmod>2022-09-12T17:41:37+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/nlp/</loc>
     <lastmod>2022-09-12T17:41:37+05:30</lastmod>
   </url>
   
