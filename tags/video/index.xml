@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>video on Progmatix 21</title>
+    <link>https://progmatix21.github.io/tags/video/</link>
+    <description>Recent content in video on Progmatix 21</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 24 Feb 2024 19:15:05 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/tags/video/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python Factory Pattern</title>
+      <link>https://progmatix21.github.io/posts/python-factory-pattern/</link>
+      <pubDate>Sat, 24 Feb 2024 19:15:05 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/python-factory-pattern/</guid>
+      <description>Experiment with this pattern in a Pythonic way.  Use the example code.</description>
+    </item>
+    
+  </channel>
+</rss>
