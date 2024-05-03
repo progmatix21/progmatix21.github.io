@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Mar 2024 14:56:05 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 May 2024 12:37:14 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Topic Modelling Case Studies</title>
+      <link>https://progmatix21.github.io/posts/topic-modelling-case-studies/</link>
+      <pubDate>Wed, 01 May 2024 12:37:14 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/topic-modelling-case-studies/</guid>
+      <description>We look at two contrasting case studies.</description>
+    </item>
+    
     <item>
       <title>Using LSTMs Is Easy</title>
       <link>https://progmatix21.github.io/posts/using-lstms-is-easy/</link>
