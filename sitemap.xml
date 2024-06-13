@@ -3,32 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://progmatix21.github.io/posts/briefly-text-summarizer/</loc>
+    <lastmod>2024-06-11T17:20:03+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://progmatix21.github.io/categories/</loc>
-    <lastmod>2024-05-01T12:37:14+05:30</lastmod>
+    <lastmod>2024-06-11T17:20:03+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://progmatix21.github.io/categories/deep-learning/</loc>
-    <lastmod>2024-05-01T12:37:14+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://progmatix21.github.io/tags/nlp/</loc>
-    <lastmod>2024-05-01T12:37:14+05:30</lastmod>
+    <loc>https://progmatix21.github.io/categories/natural-language-processing/</loc>
+    <lastmod>2024-06-11T17:20:03+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://progmatix21.github.io/posts/</loc>
-    <lastmod>2024-05-01T12:37:14+05:30</lastmod>
+    <lastmod>2024-06-11T17:20:03+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://progmatix21.github.io/</loc>
-    <lastmod>2024-05-01T12:37:14+05:30</lastmod>
+    <lastmod>2024-06-11T17:20:03+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/summarization/</loc>
+    <lastmod>2024-06-11T17:20:03+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://progmatix21.github.io/tags/</loc>
+    <lastmod>2024-06-11T17:20:03+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/topic-modelling/</loc>
     <lastmod>2024-05-01T12:37:14+05:30</lastmod>
   </url>
   
@@ -43,7 +53,17 @@
   </url>
   
   <url>
+    <loc>https://progmatix21.github.io/categories/deep-learning/</loc>
+    <lastmod>2024-03-18T14:56:05+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://progmatix21.github.io/tags/lstm/</loc>
+    <lastmod>2024-03-18T14:56:05+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://progmatix21.github.io/tags/nlp/</loc>
     <lastmod>2024-03-18T14:56:05+05:30</lastmod>
   </url>
   
