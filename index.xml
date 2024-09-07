@@ -6,7 +6,16 @@
     <description>Recent content on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Jun 2024 17:14:09 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Jul 2024 13:00:53 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Speech Command Classifier</title>
+      <link>https://progmatix21.github.io/posts/speech-command-classifier/</link>
+      <pubDate>Sun, 28 Jul 2024 13:00:53 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/speech-command-classifier/</guid>
+      <description>A template workflow with stable data trifurcation, custom loader with multi-level augmentation, CNN with variable learning rate and early stopping followed by the last mile decoding of the softmax output, and of course, evaluation.</description>
+    </item>
+    
     <item>
       <title>Review vs Rating: Two Case Studies</title>
       <link>https://progmatix21.github.io/posts/review-vs-rating-two-case-studies/</link>

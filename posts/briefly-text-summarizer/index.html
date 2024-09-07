@@ -72,7 +72,7 @@
 	</span>
 </div><div class="meta__item-categories meta__item">
 	<span class="meta__text">
-		<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>521 words/3 min read
+		<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>695 words/4 min read
 	</span>
 </div>
 </div>
@@ -89,6 +89,7 @@
     <li><a href="#introducing-briefly">Introducing Briefly</a></li>
     <li><a href="#using-briefly">Using Briefly</a></li>
     <li><a href="#experiments-with-briefly">Experiments with Briefly</a></li>
+    <li><a href="#enhancements">Enhancements</a></li>
   </ul>
 </nav>
 		    </details>
@@ -199,6 +200,25 @@ different types of text.</p>
 <p>However, news articles and reports seem to work better compared to fiction,
 stories and rambling narratives.</p>
 <p>To get the latest version of <strong>Briefly</strong>, visit its <a href="https://github.com/progmatix21/Briefly">Github page</a>.</p>
+<h2 id="enhancements">Enhancements</h2>
+<p>One idea to make the summarizer available to a large number of people is
+by implementing it as a service.
+This means we can make it available through the
+LAN or through the internet.  We give the service a REST API.
+This ensures that we can communicate with our app remotely.</p>
+<p>Communication occurs through resources referred by endpoints.  The endpoint
+<code>/options</code> contains the options to get the desired summary output.</p>
+<p>Interaction with the API occurs with three types of requests: <code>GET</code>, <code>PUT</code>
+and <code>POST</code>.  The <code>GET</code> request returns the resources we need.  <code>options</code> is a
+resource that can be returned this way.
+The <code>PUT</code> request can be used to change the resource.  The parameters inside the
+<code>options</code> resource is changed using this request.
+However, there is a resource that we have to make.  This is the summary resource
+referred by the <code>/summary</code> endpoint.  The <code>POST</code> request creates the
+final summary and returns it.</p>
+<p>FastAPI runs our REST API on our local server.  Have a look at a screenshot of
+how it runs below:</p>
+<p><img src="rest_api.png" alt="REST API interface"></p>
 
 		</div>
 		<footer class="post__footer">
