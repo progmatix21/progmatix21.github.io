@@ -6,7 +6,16 @@
     <description>Recent content on Progmatix 21</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jul 2024 13:00:53 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Oct 2024 21:49:31 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Custom Spacy Ramayana NER Pipeline</title>
+      <link>https://progmatix21.github.io/posts/custom-spacy-ramayana-ner-pipeline/</link>
+      <pubDate>Sun, 13 Oct 2024 21:49:31 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/custom-spacy-ramayana-ner-pipeline/</guid>
+      <description>Follow a simple approach to specialize your model for a domain.</description>
+    </item>
+    
     <item>
       <title>Speech Command Classifier</title>
       <link>https://progmatix21.github.io/posts/speech-command-classifier/</link>

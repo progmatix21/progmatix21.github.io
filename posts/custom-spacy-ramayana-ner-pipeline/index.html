@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Custom Spacy Ramayana NER Pipeline - Progmatix 21</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Progmatix 21" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Progmatix 21</div>
+					<div class="logo__tagline">My learnings: byte by byte</div>
+				</div>
+		</a>
+	</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Custom Spacy Ramayana NER Pipeline</h1>
+			<p class="post__lead">A demo of the rule-based approach.</p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" class="meta__icon icon icon-calendar" width="18" height="16" 
+	 viewBox="0 0 458 458" style="enable-background:new 0 0 458 458;" xml:space="preserve">
+<g>
+	<path d="M111.938,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
+		C91.938,126.644,100.892,135.598,111.938,135.598z"/>
+	<path d="M346.063,135.598c11.046,0,20-8.954,20-20V21.597c0-11.046-8.954-20-20-20s-20,8.954-20,20v94.001
+		C326.063,126.644,335.017,135.598,346.063,135.598z"/>
+	<path d="M443,82.403h-46.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
+		c0-12.281,0-20.771,0-33.195H161.938c0,12.42,0,20.918,0,33.195c0,27.614-22.386,50-50,50c-27.614,0-50-22.386-50-50
+		c0-12.281,0-20.771,0-33.195H15c-8.284,0-15,6.716-15,15v89.641h458V97.403C458,89.119,451.284,82.403,443,82.403z"/>
+	<path d="M0,441.403c0,8.284,6.716,15,15,15h428c8.284,0,15-6.716,15-15V227.044H0V441.403z M244.191,313.046
+		c0-6.036,3.59-11.504,9.127-13.907c7.49-3.249,16.316-9.028,21.176-13.393c2.782-2.499,6.38-3.88,10.121-3.88h19.254
+		c4.395,0,7.957,3.563,7.957,7.958v80.903h11.445c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-59.934
+		c-8.275,0-14.984-6.708-14.984-14.984c0-8.275,6.708-14.984,14.984-14.984h14.567V317.66c-2.163,2.886-6.797,6.077-12.243,8.754
+		c-4.618,2.27-10.076,2.008-14.445-0.711c-4.369-2.718-7.025-7.501-7.025-12.647V313.046z M123.295,390.677
+		c2.691-29.175,18.127-37.168,47.125-52.83c4.622-2.493,12.811-7.06,15.92-11.134c3.842-5.044,1.97-18.001-14.359-18.001
+		c-5.549,0-11.094,1.106-17.704,5.967c-6.262,4.605-14.984,3.637-20.067-2.244l-0.594-0.688c-3.026-3.501-4.246-8.216-3.31-12.747
+		s3.925-8.371,8.09-10.387c22.329-10.811,56.654-13.101,73.853,0.952c7.977,6.523,11.966,15.332,11.966,26.43
+		c0,32.434-40.129,38.997-54.315,54.731h41.622c8.275,0,14.984,6.708,14.984,14.984c0,8.275-6.708,14.984-14.984,14.984h-79.1
+		c-2.577,0-5.036-1.095-6.772-3C123.914,395.789,123.059,393.243,123.295,390.677z"/>
+</g>
+</svg>
+<time class="meta__text" datetime="2024-10-13T21:49:31&#43;05:30">October 13, 2024</time></div>
+<div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/natural-language-processing/" rel="category">natural language processing</a>
+	</span>
+</div><div class="meta__item-categories meta__item">
+	<span class="meta__text">
+		<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>1093 words/6 min read
+	</span>
+</div>
+</div>
+		</header>
+		
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+	    <details>
+	        <summary>Click to toggle</summary>
+		        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#why-the-ramayana-dataset">Why the Ramayana dataset?</a></li>
+    <li><a href="#creating-the-spacy-pipeline">Creating the Spacy pipeline</a></li>
+    <li><a href="#invoking-the-spacy-ner">Invoking the Spacy NER</a>
+      <ul>
+        <li><a href="#detecting-default-entities">Detecting default entities</a></li>
+        <li><a href="#creating-custom-pipeline-components">Creating custom pipeline components</a></li>
+      </ul>
+    </li>
+    <li><a href="#visualization">Visualization</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+		    </details>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+<style>
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 36px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+#myBtn:hover {
+  background-color: #008080;
+}
+</style>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">&#9650;</button>
+
+
+<script>
+
+let mybutton = document.getElementById("myBtn");
+
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+
+
+<h2 id="introduction">Introduction</h2>
+<p>Named Entity Recognition (NER) is an important aspect of NLP because it
+defines and distinguishes one domain from another.  Hence, specializing an
+NER model to a domain adds much needed capability to an NLP pipeline.</p>
+<p>In this blog post, we demonstrate Named Entity Recognition on the epic Ramayana,
+using the Spacy NLP library.</p>
+<p>You can follow along with this
+<a href="https://www.kaggle.com/code/atrijtalgery/starter-custom-spacy-ramayana-ner">Kaggle notebook</a>
+which has pointers to the dataset.</p>
+<h2 id="why-the-ramayana-dataset">Why the Ramayana dataset?</h2>
+<p>The default Spacy NER model is trained on general text found on the internet.
+It may not be adequate to extract entities in specialized domains such as
+legal, medical or historical.  While these are potentially open domains, we
+chose the Ramayana because it is a relatively well-defined
+and closed domain.  Such a domain allows us to use rule-based NER as opposed
+to trained-model NER.  The former is more accurate and less resource-intensive
+albeit more labour-intensive.</p>
+<h2 id="creating-the-spacy-pipeline">Creating the Spacy pipeline</h2>
+<p>We create the Spacy pipeline using the medium model <code>en_core_web_md</code>.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">SPACY_MODEL <span style="color:#666">=</span> <span style="color:#ba2121">&#34;en_core_web_md&#34;</span>
+nlp <span style="color:#666">=</span> spacy<span style="color:#666">.</span>load(SPACY_MODEL) 
+</code></pre></div><p>After creating the Spacy model, we create a document object out of the raw text
+taken from the <code>literal_meaning</code> column of the dataset.  <code>translated_meaning_text</code>
+is a text blob created from the raw text of the dataset.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">translated_doc <span style="color:#666">=</span> nlp(translated_meaning_text)
+</code></pre></div><h2 id="invoking-the-spacy-ner">Invoking the Spacy NER</h2>
+<p>Let us follow the steps as we iteratively improve the Spacy NER to tune it for
+our dataset domain.</p>
+<blockquote>
+<p><strong>Note that we are discussing a demo/starter notebook which is by no means
+complete.  To correctly execute the NER appropriate to the subject text,
+the pattern list will have to be completely specified.</strong></p>
+</blockquote>
+<h3 id="detecting-default-entities">Detecting default entities</h3>
+<p>We detect baseline entities based on the native NER model.  The entities in
+the NER are general and do not fit specific domains.  Here is an example:</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ents <span style="color:#666">=</span> <span style="color:#008000">list</span>([(ent<span style="color:#666">.</span>text,ent<span style="color:#666">.</span>label_) <span style="color:#008000;font-weight:bold">for</span> ent <span style="color:#a2f;font-weight:bold">in</span> translated_doc<span style="color:#666">.</span>ents])
+unique_ents <span style="color:#666">=</span> <span style="color:#008000">sorted</span>(<span style="color:#008000">list</span>(<span style="color:#008000">set</span>([(ent<span style="color:#666">.</span>text,ent<span style="color:#666">.</span>label_) <span style="color:#008000;font-weight:bold">for</span> ent <span style="color:#a2f;font-weight:bold">in</span> translated_doc<span style="color:#666">.</span>ents])))
+unique_ents
+</code></pre></div><p>The output excerpt is:</p>
+<pre><code> ('Ashoka', 'GPE'),
+ ('Ashoka', 'PERSON'),
+ ('Ashoka garden', 'PERSON'),
+ ('Ashoka grove', 'PERSON'),
+ ('Ashoka-grove', 'LOC'),
+ ...
+ ('Ashoka-grove', 'PERSON'),
+ ('Ayodhya', 'GPE'),
+ ('Ayodhya', 'PERSON'),
+ ('Ayodhya City', 'GPE'),
+ ...
+ ('Ayodhya Hanuama', 'PERSON'),
+</code></pre><p>When we closely examine the entities, some of them seem to have wrong
+labels.  Entities such as &lsquo;Ayodhya&rsquo; have been labelled <code>PERSON</code>, for which
+<code>GPE</code> suits better.  &lsquo;Ashoka&rsquo; is another entity wrongly labelled as
+<code>PERSON</code>.  &lsquo;Ashoka grove&rsquo; and &lsquo;Ashoka garden&rsquo; are also wrongly labelled as
+<code>PERSON</code>.  Some entities contain the label <code>WORK_OF_ART</code> which have to be
+removed as it does not match any context.</p>
+<h3 id="creating-custom-pipeline-components">Creating custom pipeline components</h3>
+<p>Some of the wrongly labelled entities can be corrected, thanks to Spacy&rsquo;s
+custom pipeline components.  Spacy&rsquo;s pipeline contains a list of components
+which we can see with the below command:</p>
+<p>Here are a list of custom components we can use:</p>
+<ul>
+<li><strong>Entity ruler:</strong> We can deal with singly labelled entities with the help of our custom
+component <code>entity_ruler</code>.  This component is inserted before the native
+<code>ner</code> component in the pipeline.  Entities such as &lsquo;Ayodhya&rsquo; can be
+relabeled from <code>PERSON</code> to <code>GPE</code>.  &lsquo;Ashoka&rsquo; can also be given a custom label as <code>TREE</code>.  However, we cannot correct mis-labelled entities which are overlapping.  The Spacy native NER works around the
+entity ruler allowing us to preempt the errors of the Spacy NER.</li>
+</ul>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#408080;font-style:italic"># Entity ruler  ##############################</span>
+<span style="color:#408080;font-style:italic"># List of entities and patterns for entity ruler</span>
+patterns <span style="color:#666">=</span> [
+            {<span style="color:#ba2121">&#34;label&#34;</span>: <span style="color:#ba2121">&#34;GPE&#34;</span>, <span style="color:#ba2121">&#34;id&#34;</span>:<span style="color:#ba2121">&#34;ayodhya&#34;</span>,<span style="color:#ba2121">&#34;pattern&#34;</span>:<span style="color:#ba2121">&#34;Ayodhya-City&#34;</span>},
+            {<span style="color:#ba2121">&#34;label&#34;</span>: <span style="color:#ba2121">&#34;GPE&#34;</span>, <span style="color:#ba2121">&#34;id&#34;</span>:<span style="color:#ba2121">&#34;ayodhya&#34;</span>, <span style="color:#ba2121">&#34;pattern&#34;</span>:[{<span style="color:#ba2121">&#34;LOWER&#34;</span>:<span style="color:#ba2121">&#34;ayodhya&#34;</span>,}]},
+            {<span style="color:#ba2121">&#34;label&#34;</span>: <span style="color:#ba2121">&#34;GPE&#34;</span>, <span style="color:#ba2121">&#34;id&#34;</span>:<span style="color:#ba2121">&#34;ayodhya&#34;</span>, <span style="color:#ba2121">&#34;pattern&#34;</span>:[{<span style="color:#ba2121">&#34;LOWER&#34;</span>:<span style="color:#ba2121">&#34;ayodhya&#34;</span>}, {<span style="color:#ba2121">&#34;LOWER&#34;</span>: <span style="color:#ba2121">&#34;city&#34;</span>}]},
+            {<span style="color:#ba2121">&#34;label&#34;</span>: <span style="color:#ba2121">&#34;LOC&#34;</span>, <span style="color:#ba2121">&#34;id&#34;</span>:<span style="color:#ba2121">&#34;ashoka-grove&#34;</span>,<span style="color:#ba2121">&#34;pattern&#34;</span>:<span style="color:#ba2121">&#34;Ashoka-grove&#34;</span>},
+            {<span style="color:#ba2121">&#34;label&#34;</span>: <span style="color:#ba2121">&#34;TREE&#34;</span>,<span style="color:#ba2121">&#34;pattern&#34;</span>:<span style="color:#ba2121">&#34;Ashoka&#34;</span>},
+            ]
+
+<span style="color:#008000;font-weight:bold">if</span> <span style="color:#a2f;font-weight:bold">not</span> nlp<span style="color:#666">.</span>has_pipe(<span style="color:#ba2121">&#34;entity_ruler&#34;</span>):
+    ruler <span style="color:#666">=</span> nlp<span style="color:#666">.</span>add_pipe(<span style="color:#ba2121">&#34;entity_ruler&#34;</span>, before<span style="color:#666">=</span><span style="color:#ba2121">&#34;ner&#34;</span>)
+
+ruler<span style="color:#666">.</span>add_patterns(patterns)
+</code></pre></div><p>While the entity ruler and Spacy NER working in tandem, are able to correctly
+identify the entities specified, we still have the problem of overlapping
+entities.  These are entities where a token belongs to multiple entities such
+as <code>{{Ashoka}(TREE) grove}(LOC)</code>.</p>
+<p>This brings us to the Span ruler.</p>
+<ul>
+<li><strong>Span ruler:</strong> We can use this component when dealing with spans.  It can
+take care of mis-labelled spans. Overlapping entities inside spans can also
+be detected.  We insert the span ruler before the entity ruler.</li>
+</ul>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#408080;font-style:italic"># Span ruler ############################################</span>
+<span style="color:#408080;font-style:italic"># List of entities and patterns for spanruler</span>
+spanruler_patterns <span style="color:#666">=</span> [
+                    <span style="color:#408080;font-style:italic">#{&#34;label&#34;: &#34;LOC&#34;, &#34;id&#34;:&#34;ashoka-grove&#34;,&#34;pattern&#34;:&#34;Ashoka-grove&#34;},</span>
+                    {<span style="color:#ba2121">&#34;label&#34;</span>: <span style="color:#ba2121">&#34;LOC&#34;</span>, <span style="color:#ba2121">&#34;id&#34;</span>:<span style="color:#ba2121">&#34;ashoka-grove&#34;</span>, <span style="color:#ba2121">&#34;pattern&#34;</span>:[{<span style="color:#ba2121">&#34;LOWER&#34;</span>:<span style="color:#ba2121">&#34;ashoka&#34;</span>}, {<span style="color:#ba2121">&#34;LOWER&#34;</span>: <span style="color:#ba2121">&#34;grove&#34;</span>}]},
+                    {<span style="color:#ba2121">&#34;label&#34;</span>: <span style="color:#ba2121">&#34;LOC&#34;</span>, <span style="color:#ba2121">&#34;id&#34;</span>:<span style="color:#ba2121">&#34;ashoka-grove&#34;</span>, <span style="color:#ba2121">&#34;pattern&#34;</span>:[{<span style="color:#ba2121">&#34;LOWER&#34;</span>:<span style="color:#ba2121">&#34;ashoka&#34;</span>}, {<span style="color:#ba2121">&#34;LOWER&#34;</span>: <span style="color:#ba2121">&#34;garden&#34;</span>}]},
+                    ]
+
+<span style="color:#008000;font-weight:bold">if</span> <span style="color:#a2f;font-weight:bold">not</span> nlp<span style="color:#666">.</span>has_pipe(<span style="color:#ba2121">&#34;span_ruler&#34;</span>):
+    ruler <span style="color:#666">=</span> nlp<span style="color:#666">.</span>add_pipe(<span style="color:#ba2121">&#34;span_ruler&#34;</span>, before<span style="color:#666">=</span><span style="color:#ba2121">&#34;entity_ruler&#34;</span>)
+
+ruler<span style="color:#666">.</span>add_patterns(spanruler_patterns)
+</code></pre></div><ul>
+<li><strong>normalize_entities component:</strong> With the above components added, we are
+able to correctly detect entities as well as overlapping spans.  But these
+appear in separate spaces which need to be unified.  We can unify the lists of
+spans and entities and the results can be
+kept under the <code>entities</code> key of the spans dictionary.  We add this
+component after the native NER.</li>
+</ul>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a2f">@Language.component</span>(<span style="color:#ba2121">&#34;normalize_entities&#34;</span>)
+<span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">normalize_entities</span>(doc):
+    <span style="color:#408080;font-style:italic"># Get entity and span objects from the document</span>
+
+    ent_objs <span style="color:#666">=</span> [e <span style="color:#008000;font-weight:bold">for</span> e <span style="color:#a2f;font-weight:bold">in</span> doc<span style="color:#666">.</span>ents]
+    span_ent_objs <span style="color:#666">=</span> [s <span style="color:#008000;font-weight:bold">for</span> s <span style="color:#a2f;font-weight:bold">in</span> doc<span style="color:#666">.</span>spans[<span style="color:#ba2121">&#34;ruler&#34;</span>]]
+    <span style="color:#408080;font-style:italic"># Add the span entity objects to the entity objects list</span>
+    ent_objs<span style="color:#666">.</span>extend(span_ent_objs)
+    <span style="color:#408080;font-style:italic"># Insert this list into the spans dictionary</span>
+    doc<span style="color:#666">.</span>spans[<span style="color:#ba2121">&#34;entities&#34;</span>] <span style="color:#666">=</span> ent_objs
+    
+    <span style="color:#008000;font-weight:bold">return</span> doc
+
+<span style="color:#408080;font-style:italic"># Add this component to the Spacy pipeline</span>
+<span style="color:#008000;font-weight:bold">if</span> <span style="color:#a2f;font-weight:bold">not</span> nlp<span style="color:#666">.</span>has_pipe(<span style="color:#ba2121">&#34;normalize_entities&#34;</span>):
+    ruler <span style="color:#666">=</span> nlp<span style="color:#666">.</span>add_pipe(<span style="color:#ba2121">&#34;normalize_entities&#34;</span>, after<span style="color:#666">=</span><span style="color:#ba2121">&#34;ner&#34;</span>)
+</code></pre></div><ul>
+<li><strong>filter_entities component:</strong> We see that some entities are labelled
+<code>WORK_OF_ART</code> which shouldn&rsquo;t be labelled at all.  We have to filter our
+entities to remove this label. We will use a component for this and insert it
+between the NER and the <code>normalize_entities</code> component.</li>
+</ul>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a2f">@Language.component</span>(<span style="color:#ba2121">&#34;filter_entities&#34;</span>)
+<span style="color:#008000;font-weight:bold">def</span> <span style="color:#00f">filter_entities</span>(doc):
+    
+    <span style="color:#408080;font-style:italic"># This is the remove list.  Add all labels you want to remove here.</span>
+    remove_list <span style="color:#666">=</span> [<span style="color:#ba2121">&#34;WORK_OF_ART&#34;</span>]
+    
+    <span style="color:#408080;font-style:italic"># Filter the entities</span>
+    filtered_ents <span style="color:#666">=</span> [e <span style="color:#008000;font-weight:bold">for</span> e <span style="color:#a2f;font-weight:bold">in</span> doc<span style="color:#666">.</span>ents <span style="color:#008000;font-weight:bold">if</span> e<span style="color:#666">.</span>label_ <span style="color:#a2f;font-weight:bold">not</span> <span style="color:#a2f;font-weight:bold">in</span> remove_list]
+    
+    doc<span style="color:#666">.</span>ents <span style="color:#666">=</span> filtered_ents
+    
+    <span style="color:#008000;font-weight:bold">return</span> doc
+    
+<span style="color:#408080;font-style:italic"># Add this component to the Spacy pipeline</span>
+<span style="color:#008000;font-weight:bold">if</span> <span style="color:#a2f;font-weight:bold">not</span> nlp<span style="color:#666">.</span>has_pipe(<span style="color:#ba2121">&#34;filter_entities&#34;</span>):
+    ruler <span style="color:#666">=</span> nlp<span style="color:#666">.</span>add_pipe(<span style="color:#ba2121">&#34;filter_entities&#34;</span>, after<span style="color:#666">=</span><span style="color:#ba2121">&#34;ner&#34;</span>)
+</code></pre></div><p>Our pipeline finally looks like this:</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">nlp<span style="color:#666">.</span>pipe_names
+</code></pre></div><pre><code>['tok2vec',
+ 'tagger',
+ 'parser',
+ 'attribute_ruler',
+ 'lemmatizer',
+ 'span_ruler',
+ 'entity_ruler',
+ 'ner',
+ 'filter_entities',
+ 'normalize_entities']
+</code></pre><h2 id="visualization">Visualization</h2>
+<p>We can now visualize all the entities using Displacy.  Here, we can have
+a look at the overlapping entities in spans.</p>
+<p><img src="span_visualizer.png" alt="Visualization of spans"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this blog post, we saw how to customize the Spacy NER pipeline, in a step-by-step
+manner.  The entity correction is by no means complete.
+We still haven&rsquo;t taken care of misspelled words and typos that have been
+mis-labelled as entities.  All these gaps have to be filled before the pipeline
+can be deemed complete.  What we have done here is demo the approach.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/spacy/" rel="tag">spacy</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/ner/" rel="tag">ner</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/posts/speech-command-classifier/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Speech Command Classifier</p>
+		</a>
+	</div>
+</nav>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+<div class="footer__links">
+	<a class="footer__link" href="/about/">About</a>
+</div>
+		<div class="footer__copyright">
+			&copy; 2024 Atrij Talgery.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>
