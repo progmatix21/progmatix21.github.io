@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>corpus on Progmatix 21</title>
+    <link>https://progmatix21.github.io/tags/corpus/</link>
+    <description>Recent content in corpus on Progmatix 21</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Jan 2025 11:04:42 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/tags/corpus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Corpus? Go the Chilka Way</title>
+      <link>https://progmatix21.github.io/posts/building-a-corpus-go-the-chilka-way/</link>
+      <pubDate>Thu, 09 Jan 2025 11:04:42 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/building-a-corpus-go-the-chilka-way/</guid>
+      <description>&lt;p&gt;In your NLP and Machine Learning tasks, as also research, getting the
+right detail from your voluminous text data is very important.  You
+need a convenient, programmatic interface to your textual data.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
