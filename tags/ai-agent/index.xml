@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ai-agent on Progmatix 21</title>
+    <link>https://progmatix21.github.io/tags/ai-agent/</link>
+    <description>Recent content in ai-agent on Progmatix 21</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Oct 2025 11:15:50 +0530</lastBuildDate><atom:link href="https://progmatix21.github.io/tags/ai-agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gofer - Your Friendly AI Search Agent</title>
+      <link>https://progmatix21.github.io/posts/gofer-your-friendly-ai-search-agent/</link>
+      <pubDate>Sun, 26 Oct 2025 11:15:50 +0530</pubDate>
+      
+      <guid>https://progmatix21.github.io/posts/gofer-your-friendly-ai-search-agent/</guid>
+      <description>&lt;p&gt;Want to interact with LLMs (Large Language Models) but perplexed on how
+to go about it and where to find good ones?  You can of course interact with
+LLMs via search engines, but what if you want to build your own interaction
+agent?  I got you covered in this article.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
